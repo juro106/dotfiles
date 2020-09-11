@@ -1,0 +1,22 @@
+[user]
+	name = juro106
+	email = hiyuman@gmail.com
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+[core]
+	# editor = 'C:/vim/vim.exe' -CODE=4
+    editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
+	autoCRLF = false
+    preloadindex = true
+    fscache = true
+    auto = 256
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[http]
+	proxy = http://:0
