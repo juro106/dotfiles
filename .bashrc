@@ -29,6 +29,9 @@ alias q='exit'
 alias today='date +%Y-%m-%d'
 alias touchtoday='e `date +%Y-%m-%d`.md'
 
+alias addlil="ssh-add ~/.ssh/id_rsa_lil"
+alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
+
 case "$TERM" in  # 'cygwin' になる
   xterm*)
     for name in node ipython php php5 psql python2.7; do
