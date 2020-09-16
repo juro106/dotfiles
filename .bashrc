@@ -76,3 +76,5 @@ qk() {
     ssh-agent -k
     exit
 }
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash

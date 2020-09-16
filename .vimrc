@@ -51,17 +51,17 @@ Plug 'kana/vim-textobj-user'
 Plug 'osyo-manga/vim-textobj-multiblock'
 Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-operator-surround'
-Plug 'junegunn/fzf.vim'
-" Plug 'juro106/ftjpn'
 Plug 'juro106/mkz'
 Plug 'deton/jasegment.vim'
 Plug 'cocopon/vaffle.vim', {'on': [] }
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'tomtom/tcomment_vim', {'on': [] }
 Plug 'fuenor/im_control.vim', {'on': [] }
 Plug 'itchyny/vim-parenmatch', {'on': [] }
 Plug 'jason0x43/vim-js-indent', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+" Plug '~/.fzf'
+" Plug 'junegunn/fzf.vim'
+" Plug 'juro106/ftjpn'
 " Plug 'machakann/vim-sandwich'
 " Plug 'rhysd/clever-f.vim'
 " Plug 'mattn/wiseman-f-vim'
@@ -614,27 +614,26 @@ let g:sonictemplate_vim_template_dir = expand('~/vimfiles/template')
 " fzf.vim
 " ----------------------------------------------------------
 " Similarly, we can apply it to fzf#vim#grep. To use ripgrep instead of ag:
-nnoremap ,r :<C-u>Rg 
-nnoremap <silent> ,b :<C-u>Buffers<CR>
-nnoremap <silent> <leader><leader> :<C-u>Buffers<CR>
-nnoremap <silent> <leader>n :bnext<CR>
-nnoremap <silent> <leader>h :bprev<CR>
-nnoremap <silent> <leader>f :<C-u>Files<CR>
-nnoremap <silent> <leader>g :<C-u>GFiles?<CR>
-
-command! -bang -nargs=* Rg
-    \ call fzf#vim#grep(
-    \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
-    \   <bang>0 ? fzf#vim#with_preview('up:60%')
-    \           : fzf#vim#with_preview('right:50%:hidden', '?'),
-    \   <bang>0)
-if has('win32') || has('win64')
-    command! -bang -nargs=* Rg
-        \ call fzf#vim#grep(
-        \   'rg --column --line-number --no-heading --color=always --smart-case "'.<q-args>.'"', 1,
-        \   <bang>0)
-endif
-
+" nnoremap ,r :<C-u>Rg 
+" nnoremap <silent> ,b :<C-u>Buffers<CR>
+" nnoremap <silent> <leader><leader> :<C-u>Buffers<CR>
+" nnoremap <silent> <leader>n :bnext<CR>
+" nnoremap <silent> <leader>h :bprev<CR>
+" nnoremap <silent> <leader>f :<C-u>Files<CR>
+" nnoremap <silent> <leader>g :<C-u>GFiles?<CR>
+"
+" command! -bang -nargs=* Rg
+"     \ call fzf#vim#grep(
+"     \   'rg --column --line-number --no-heading --color=always '.shellescape(<q-args>), 1,
+"     \   <bang>0 ? fzf#vim#with_preview('up:60%')
+"     \           : fzf#vim#with_preview('right:50%:hidden', '?'),
+"     \   <bang>0)
+" if has('win32') || has('win64')
+"     command! -bang -nargs=* Rg
+"         \ call fzf#vim#grep(
+"         \   'rg --column --line-number --no-heading --color=always --smart-case "'.<q-args>.'"', 1,
+" endif
+"
 " ----------------------------------------------------------
 " Vaffle
 " ----------------------------------------------------------
