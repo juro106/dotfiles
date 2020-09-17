@@ -97,3 +97,6 @@ hi markdownItalic guifg=#ffeaed gui=bold
 hi markdownItalicDelimiter guifg=#ffeaed gui=bold
 hi markdownBold guifg=#000000 gui=bold guibg=#ffd923
 hi markdownBoldItalic guifg=#f6f3e8 gui=bold guibg=#e01616
+
+" json
+hi link jsonCommentError Comment

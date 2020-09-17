@@ -810,6 +810,35 @@ let g:multi_f_key_list = [
 " -------------------------------------------------------------------------------------------------------------------
 
 " --------------------------------------------------------------------------------
+" terminal で GitBash
+" --------------------------------------------------------------------------------
+function! GitBash()
+    " 日本語Windowsの場合`ja`が設定されるので、入力ロケールに合わせたUTF-8に設定しなおす
+    let l:env = {
+                \ 'LANG': systemlist('"C:/Program Files/Git/usr/bin/locale.exe" -iU')[0],
+                \ }
+
+    " remote連携のための設定
+    if has('clientserver')
+        call extend(l:env, {
+                    \ 'GVIM': $VIMRUNTIME,
+                    \ 'VIM_SERVERNAME': v:servername,
+                    \ })
+    endif
+
+    " term_startでgit for windowsのbashを実行する
+    call term_start(['C:/Program Files/Git/bin/bash.exe', '-l'], {
+                \ 'term_name': 'GitBash',
+                \ 'term_finish': 'close',
+                \ 'term_cols': v:true,
+                \ 'env': l:env,
+                \ })
+
+endfunction
+
+nnoremap ,g :<C-u>call GitBash()<CR>
+
+" --------------------------------------------------------------------------------
 " syntaxhighlightを調べる関数
 " --------------------------------------------------------------------------------
 function! s:get_syn_id(transparent)
