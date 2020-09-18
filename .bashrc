@@ -18,7 +18,7 @@ alias hugo3='hugo -D -p 1313 server'
 alias hugo2='hugo -D -p 1312 server'
 alias hugob='hugo --minify --cleanDestinationDir'
 alias ff="winpty ff"
-alias mduch="sh ~/dotfiles/lib/touch_mkdir.sh"
+alias mduch="sh ~/dotfiles/bin/touch_mkdir.sh"
 
 alias sb='source ~/.bashrc'
 
