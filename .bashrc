@@ -17,6 +17,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
 # gui 関係の設定
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
     export LIBGL_ALWAYS_INDIRECT=1
+# プロンプトの表示関係
+   if [ -f /etc/bash_completion ]; then
+           . /etc/bash_completion
+   fi
+   if [ -f /etc/bash_completion.d/git-prompt ]; then
+           export PS1='[\[\033[01;32m\]\u\[\e[35m\]@\h\[\e[0m\]] \[\033[01;33m\]\w\[\e[36m\]$(__git_ps1)\[\e[0m\]\n\\$ '
+       else
+           export PS1='[\[\033[01;32m\]\u\[\e[35m\]@\h\[\e[0m\]] \[\033[01;33m\]\w \[\e[0m\]\n\\$ '
+   fi
 # windows (git-bash) の設定
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias hugo3='hugo -D -p 1313 server'
