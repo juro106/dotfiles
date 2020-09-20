@@ -1,15 +1,3 @@
-function to_win_path() {
-  path=${*}
-  echo "$(readlink -f ${path} | sed -e 's@/@\\@g' -e 's@\\c\\@c:\\@g' | tr '\n' ' ')"
-}
-
-function tree() {
-    dst="$(to_win_path ${1:-$(pwd)})"
-    cmd //c "chcp 437 & tree ${dst}" //a //f
-}
-
-# alias tree='cmd//c "chcp 437 & tree" //A //f'
-
 alias ls='ls -F --color=auto --show-control-chars' 
 alias ll='ls -l' 
 alias la='ls -a --show-control-chars'
@@ -22,6 +10,7 @@ alias mduch="sh ~/dotfiles/lib/touch_mkdir.sh"
 
 alias sb='source ~/.bashrc'
 
+alias gvim='/mnt/c/vim/gvim.exe'
 alias e='gvim'
 alias eb='gvim ~/.bashrc'
 alias q='exit'
@@ -31,6 +20,10 @@ alias touchtoday='e `date +%Y-%m-%d`.md'
 
 alias addlil="ssh-add ~/.ssh/id_rsa_lil"
 alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
+
+# linux の gui 関係の設定
+export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
+export LIBGL_ALWAYS_INDIRECT=1
 
 case "$TERM" in  # 'cygwin' になる
   xterm*)

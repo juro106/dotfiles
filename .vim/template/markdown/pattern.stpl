@@ -1,0 +1,10 @@
+\(.*\).go$
+    {{_cursor_}}{{ $1 }}
+
+\(.*\).gg$
+    end
+    end
+    start
+    end
+    {{ $1 }}
+    {{_curosor}}

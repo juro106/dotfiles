@@ -1,7 +1,7 @@
 scriptencoding utf-8
 
+" set guioptions-=m               " メニューバーの非表示
 set guioptions-=T               " ツールバーの非表示
-set guioptions-=m               " メニューバーの非表示
 set guioptions-=l               " 右スクロールバーの非表示
 set guioptions-=L               " 分割時の左スクロールバーの非表示
 set guioptions-=r               " 右スクロールバーの非表示
@@ -19,13 +19,21 @@ set mousehide                   " 入力時にマウスポインタを隠す (no
 " set shellxquote=
 
 " フォントの設定
-set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
-" set guifont=Ricty_Diminished_for_Powerline:h14:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
-" set guifont=Ricty_Diminished_with-icons:h14:w6:cSHIFTJIS:qDRAFT "guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
-" set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
-" set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:cSHIFTJIS:qDRAFT
+" set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
+if has('unix')
+    set guifont=HackGenNerd\ Console\ 12 guifontwide=HackGenNerd\ 12
+elseif has('win32') || has('win64')
+    " set guifont=Ricty_Diminished_for_Powerline\ h14\ w6\ cANSI:qDRAFT\ guifontwide=Migu_1M\ h13\ w6\ cSHIFTJIS\ qDRAFT
+    " set guifont=Ricty_Diminished_with-icons:h14:w6:cSHIFTJIS:qDRAFT "guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
+    " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
+    " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:cSHIFTJIS:qDRAFT
+    " set guifont=DejaVuSansMono\ 11
+    " set guifont=Monaco\_h11\_w6\_cANSI\_qDRAFT guifontwide=Migu\_1M\_h12\_w6\_cSHIFTJIS\_qDRAFT
+    set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
+endif
 
 " colorscheme
+" colorscheme iceberg
 colorscheme mycolor
 
 " IMEがOnのときはカーソルの色を変える
@@ -41,21 +49,21 @@ endif
 " endif
 
 " ウインドウサイズを保存して次回採用する
-let g:save_window_file = expand('~/.vimwinpos')
-augroup SaveWindow
-    autocmd!
-    autocmd VimLeavePre * call s:save_window()
-    function! s:save_window()
-        let options = [
-            \ 'set columns=' . &columns,
-            \ 'set lines=' . &lines,
-            \ 'winpos ' . 0 . ' ' . getwinposy(),
-            \ ]
-        call writefile(options, g:save_window_file)
-    endfunction
-augroup END
-
-"            \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
-if filereadable(g:save_window_file)
-    execute 'source' g:save_window_file
-endif
+" let g:save_window_file = expand('~/.vimwinpos')
+" augroup SaveWindow
+"     autocmd!
+"     autocmd VimLeavePre * call s:save_window()
+"     function! s:save_window()
+"         let options = [
+"             \ 'set columns=' . &columns,
+"             \ 'set lines=' . &lines,
+"             \ 'winpos ' . 0 . ' ' . getwinposy(),
+"             \ ]
+"         call writefile(options, g:save_window_file)
+"     endfunction
+" augroup END
+" 
+" "            \ 'winpos ' . getwinposx() . ' ' . getwinposy(),
+" if filereadable(g:save_window_file)
+"     execute 'source' g:save_window_file
+" endif

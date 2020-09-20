@@ -1,7 +1,7 @@
 ﻿set encoding=utf-8
 scriptencoding utf-8
-set termencoding=cp932
 set fileencoding=utf-8
+"set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set shellslash
 set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
@@ -42,7 +42,7 @@ let plugin_scrnmode_disable     = 1 " $VIM/plugins/kaoriya/scrnmode.vim
 " Plugin の管理 (vim-plug)
 let g:plug_shallow = 0
 
-call plug#begin('~/vimfiles/plugged')
+call plug#begin('~/.vim/plugged')
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-expand-region'
@@ -99,6 +99,8 @@ if has("migemo")
     set migemodict=~/vimfiles/dict/utf-8/migemo-dict
 endif
 
+colorscheme iceberg
+
 " ---------------------------------------------------------------------
 " 基本的な設定 config setting
 " ---------------------------------------------------------------------
@@ -140,7 +142,7 @@ set helplang=ja                 " ヘルプの日本語化
 set notimeout                   " キーマップでタイムアウトしない
 set ttimeout ttimeoutlen=10     " キーコードのタイムアウトの設定
 
-set verbosefile=~/log/vim.log
+" set verbosefile=~/log/vim.log
 " set verbose=20
 
 " 対応するカッコ
@@ -233,8 +235,8 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <silent> ,. :<C-u>e $MYVIMRC<CR>
 nnoremap <silent> ,v :<C-u>so $MYVIMRC<CR>
 " _gvimrcの呼び出し&読み込み
-nnoremap <silent> <F9>gg :<C-u>e $MYGVIMRC<CR>
-nnoremap <silent> ,z :<C-u>so $MYGVIMRC<CR>
+nnoremap <silent> <F9>gg :<C-u>e ~/.gvimrc<CR>
+nnoremap <silent> ,z :<C-u>so ~/.gvimrc<CR>
 
 augroup source_vimrc
     autocmd!
@@ -243,7 +245,7 @@ augroup source_vimrc
 augroup END
 
 " colorscheme の呼び出し
-nnoremap <silent> <F9>cl :<C-u>tabnew ~/vimfiles/colors/mycolor.vim<CR>
+nnoremap <silent> <F9>cl :<C-u>tabnew ~/.vim/colors/mycolor.vim<CR>
 
 " syntax check の呼び出し
 nnoremap <silent> ,ch :<C-u>SyntaxInfo<CR>
