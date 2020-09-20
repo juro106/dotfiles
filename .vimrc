@@ -261,7 +261,8 @@ elseif has('win32') || has('win64')
     " keymap ahk
     nnoremap <silent> <F9>ahk :<C-u>e C:/dvorakj/user/keymap/keymap_qwe.ahk<CR>
     " keymap ergodox keymap.c
-    nnoremap <silent> <F9>ergo :<C-u>e C:/qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c<CR>
+    " nnoremap <silent> <F9>ergo :<C-u>e C:/qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c<CR>
+    nnoremap <silent> <F9>ergo :<C-u>e //wsl$/Ubuntu-20.04/home/kenichiro/qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
 endif
 
 " syntax check の呼び出し
