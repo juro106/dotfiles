@@ -9,7 +9,7 @@
 [core]
 	# editor = 'C:/vim/vim.exe' -CODE=4
     # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
-    # autoCRLF = false
+    autoCRLF = false
     # preloadindex = true
     # fscache = true
     auto = 256
