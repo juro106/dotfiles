@@ -107,7 +107,7 @@ hi def link markdownH4                    htmlH4
 hi def link markdownH5                    htmlH5
 hi def link markdownH6                    htmlH6
 hi def link markdownHeadingRule           markdownRule
-hi def link markdownHeadingDelimiter      Delimiter
+hi def link markdownHeadingDelimiter      Special
 hi def link markdownOrderedListMarker     markdownListMarker
 hi def link markdownListMarker            htmlTagName
 hi def link markdownBlockquote            Comment
