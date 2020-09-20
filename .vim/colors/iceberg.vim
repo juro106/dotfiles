@@ -51,7 +51,9 @@ hi! Function ctermfg=110 guifg=#84a0c6
 hi! Identifier cterm=NONE ctermfg=109 guifg=#89b8c2
 hi! Include ctermfg=110 guifg=#84a0c6
 hi! LineNr ctermbg=235 ctermfg=239 guibg=#1e2132 guifg=#444b71
-hi! MatchParen ctermbg=237 ctermfg=255 guibg=#3e445e guifg=#ffffff
+" hi! MatchParen ctermbg=237 ctermfg=255 guibg=#3e445e guifg=#ffffff
+hi! MatchParen ctermbg=123 ctermfg=255 guifg=#ffffff guibg=#00ffff
+hi! link ParenMatch MatchParen
 hi! MoreMsg ctermfg=150 guifg=#b4be82
 hi! Normal ctermbg=234 ctermfg=252 guibg=#161821 guifg=#c6c8d1
 hi! Operator ctermfg=110 guifg=#84a0c6
@@ -86,7 +88,7 @@ hi! Todo ctermbg=234 ctermfg=150 guibg=#45493e guifg=#b4be82
 hi! Type ctermfg=110 gui=NONE guifg=#84a0c6
 hi! Underlined cterm=underline ctermfg=110 gui=underline guifg=#84a0c6 term=underline
 hi! VertSplit cterm=NONE ctermbg=233 ctermfg=233 gui=NONE guibg=#0f1117 guifg=#0f1117
-hi! Visual ctermbg=236 guibg=#272c42
+hi! Visual ctermbg=245 ctermfg=255 guibg=#272c42
 hi! WildMenu ctermbg=255 ctermfg=234 guibg=#d4d5db guifg=#17171b
 hi! diffAdded ctermfg=150 guifg=#b4be82
 hi! diffRemoved ctermfg=203 guifg=#e27878

@@ -1,7 +1,7 @@
 ﻿set encoding=utf-8
 scriptencoding utf-8
-set termencoding=cp932
 set fileencoding=utf-8
+"set fileencodings=iso-2022-jp,euc-jp,cp932,utf-8
 set fileencodings=utf-8,cp932,euc-jp
 set shellslash
 set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
@@ -103,6 +103,8 @@ if has("migemo")
     set migemo
     set migemodict=~/vimfiles/dict/utf-8/migemo-dict
 endif
+
+colorscheme iceberg
 
 " ---------------------------------------------------------------------
 " 基本的な設定 config setting
@@ -238,8 +240,8 @@ cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 nnoremap <silent> ,. :<C-u>e $MYVIMRC<CR>
 nnoremap <silent> ,v :<C-u>so $MYVIMRC<CR>
 " _gvimrcの呼び出し&読み込み
-nnoremap <silent> <F9>gg :<C-u>e $MYGVIMRC<CR>
-nnoremap <silent> ,z :<C-u>so $MYGVIMRC<CR>
+nnoremap <silent> <F9>gg :<C-u>e ~/.gvimrc<CR>
+nnoremap <silent> ,z :<C-u>so ~/.gvimrc<CR>
 
 augroup source_vimrc
     autocmd!
@@ -247,6 +249,8 @@ augroup source_vimrc
     autocmd BufWritePost $MYGVIMRC source $MYGVIMRC
 augroup END
 
+" colorscheme の呼び出し
+nnoremap <silent> <F9>cl :<C-u>tabnew ~/.vim/colors/mycolor.vim<CR>
 
 if has('unix')
     " colorscheme の呼び出し

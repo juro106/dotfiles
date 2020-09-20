@@ -8,10 +8,10 @@
 	smudge = git-lfs smudge -- %f
 [core]
 	# editor = 'C:/vim/vim.exe' -CODE=4
-    editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
-	autoCRLF = false
-    preloadindex = true
-    fscache = true
+    # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
+    # autoCRLF = false
+    # preloadindex = true
+    # fscache = true
     auto = 256
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
@@ -19,4 +19,6 @@
 	cmd = "'' "
 	trustExitCode = true
 [http]
-	proxy = http://:0
+	proxy = http://
+[https]
+	proxy = http://
