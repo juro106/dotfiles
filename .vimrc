@@ -42,7 +42,12 @@ let plugin_scrnmode_disable     = 1 " $VIM/plugins/kaoriya/scrnmode.vim
 " Plugin の管理 (vim-plug)
 let g:plug_shallow = 0
 
-call plug#begin('~/.vim/plugged')
+if has('unix')
+    call plug#begin('~/.vim/plugged')
+elseif has('win32') || has('win64')
+    call plug#begin('~/vimfiles/plugged')
+endif
+
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'terryma/vim-expand-region'
@@ -247,17 +252,24 @@ augroup END
 " colorscheme の呼び出し
 nnoremap <silent> <F9>cl :<C-u>tabnew ~/.vim/colors/mycolor.vim<CR>
 
+if has('unix')
+    " colorscheme の呼び出し
+    nnoremap <silent> <F9>cl :<C-u>tabnew ~/.vim/colors/mycolor.vim<CR>
+    " syntax/python.vimの呼び出し
+    nnoremap <silent> <F9>pv :<C-u>tabnew ~/.vim/after/syntax/python.vim<CR>
+elseif has('win32') || has('win64')
+    " colorscheme の呼び出し
+    nnoremap <silent> <F9>cl :<C-u>tabnew ~/vimfiles/colors/mycolor.vim<CR>
+    " syntax/python.vimの呼び出し
+    nnoremap <silent> <F9>pv :<C-u>tabnew ~/vimfiles/after/syntax/python.vim<CR>
+    " keymap ahk
+    nnoremap <silent> <F9>ahk :<C-u>e C:/dvorakj/user/keymap/keymap_qwe.ahk<CR>
+    " keymap ergodox keymap.c
+    nnoremap <silent> <F9>ergo :<C-u>e C:/qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c<CR>
+endif
+
 " syntax check の呼び出し
 nnoremap <silent> ,ch :<C-u>SyntaxInfo<CR>
-
-" syntax/python.vimの呼び出し
-nnoremap <silent> <F9>pv :<C-u>tabnew ~/vimfiles/after/syntax/python.vim<CR>
-
-" keymap ahk
-nnoremap <silent> <F9>ahk :<C-u>e C:/dvorakj/user/keymap/keymap_qwe.ahk<CR>
-" keymap ergodox keymap.c
-nnoremap <silent> <F9>ergo :<C-u>e C:/qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c<CR>
-
 
 " カーソル操作、コマンド関連
 noremap <silent> n nzz
