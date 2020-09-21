@@ -9,7 +9,7 @@
 [core]
 	# editor = 'C:/vim/vim.exe' -CODE=4
     # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
-    autoCRLF = false
+    autoCRLF = input
     # preloadindex = true
     # fscache = true
     auto = 256
@@ -18,6 +18,8 @@
 [mergetool "sourcetree"]
 	cmd = "'' "
 	trustExitCode = true
+[credential "helperselector"]
+	selected = <no helper>
 [http]
 	proxy = http://
 [https]
