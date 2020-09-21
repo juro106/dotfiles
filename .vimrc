@@ -666,7 +666,7 @@ let g:vaffle_open_selected_split_position = 'rightbelow'
 nnoremap <silent> ,f :Vaffle<CR>
 
 function! s:customize_vaffle_mappings() abort
-    nmap <buffer> c <Plug>(vaffle-chdir-here)
+    nmap <buffer> C <Plug>(vaffle-chdir-here)
     nmap <buffer> ,root <Plug>(vaffle-open-root)
     " delete-selected
     nmap <buffer> d <Nop> 

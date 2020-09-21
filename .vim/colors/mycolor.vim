@@ -19,7 +19,7 @@ endif
 " General colors
 hi! Cursor       ctermfg=13 guifg=#f6f3e8 guibg=#ff99ff gui=none
 hi! Normal       guifg=#f6f3e8 guibg=#242424 gui=none
-hi! NonText      guifg=#808080 guibg=#303030 gui=none
+hi! NonText      ctermbg=234 ctermfg=236 guifg=#808080 guibg=#303030 gui=none
 hi! LineNr       guifg=#857b6f guibg=#222222 gui=none
 hi! StatusLine   guifg=#333333 guibg=#f9f9f9 gui=none
 hi! StatusLineNC guifg=#857b6f guibg=#444444 gui=none
@@ -36,6 +36,12 @@ hi! SpecialKey   guifg=#87cefe guibg=#343434 gui=none
 hi! IncSearch    ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
 hi! Search       ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
 hi! hlsearch     ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
+
+hi! DiffAdd ctermbg=29 ctermfg=158 guibg=#45493e guifg=#c0c5b9
+hi! DiffChange ctermbg=23 ctermfg=159 guibg=#384851 guifg=#b3c3cc
+hi! DiffDelete ctermbg=95 ctermfg=224 guibg=#53343b guifg=#ceb0b6
+hi! DiffText cterm=NONE ctermbg=30 ctermfg=195 gui=NONE guibg=#5b7881 guifg=#c6c8d1
+
 hi! MatchParen   ctermfg=255 ctermbg=123 guifg=#ffffff guibg=#00ffff
 hi! link ParenMatch MatchParen
 hi! Directory ctermfg=109 guifg=#89b8c2
