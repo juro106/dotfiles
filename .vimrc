@@ -43,7 +43,6 @@ let g:plug_shallow = 0
 
 if has('unix')
     call plug#begin('~/.vim/plugged')
-    colorscheme iceberg
 elseif has('win32') || has('win64')
     call plug#begin('~/vimfiles/plugged')
 endif
@@ -238,7 +237,7 @@ endfunction
 cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
 
 " colorscheme
-" colorscheme mycolor
+colorscheme mycolor
 
 " ----------------------------------------------------------
 " #normalmode ノーマルモードのキーマップ
