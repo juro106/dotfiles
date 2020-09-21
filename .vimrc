@@ -43,6 +43,7 @@ let g:plug_shallow = 0
 
 if has('unix')
     call plug#begin('~/.vim/plugged')
+    colorscheme iceberg
 elseif has('win32') || has('win64')
     call plug#begin('~/vimfiles/plugged')
 endif
@@ -102,8 +103,6 @@ if has("migemo")
     set migemo
     set migemodict=~/vimfiles/dict/utf-8/migemo-dict
 endif
-
-colorscheme iceberg
 
 " ---------------------------------------------------------------------
 " 基本的な設定 config setting
