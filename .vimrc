@@ -107,8 +107,6 @@ endif
 " ---------------------------------------------------------------------
 " 基本的な設定 config setting
 " ---------------------------------------------------------------------
-
-set fileformats=unix,dos,mac    " 改行コード
 set noruler                     " 番号を表示しない
 set notitle                     " タイトルを表示しない
 set guicursor=a:blinkon0        " カーソルを点滅させない
@@ -144,6 +142,19 @@ set synmaxcol=320               " syntaxhighlightの制限
 set helplang=ja                 " ヘルプの日本語化
 set notimeout                   " キーマップでタイムアウトしない
 set ttimeout ttimeoutlen=10     " キーコードのタイムアウトの設定
+
+
+" 改行コード
+" ---------------------------------------------------------------------
+set fileformat=unix
+set fileformats=unix,dos,mac
+function! s:set_fileformat()
+    try
+        setlocal fileformat=unix
+    catch
+    endtry
+endfunction
+autocmd BufRead * :call <SID>set_fileformat()
 
 " set verbosefile=~/log/vim.log
 " set verbose=20
