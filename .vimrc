@@ -271,7 +271,7 @@ elseif has('win32') || has('win64')
     " syntax/python.vimの呼び出し
     nnoremap <silent> <F9>pv :<C-u>tabnew ~/vimfiles/after/syntax/python.vim<CR>
     " keymap ahk
-    nnoremap <silent> <F9>ahk :<C-u>e C:/dvorakj/user/keymap/keymap_qwe.ahk<CR>
+    nnoremap <silent> <F9>ahk :<C-u>e ~/bin/keymap.ahk<CR>
     " keymap ergodox keymap.c
     " nnoremap <silent> <F9>ergo :<C-u>e C:/qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c<CR>
     nnoremap <silent> <F9>ergo :<C-u>e //wsl$/Ubuntu-20.04/home/kenichiro/qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
