@@ -24,3 +24,5 @@
 	proxy = http://
 [https]
 	proxy = http://
+[include]
+	path = ~/.gitconfig_shared

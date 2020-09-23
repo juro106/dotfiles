@@ -1,55 +1,15 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
-# エラーがあったらそこで打ち止め
-set -ue
+set -e
+DOT_DIRECTORY="${HOME}/.dotfiles"
+cd ${DOT_DIRECTORY}
 
-helpmsg() {
-  command echo "Usage: $0 [--help | -h]" 0>&2
-  command echo ""
-}
+for f in .??*
+do
+	[[ "${f}" == ".git" ]] && continue
+	[[ "${f}" == ".gitignore" ]] && continue
 
-link_to_homedir() {
-  command echo "backup old dotfiles..."
-  # .dotbackup というディレクトリがなければ作成する
-  if [ ! -d "$HOME/.dotbackup" ];then
-    command echo "$HOME/.dotbackup not found. Auto Make it"
-    command mkdir "$HOME/.dotbackup"
-  fi
-
-  # 絶対パスでスクリプトの一階層上を得る
-  local script_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
-  local dotdir=$(dirname ${script_dir})
-  if [[ "$HOME" != "$dotdir" ]];then
-    for f in $dotdir/.??*; do
-      [[ `basename $f` == ".git" ]] && continue
-      if [[ -L "$HOME/`basename $f`" ]];then
-        command rm -f "$HOME/`basename $f`"
-      fi
-      if [[ -e "$HOME/`basename $f`" ]];then
-        command mv "$HOME/`basename $f`" "$HOME/.dotbackup"
-      fi
-      command ln -snf $f $HOME
-    done
-  else
-    command echo "same install src dest"
-  fi
-}
-
-while [ $# -gt 0 ];do
-  case ${1} in
-    --debug|-d)
-      set -uex
-      ;;
-    --help|-h)
-      helpmsg
-      exit 1
-      ;;
-    *)
-      ;;
-  esac
-  shift
+	echo "$f"
+	ln -snfv ${DOT_DIRECTORY}/${f} ${HOME}/${f}
 done
-
-link_to_homedir
-git config --global include.path "~/.gitconfig_shared"
-command echo -e "\e[1;36m Install completed!!!! \e[m"
+echo $(tput setaf 2)Deploy dotfiles complete!. $(tput sgr0)
