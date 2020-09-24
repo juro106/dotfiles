@@ -86,3 +86,11 @@ fi
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+# ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+export PATH="$HOME/.rbenv/varsions/2.7.1/bin:$PATH"
+eval "$(rbenv init -)"
+# ruby 2.7.1 と rails 5.1.3 でマイグレーションすると出る警告を抑える
+# バージョンアップで改善されたら消す
+export RUBYOPT='-W:no-deprecated -W:no-experimental'
