@@ -14,10 +14,10 @@ alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
 
 # linux
 if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
-# gui 関係の設定
+    # gui 関係の設定
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
     export LIBGL_ALWAYS_INDIRECT=1
-# プロンプトの表示関係
+    # プロンプトの表示関係
    if [ -f /etc/bash_completion ]; then
            . /etc/bash_completion
    fi
@@ -26,6 +26,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
        else
            export PS1='[\[\033[01;32m\]\u\[\e[35m\]@\h\[\e[0m\]] \[\033[01;33m\]\w \[\e[0m\]\n\\$ '
    fi
+
+    # ruby
+    export PATH="$HOME/.rbenv/bin:$PATH"
+    export PATH="$HOME/.rbenv/varsions/2.7.1/bin:$PATH"
+    eval "$(rbenv init -)"
+    # ruby 2.7.1 と rails 5.1.3 でマイグレーションすると出る警告を抑える
+    # バージョンアップで改善されたら消す
+    export RUBYOPT='-W:no-deprecated -W:no-experimental'
+
 # windows (git-bash) の設定
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias hugo3='hugo -D -p 1313 server'
@@ -86,11 +95,3 @@ fi
 
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-# ruby
-export PATH="$HOME/.rbenv/bin:$PATH"
-export PATH="$HOME/.rbenv/varsions/2.7.1/bin:$PATH"
-eval "$(rbenv init -)"
-# ruby 2.7.1 と rails 5.1.3 でマイグレーションすると出る警告を抑える
-# バージョンアップで改善されたら消す
-export RUBYOPT='-W:no-deprecated -W:no-experimental'
