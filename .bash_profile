@@ -14,5 +14,16 @@ if ! ssh-add -l > /dev/null 2>&1; then
     ssh-add $HOME/.ssh/id_rsa_github
 fi
 
-# exports
-export MSYS=winsymlinks:nativestrict
+
+# windows (git-bash) の設定
+if [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
+    CURRENT_DIR=$(pwd)
+    if [ "`echo $CURRENT_DIR | grep '/hugo/shingeki'`" ]; then
+        ssh-add $HOME/.ssh/id_rsa_lil
+    elif [ "`echo $CURRENT_DIR | grep '/hugo/sasasa'`" ]; then
+        ssh-add $HOME/.ssh/id_rsa_koke
+    fi
+    # exports
+    export MSYS=winsymlinks:nativestrict
+fi
+
