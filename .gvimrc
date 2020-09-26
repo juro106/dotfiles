@@ -1,6 +1,6 @@
 scriptencoding utf-8
 
-set guioptions-=m               " メニューバーの非表示
+"set guioptions-=m               " メニューバーの非表示
 set guioptions-=T               " ツールバーの非表示
 set guioptions-=l               " 右スクロールバーの非表示
 set guioptions-=L               " 分割時の左スクロールバーの非表示
@@ -29,7 +29,7 @@ elseif has('win32') || has('win64')
     " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:cSHIFTJIS:qDRAFT
     " set guifont=DejaVuSansMono\ 11
     " set guifont=Monaco\_h11\_w6\_cANSI\_qDRAFT guifontwide=Migu\_1M\_h12\_w6\_cSHIFTJIS\_qDRAFT
-    set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
+    set guifont=Meslo_LG_S_DZ:h12:w7:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
 endif
 
 " colorscheme

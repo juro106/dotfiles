@@ -3,7 +3,7 @@ scriptencoding utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 "set shellslash
-set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
+"set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
 set guioptions+=k               " タブなどの追加時にウインドウサイズ等を維持
 set langmenu=none
 
