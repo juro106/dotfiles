@@ -28,8 +28,8 @@ elseif has('win32') || has('win64')
     " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
     " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:cSHIFTJIS:qDRAFT
     " set guifont=DejaVuSansMono\ 11
-    " set guifont=Monaco\_h11\_w6\_cANSI\_qDRAFT guifontwide=Migu\_1M\_h12\_w6\_cSHIFTJIS\_qDRAFT
-    set guifont=Meslo_LG_S:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
+    set guifont=Monaco:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
+    " set guifont=Meslo_LG_S:h13:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
 endif
 
 " colorscheme
