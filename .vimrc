@@ -182,7 +182,8 @@ let g:vim_indent_cont = shiftwidth() * 1
 
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.yml setlocal tabstop=2 softtabstop=2 shiftwidth=2 et
+    autocmd BufNewFile,BufRead *.yml  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 augroup End
 
 
