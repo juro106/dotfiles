@@ -3,7 +3,7 @@ scriptencoding utf-8
 set fileencoding=utf-8
 set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 "set shellslash
-"set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
+set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
 set guioptions+=k               " タブなどの追加時にウインドウサイズ等を維持
 set langmenu=none
 
@@ -279,6 +279,10 @@ endif
 
 " syntax check の呼び出し
 nnoremap <silent> ,ch :<C-u>SyntaxInfo<CR>
+
+" : ; の入れ替え
+nnoremap : ;
+nnoremap ; :
 
 " カーソル操作、コマンド関連
 noremap <silent> n nzz
