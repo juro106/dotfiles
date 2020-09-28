@@ -354,7 +354,7 @@ nnoremap g<C-a> ggVG
 nnoremap gay :<C-u>%y<CR>
 
 " ハイライトを消す
-nnoremap <silent> <Esc><Esc> :noh<CR>
+nnoremap <silent> <Esc><Esc> :<C-u>noh<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " ２行挿入
 nnoremap mo o<Esc>o
