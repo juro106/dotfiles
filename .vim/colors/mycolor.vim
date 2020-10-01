@@ -49,6 +49,10 @@ hi! clear FoldColumn
 hi! FullWidthSpace ctermbg=227 guibg=#999689 
 match FullWidthSpace /　/
 "guibg=#222222 
+hi! Pmenu        ctermfg=8 ctermbg=0
+hi! PmenuSel     ctermfg=15 ctermbg=4
+hi! PmenuSbar    ctermbg=0
+hi! PmenuThumb   ctermbg=8
 
 " Syntax highlighting
 hi! Comment      ctermfg=8 guifg=#99968b gui=italic
