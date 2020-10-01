@@ -1,4 +1,4 @@
-" file type plugin HTML
+" file type plugin Ruby
 
 " ----------------------------------------------------------
 " environment

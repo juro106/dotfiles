@@ -2,8 +2,16 @@
 " MySnippet
 " ----------------------------------------------------------
 
-if filereadable(expand('~/vimfiles/snippets/snippets.vim'))
-    source ~/vimfiles/snippets/snippets.vim
+" environment
+if has ('unix')
+    let $DOT_VIM = expand("$HOME/.vim")
+elseif has('win32') || has('win64')
+    let $DOT_VIM = expand("$HOME/vimfiles")
+endif
+
+" read snippets file
+if filereadable(expand("$DOT_VIM/snippets/snippets.vim"))
+    source $DOT_VIM/snippets/snippets.vim
 endif
 
 let s:snippets = b:snippets
