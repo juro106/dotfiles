@@ -213,7 +213,9 @@ augroup  END
 " buffer バッファ操作
 " -----------------------------------------------------------
 nnoremap <silent> [b :bprevious<CR>
+nnoremap <silent> [<C-b> :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
+nnoremap <silent> ]<C-b> :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
@@ -221,7 +223,9 @@ nnoremap <silent> ]B :blast<CR>
 " Vimgrep & zzQuickfix
 " -----------------------------------------------------------
 nnoremap <silent> [q :<C-u>cprevious<CR>
+nnoremap <silent> [<C-q> :<C-u>cprevious<CR>
 nnoremap <silent> ]q :<C-u>cnext<CR>
+nnoremap <silent> ]<C-q> :<C-u>cnext<CR>
 nnoremap <silent> [Q :<C-u>cfirst<CR>
 nnoremap <silent> ]Q :<C-u>clast<CR>
 
