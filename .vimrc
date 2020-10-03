@@ -274,6 +274,8 @@ if has('unix')
     nnoremap <silent> <F9>cl :<C-u>tabnew ~/.vim/colors/mycolor.vim<CR>
     " syntax/python.vimの呼び出し
     nnoremap <silent> <F9>pv :<C-u>tabnew ~/.vim/after/syntax/python.vim<CR>
+    " keymap ergodox keymap.c
+    nnoremap <silent> <F9>ergo :<C-u>e ~/qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
 elseif has('win32') || has('win64')
     " colorscheme の呼び出し
     nnoremap <silent> <F9>cl :<C-u>tabnew ~/vimfiles/colors/mycolor.vim<CR>
@@ -282,7 +284,6 @@ elseif has('win32') || has('win64')
     " keymap ahk
     nnoremap <silent> <F9>ahk :<C-u>e ~/bin/keymap.ahk<CR>
     " keymap ergodox keymap.c
-    " nnoremap <silent> <F9>ergo :<C-u>e C:/qmk_firmware/keyboards/ergodox_ez/keymaps/default/keymap.c<CR>
     nnoremap <silent> <F9>ergo :<C-u>e //wsl$/Ubuntu-20.04/home/kenichiro/qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
 endif
 
@@ -583,6 +584,10 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
+" ergo
+cnoremap <C-\> <Esc>
+cnoremap <C-o> <C-\>
+" 日付
 cnoremap <expr>,d strftime('%Y-%m-%d')
 
 " ----------------------------------------------------------
