@@ -10,6 +10,7 @@ Conversion	F22	IMEOff
 Precomposition	Hankaku/Zenkaku	IMEOff
 Composition	Hankaku/Zenkaku	IMEOff
 Conversion	Hankaku/Zenkaku	IMEOff
+Precomposition	Shift F12	IMEOff
 DirectInput	F23	IMEOn
 Precomposition	F23	IMEOn
 DirectInput	Hankaku/Zenkaku	IMEOn
@@ -28,17 +29,28 @@ Composition	Home	MoveCursorToBeginning
 Conversion	Backspace	Cancel
 Composition	Ctrl [	Cancel
 Conversion	Ctrl [	Cancel
+Composition	Ctrl \	Cancel
+Conversion	Ctrl \	Cancel
+Suggestion	Ctrl \	Cancel
+Prediction	Ctrl \	Cancel
 Prediction	Ctrl c	Cancel
 Suggestion	Ctrl c	Cancel
 Composition	Ctrl c	Cancel
 Conversion	Ctrl c	Cancel
+Composition	Ctrl j	Cancel
+Conversion	Ctrl j	Cancel
+Suggestion	Ctrl j	Cancel
+Prediction	Ctrl j	Cancel
+Composition	Ctrl u	Cancel
+Conversion	Ctrl u	Cancel
 Prediction	Escape	Cancel
 Suggestion	Escape	Cancel
 Composition	Escape	Cancel
 Conversion	Escape	Cancel
 Conversion	Insert	Cancel
+Composition	Shift Home	Cancel
+Conversion	Shift Home	Cancel
 DirectInput	Eisu	CancelAndIMEOff
-Precomposition	Eisu	CancelAndIMEOff
 Precomposition	Eisu	CancelAndIMEOff
 Composition	Ctrl y	ConvertToHiragana
 Conversion	Ctrl y	ConvertToHiragana
@@ -60,6 +72,8 @@ Composition	Ctrl q	ConvertWithoutHistory
 Composition	Backspace	Backspace
 Composition	Ctrl h	Backspace
 Conversion	Ctrl h	Backspace
+Suggestion	Ctrl h	Backspace
+Prediction	Ctrl h	Backspace
 Precomposition	Backspace	Revert
 Conversion	Ctrl ,	CommitOnlyFirstSegment
 Conversion	Ctrl e	CommitOnlyFirstSegment
@@ -78,10 +92,9 @@ Conversion	Space	ConvertNext
 DirectInput	Ctrl @	LaunchDictionaryTool
 Precomposition	Ctrl @	LaunchDictionaryTool
 Prediction	Ctrl Delete	DeleteSelectedCandidate
-Conversion	Ctrl b	ConvertPrevPage
+Conversion	Ctrl 2	ConvertPrevPage
 Conversion	F2	ConvertPrevPage
 Conversion	Ctrl d	ConvertPrev
-Conversion	Ctrl k	ConvertPrev
 Prediction	Ctrl p	ConvertPrev
 Suggestion	Ctrl p	ConvertPrev
 Conversion	Ctrl p	ConvertPrev
@@ -104,8 +117,6 @@ Composition	Ctrl z	ConvertToHalfWidth
 Conversion	Ctrl z	ConvertToHalfWidth
 Composition	F8	ConvertToHalfWidth
 Conversion	F8	ConvertToHalfWidth
-Composition	Ctrl u	ConvertToHalfAlphanumeric
-Conversion	Ctrl u	ConvertToHalfAlphanumeric
 Composition	F10	ConvertToHalfAlphanumeric
 Conversion	F10	ConvertToHalfAlphanumeric
 Precomposition	Space	InsertHalfSpace
@@ -121,11 +132,12 @@ Conversion	Ctrl Right	SegmentWidthExpand
 Conversion	Ctrl w	SegmentWidthExpand
 Conversion	Right	SegmentWidthExpand
 Composition	Ctrl e	Convert
+Composition	Ctrl n	Convert
+Composition	Ctrl p	Convert
 Composition	Down	Convert
 Composition	Space	Convert
 Suggestion	Ctrl Down	PredictAndConvert
 Composition	Ctrl l	PredictAndConvert
-Composition	Ctrl n	PredictAndConvert
 Suggestion	Ctrl v	PredictAndConvert
 Suggestion	Right	PredictAndConvert
 Composition	Tab	PredictAndConvert

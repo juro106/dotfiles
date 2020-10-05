@@ -41,7 +41,6 @@ q	？	名詞
 いんよう	<blockquote></blockquote>	名詞	
 せんたー	<div class="center">	名詞	
 はこ	<div class="nmlbox">	名詞	
-すくろーる	<div class="scrollbox">	名詞	
 あどたぐ	<div class='ad'><ads></ads></div>	名詞	
 よそう	◎◯▲☆△△△	名詞	
 ・	・	名詞	
@@ -58,18 +57,12 @@ q	？	名詞
 た8	⑧	名詞	
 た9	⑨	名詞	
 ゔぃむ	c:\vim\_vimrc	名詞	
-あどれす	d_dlo_olb_b@yahoo.co.jp	名詞	
+；＠	d_dlo_olb_b@yahoo.co.jp	名詞	
 っd	dd	名詞	
-ひゆまん	hiyuman@gmail.com	名詞	
-しーえす	https://mykeiba.net/wp-content/themes/affingerchild2/race_page.css	名詞	
-じゃば	https://mykeiba.net/wp-content/themes/affingerchild2/race_page.js	名詞	
+；＠	hiyuman@gmail.com	名詞	
 っぐ	if	名詞	
 "ん	ñ	名詞	
 ねっとしょっぷがいど	netshop-guide.com	名詞	
-のまる	normal.	名詞	
-そーす	source c:\vim\_gvimrc	名詞	
-そーす	source c:\vim\_vimrc	名詞	
-たぶ	tabe newfile	名詞	
 まいくろぐらむ	μg	名詞	
 でかかる	ウィーク	名詞	
 くんえんざい	くん煙剤	名詞	
@@ -107,4 +100,7 @@ q	？	名詞
 、f	→	名詞	
 、b	←	名詞	
 うき	宇城	地名	
-かんペき	完璧	名詞	
+かんぺき	完璧	名詞	
+_!	¡	名詞	
+;!	¡	名詞	
+もどりち	戻り値	名詞	
