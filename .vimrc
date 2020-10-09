@@ -184,6 +184,11 @@ augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.yml  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
     autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    autocmd BufNewFile,BufRead *.js   setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.ts   setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.jsx  setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.tsx  setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.json setlocal sw=2 sts=2 ts=2 et
 augroup End
 
 
@@ -201,7 +206,6 @@ augroup filetypeSetting
     autocmd BufNewFile,BufRead *.py nnoremap ,e :<C-u>!python %<CR>
     autocmd BufNewFile,BufRead *.rb nnoremap ,e :<C-u>!ruby %<CR>
     autocmd BufNewFile,BufRead *.ts nnoremap ,e :<C-u>!tsc %<CR>
-    autocmd FileType typescript setlocal sw=4 sts=4 ts=4 et
     " マークダウンのファイル名 .mdも含める
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
     " markdown 目次表示
@@ -592,7 +596,9 @@ cnoremap <C-p> <Up>
 cnoremap <C-\> <Esc>
 cnoremap <C-o> <C-\>
 " 日付
-cnoremap <expr>,d strftime('%Y-%m-%d')
+cnoremap <expr> ,d strftime('%Y-%m-%d')
+" terminal で WSLを呼び出す 
+cnoremap <C-t> <C-u>terminal ++close C:/WINDOWS/System32/bash.exe<CR>
 
 " ----------------------------------------------------------
 " Leaderの活用（ \ がleader ）
@@ -882,6 +888,8 @@ function! GitBash()
 endfunction
 
 nnoremap ,g :<C-u>call GitBash()<CR>
+
+
 
 " --------------------------------------------------------------------------------
 " syntaxhighlightを調べる関数
