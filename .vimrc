@@ -184,6 +184,7 @@ augroup fileTypeIndent
     autocmd!
     autocmd BufNewFile,BufRead *.yml  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
     autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    autocmd BufNewFile,BufRead *.md   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.js   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.ts   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.jsx  setlocal sw=2 sts=2 ts=2 et
