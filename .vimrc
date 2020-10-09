@@ -597,8 +597,11 @@ cnoremap <C-\> <Esc>
 cnoremap <C-o> <C-\>
 " 日付
 cnoremap <expr> ,d strftime('%Y-%m-%d')
-" terminal で WSLを呼び出す 
-cnoremap <C-t> <C-u>terminal ++close C:/WINDOWS/System32/bash.exe<CR>
+
+if has('win32') || has('win64')
+    " terminal で WSLを呼び出す 
+    cnoremap <C-t> <C-u>terminal ++close C:/WINDOWS/System32/bash.exe<CR>
+endif
 
 " ----------------------------------------------------------
 " Leaderの活用（ \ がleader ）
