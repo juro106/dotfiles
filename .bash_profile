@@ -5,6 +5,9 @@ if [ -f ~/.bashrc ] ; then
 . ~/.bashrc
 fi
 
+# /dev/null 2>&1
+# `>` はリダイレクト
+
 # ssh-agent
 SSH_AGENT_FILE=$HOME/.ssh-agent
 test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE
@@ -19,9 +22,17 @@ fi
 if [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     CURRENT_DIR=$(pwd)
     if [ "`echo $CURRENT_DIR | grep '/hugo/shingeki'`" ]; then
-        ssh-add $HOME/.ssh/id_rsa_lil
+        sshList=`ssh-add -L`
+        pub1=`cat $HOME/.ssh/id_rsa_lil.pub`
+        if ! [ "`echo "${pub1}" | grep "${sshList}"`" ]; then
+            ssh-add $HOME/.ssh/id_rsa_lil
+        fi
     elif [ "`echo $CURRENT_DIR | grep '/hugo/sasasa'`" ]; then
-        ssh-add $HOME/.ssh/id_rsa_koke
+        sshList=`ssh-add -L`
+        pub2=`cat $HOME/.ssh/id_rsa_koke.pub`
+        if ! [ "`echo "${pub2}" | grep "${sshList}"`" ]; then
+            ssh-add $HOME/.ssh/id_rsa_koke
+        fi
     fi
     # exports
     export MSYS=winsymlinks:nativestrict
