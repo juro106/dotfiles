@@ -55,7 +55,7 @@ hi! PmenuSbar    ctermbg=0
 hi! PmenuThumb   ctermbg=8
 
 " Syntax highlighting
-hi! Comment      ctermfg=8 guifg=#99968b gui=italic
+hi! Comment      ctermfg=8 guifg=#99968b gui=none
 hi! Todo         ctermfg=214 guifg=#8f8f8f gui=italic
 hi! Constant     ctermfg=111 guifg=#e5786d gui=none
 " hi String       guifg=#ff69b4 gui=none
