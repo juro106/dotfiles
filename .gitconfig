@@ -13,6 +13,7 @@
     # preloadindex = true
     # fscache = true
     auto = 256
+    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
