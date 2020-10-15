@@ -1,5 +1,6 @@
 [user]
 	name = juro106
 	email = hiyuman@gmail.com
+
 [include]
 	path = %HOMEPATH%/.gitconfig.os
