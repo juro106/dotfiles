@@ -77,6 +77,7 @@ Plug 'jlanzarotta/bufexplorer'
 call plug#end()
 
 " this is test comment 
+" Hey from Windows!!
 
 " load Event
 augroup load_us_insert
