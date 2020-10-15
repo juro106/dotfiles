@@ -78,6 +78,7 @@ call plug#end()
 
 " this is test comment 
 " Hey from Windows!!
+" Hello! This is Ubuntu!! How are you?
 
 " load Event
 augroup load_us_insert
