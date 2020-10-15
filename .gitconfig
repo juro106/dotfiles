@@ -13,6 +13,7 @@
     # preloadindex = true
     # fscache = true
     auto = 256
+
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
 [mergetool "sourcetree"]
