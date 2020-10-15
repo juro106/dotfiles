@@ -2,5 +2,7 @@
 	name = juro106
 	email = hiyuman@gmail.com
 
+# test in ubuntu
+
 [include]
 	path = %HOMEPATH%/.gitconfig.os
