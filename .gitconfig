@@ -2,8 +2,8 @@
 	name = juro106
 	email = hiyuman@gmail.com
 
-[includeIf "gitdir:%HOMEPATH%"]
+[includeIf "gitdir:%HOMEPATH%/.dotfiles"]
 	path = %HOMEPATH%/.gitconfig.os
 
-[includeIf "gitdir:%HOMEPATH%"]
+[includeIf "gitdir:~/.dotfiles"]
 	path = ~/.gitconfig.os
