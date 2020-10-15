@@ -3,5 +3,5 @@
 	email = hiyuman@gmail.com
 
 [includeIf "gitdir:~"]
-	path = .gitconfig.os
+	path = ~/.gitconfig.os
 
