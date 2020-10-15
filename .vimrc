@@ -76,6 +76,8 @@ Plug 'jlanzarotta/bufexplorer'
 " Plug 'deton/jasentence.vim'
 call plug#end()
 
+" this is test comment 
+
 " load Event
 augroup load_us_insert
     autocmd!
