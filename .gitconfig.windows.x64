@@ -4,3 +4,21 @@
     # preloadindex = true
     # fscache = true
     sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+[credential "helperselector"]
+	selected = <no helper>
+[http]
+	proxy = http://
+[https]
+	proxy = http://

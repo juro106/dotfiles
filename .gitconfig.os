@@ -1,1 +1,0 @@
-/home/kenichiro/.dotfiles/.gitconfig.linux
