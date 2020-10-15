@@ -2,7 +2,6 @@
 	name = juro106
 	email = hiyuman@gmail.com
 
-# test in ubuntu
+[includeIf "gitdir:~"]
+	path = .gitconfig.os
 
-[include]
-	path = %HOMEPATH%/.gitconfig.os
