@@ -1,9 +1,16 @@
 [core]
-    editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
     autoCRLF = input
+    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+    # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
     # preloadindex = true
     # fscache = true
-    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
 
 [filter "lfs"]
 	process = git-lfs filter-process
@@ -11,14 +18,11 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 
-[difftool "sourcetree"]
-	cmd = '' \"$LOCAL\" \"$REMOTE\"
-[mergetool "sourcetree"]
-	cmd = "'' "
-	trustExitCode = true
 [credential "helperselector"]
 	selected = <no helper>
+
 [http]
 	proxy = http://
+
 [https]
 	proxy = http://
