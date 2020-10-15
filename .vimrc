@@ -55,7 +55,6 @@ Plug 'kana/vim-textobj-user'
 Plug 'osyo-manga/vim-textobj-multiblock'
 Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-operator-surround'
-Plug 'juro106/mkz'
 Plug 'deton/jasegment.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cocopon/vaffle.vim', {'on': [] }
@@ -64,6 +63,8 @@ Plug 'fuenor/im_control.vim', {'on': [] }
 Plug 'itchyny/vim-parenmatch', {'on': [] }
 Plug 'jason0x43/vim-js-indent', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
+Plug 'juro106/mkz'
+Plug 'jlanzarotta/bufexplorer'
 " Plug '~/.fzf'
 " Plug 'junegunn/fzf.vim'
 " Plug 'juro106/ftjpn'
@@ -556,6 +557,10 @@ endfunction
 " ----------------------------------------------------------
 " #visual ビジュアルモードのkeymap
 " ----------------------------------------------------------
+" ; :
+vnoremap ; :
+vnoremap : ;
+
 " インデント
 vnoremap < <gv
 vnoremap > >gv
@@ -639,6 +644,15 @@ endfunction
 " 検索不要な対象 nodemodule
 let g:ctrlp_custom_ignore = 'node_modules\|git'
 
+" ----------------------------------------------------------
+" Bufexplorer
+" ----------------------------------------------------------
+nnoremap <Space>b :<C-u>BufExplorer<CR>
+" デフォルトキーマップを使用しない
+let g:bufExplorerDisableDefaultKeyMapping=1  " Disable mapping.
+let g:bufExplorerShowRelativePath=1          " Show relative paths.
+let g:bufExplorerDefaultHelp = 0             " Do not show default help.
+let g:bufExplorerSplitBelow=1                " Split new window below current.
 " ----------------------------------------------------------
 " ParentMatch
 " ----------------------------------------------------------
@@ -898,8 +912,6 @@ function! GitBash()
 endfunction
 
 nnoremap ,g :<C-u>call GitBash()<CR>
-
-
 
 " --------------------------------------------------------------------------------
 " syntaxhighlightを調べる関数
