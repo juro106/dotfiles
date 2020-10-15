@@ -1,0 +1,6 @@
+[core]
+    editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
+    autoCRLF = input
+    # preloadindex = true
+    # fscache = true
+    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe

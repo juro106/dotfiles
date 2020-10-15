@@ -1,3 +1,6 @@
+[include]
+    path = ~/.gitconfg.os
+	path = ~/.gitconfig_shared
 [user]
 	name = juro106
 	email = hiyuman@gmail.com
@@ -6,14 +9,6 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-[core]
-	# editor = 'C:/vim/vim.exe' -CODE=4
-    # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
-    autoCRLF = input
-    # preloadindex = true
-    # fscache = true
-    auto = 256
-    sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
 
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
@@ -26,5 +21,3 @@
 	proxy = http://
 [https]
 	proxy = http://
-[include]
-	path = ~/.gitconfig_shared
