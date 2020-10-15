@@ -653,6 +653,7 @@ let g:bufExplorerDisableDefaultKeyMapping=1  " Disable mapping.
 let g:bufExplorerShowRelativePath=1          " Show relative paths.
 let g:bufExplorerDefaultHelp = 0             " Do not show default help.
 let g:bufExplorerSplitBelow=1                " Split new window below current.
+
 " ----------------------------------------------------------
 " ParentMatch
 " ----------------------------------------------------------
