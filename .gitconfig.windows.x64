@@ -5,6 +5,7 @@
     # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
     # preloadindex = true
     # fscache = true
+	# test test test
 
 [difftool "sourcetree"]
 	cmd = '' \"$LOCAL\" \"$REMOTE\"
