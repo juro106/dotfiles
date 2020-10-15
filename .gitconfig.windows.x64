@@ -1,6 +1,6 @@
 [core]
-    autoCRLF = input
     sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+    autoCRLF = input
 	symlinks = true
     # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
     # preloadindex = true
