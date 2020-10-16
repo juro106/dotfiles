@@ -9,6 +9,7 @@
         echo [!]git commit && git commit -m $1 &&\
         echo [!]git push && git push;\
         };f"
+    s  = "status"
     aa = "add -A"
     cm = "!f(){ echo [!]git commit && git commit -m $1;};f"
 

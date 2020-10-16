@@ -3,9 +3,7 @@ alias ll='ls -l'
 alias la='ls -a --show-control-chars'
 
 alias sb='source ~/.bashrc'
-
 alias q='exit'
-
 
 alias today='date +%Y-%m-%d'
 alias touchtoday='e `date +%Y-%m-%d`.md'
