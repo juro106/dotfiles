@@ -17,6 +17,8 @@ noremap <silent> # #zz
 noremap <silent> g* g*zz
 noremap <silent> g# g#zz
 
+nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
 " ----------------------------------------------------------
