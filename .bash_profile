@@ -25,7 +25,7 @@ elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     if ! ssh-add -l > /dev/null 2>&1; then
         ssh-agent > $SSH_AGENT_FILE
         source $SSH_AGENT_FILE
-        ssh-add C:\\Users\\kenichiro\\.ssh\\id_rsa_github
+        ssh-add $HOME/.ssh/id_rsa_github
     fi
     CURRENT_DIR=$(pwd)
     if [ "`echo $CURRENT_DIR | grep '/hugo/shingeki'`" ]; then
