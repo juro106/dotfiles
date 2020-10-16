@@ -6,6 +6,7 @@ alias sb='source ~/.bashrc'
 
 alias q='exit'
 
+
 alias today='date +%Y-%m-%d'
 alias touchtoday='e `date +%Y-%m-%d`.md'
 
@@ -37,6 +38,7 @@ if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
 
 # windows (git-bash) の設定
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
+    alias ssh='/c/Windows/System32/OpenSSH/ssh.exe'
     alias hugo3='hugo -D -p 1313 server'
     alias hugo2='hugo -D -p 1312 server'
     alias hugob='hugo --minify --cleanDestinationDir'
