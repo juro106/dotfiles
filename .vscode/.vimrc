@@ -26,7 +26,8 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 inoremap <silent> jj <Esc>
 inoremap <silent> ｊｊ <Esc>
 
-" CTRL-C は Esc
+" CTRL-C, CTRL-J は Esc
+inoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
 
 " ２行挿入
