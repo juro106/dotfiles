@@ -13,6 +13,8 @@ alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
 
 # linux
 if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
+    # 英語で表示
+    export LANG=en_US
     # gui 関係の設定
     export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
     export LIBGL_ALWAYS_INDIRECT=1
