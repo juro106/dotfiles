@@ -24,6 +24,7 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " ----------------------------------------------------------
 " jj で Esc
 inoremap <silent> jj <Esc>
+inoremap <silent> ｊｊ <Esc>
 
 " CTRL-C は Esc
 inoremap <C-c> <Esc>
