@@ -405,14 +405,14 @@ nnoremap <leader>c :<C-u>g//yank Q<Home><Right><Right>
 " 現在時刻の挿入 current time
 nnoremap ,ct a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
 
-
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
 " ----------------------------------------------------------
 " jj で Esc
 inoremap jj <Esc>
 inoremap っj <Esc>
-" CTRL-C は Esc
+" CTRL-C,J は Esc
+inoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
 " AltとLで ESC して 右
 inoremap <M-l> <Esc><Right>
