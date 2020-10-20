@@ -24,6 +24,8 @@ nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " ----------------------------------------------------------
 " jj で Esc
 inoremap <silent> jj <Esc>
+" alt + j は ahk によって imeoff + esc に設定されている
+inoremap <C-j> <M-j>
 
 " CTRL-C は Esc
 inoremap <C-c> <Esc>
