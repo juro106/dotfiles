@@ -23,6 +23,12 @@ noremap <silent> g# g#zz
 
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
+" 置換
+nnoremap ch :<C-u>%s///g<Left><Left>
+nnoremap ,s :<C-u>%s///g<Left><Left>
+vnoremap ch :s///g<Left><Left>
+vnoremap ,s :s///g<Left><Left>
+
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
 " ----------------------------------------------------------

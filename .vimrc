@@ -339,7 +339,9 @@ set keywordprg=:help " Open Vim internal help by K command
 " nnoremap ,s :<C-u>%s///g<Left><Left>
 " vnoremap ,s :s///g<Left><Left>
 nnoremap ch :<C-u>%s///g<Left><Left>
+nnoremap ,s :<C-u>%s///g<Left><Left>
 vnoremap ch :s///g<Left><Left>
+vnoremap ,s :s///g<Left><Left>
 
 " tab pageを使いやすくする
 " ------------------------
