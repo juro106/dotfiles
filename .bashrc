@@ -36,6 +36,15 @@ if [ "$(expr substr $(uname -s) 1 5)" == 'Linux' ]; then
     # バージョンアップで改善されたら消す
     export RUBYOPT='-W:no-deprecated -W:no-experimental'
 
+    # python
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init -)"
+    export PYTHONPATH="~/develop/scraping:$PYTHONPATH"
+    export PYTHONPATH="~/develop/scraping/src:$PYTHONPATH"
+    # poetry
+    export PATH="$HOME/.poetry/bin:$PATH"
+
 # windows (git-bash) の設定
 elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     # alias ssh='/c/Windows/System32/OpenSSH/ssh.exe'
@@ -96,12 +105,4 @@ else
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export PYENV_ROOT="$HOME/.pyenv"
-export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-export PYTHONPATH="~/develop/scraping:$PYTHONPATH"
-export PYTHONPATH="~/develop/scraping/src:$PYTHONPATH"
-# poetry
-export PATH="$HOME/.poetry/bin:$PATH"
 
