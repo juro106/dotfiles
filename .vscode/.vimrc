@@ -51,9 +51,9 @@ vnoremap ; :
 vnoremap : ;
 
 " ヤンクやペーストの後は行の末尾へ移動
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+" vnoremap <silent> y y`]
+" vnoremap <silent> p p`]
+" nnoremap <silent> p p`]
 
 " ----------------------------------------------------------
 " #commandlinemode コマンドラインモード
