@@ -13,3 +13,6 @@
     aa = "add -A"
     cm = "!f(){ echo [!]git commit && git commit -m $1;};f"
 
+[init]
+	defaultBranchf = main
+	defaultBranch = main
