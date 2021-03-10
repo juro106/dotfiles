@@ -58,6 +58,17 @@ elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     alias e='gvim'
     alias eb='gvim ~/.bashrc'
 
+    # 日本語表記関係
+    export LC_ALL=ja_JP.utf8
+    export LANG=ja_JP.utf8
+    export LANGUAGE=ja_JP.utf8
+    export LC_CTYPE="ja_JP.utf8"
+    export LC_NUMERIC="ja_JP.utf8"
+    export LC_TIME="ja_JP.utf8"
+    export LC_COLLATE="ja_JP.utf8"
+    export LC_MONETARY="ja_JP.utf8"
+    export LC_MESSAGES="ja_JP.utf8"
+
     case "$TERM" in  # 'cygwin' になる
         xterm*)
             for name in node ipython php php5 psql python2.7; do
@@ -68,6 +79,7 @@ elif [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
             done
             ;;
     esac
+
     # git add, commit, push まで一度に行う
     gish() {
         # 全てステージに乗せる
