@@ -16,3 +16,6 @@
 [init]
 	defaultBranchf = main
 	defaultBranch = main
+[pull]
+	rebase = false
+
