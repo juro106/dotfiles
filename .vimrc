@@ -307,6 +307,10 @@ nnoremap <silent> ,ch :<C-u>SyntaxInfo<CR>
 " : ; の入れ替え
 nnoremap : ;
 nnoremap ; :
+" nnoremap ; :
+" nnoremap : ;
+" vnoremap ; :
+" vnoremap : ;
 
 " カーソル操作、コマンド関連
 noremap <silent> n nzz
@@ -323,12 +327,6 @@ nnoremap <silent> ,p ,
 let IM_CtrlMode = 4
 inoremap <silent> <F2> <C-^><C-r>=IMState('FixMode')<CR>
 " set statusline+=%{IMStatus('[日本語固定モード]')}
-
-" ;と:の入れ替え。
-" nnoremap ; :
-" nnoremap : ;
-" vnoremap ; :
-" vnoremap : ;
 
 " :helpを引く
 nnoremap <C-h> :<C-u>tab help<Space>
@@ -406,6 +404,9 @@ nnoremap <leader>c :<C-u>g//yank Q<Home><Right><Right>
 
 " 現在時刻の挿入 current time
 nnoremap ,ct a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
+
+nnoremap <Space>a A
+nnoremap ,a A
 
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
