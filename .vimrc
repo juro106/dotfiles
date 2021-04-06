@@ -373,6 +373,7 @@ nnoremap <silent> <Esc><Esc> :<C-u>noh<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " ２行挿入
 nnoremap mo o<Esc>o
+nnoremap <Space>o o<Esc>o
 
 " Delete_Surround_HTML_Tag タグを除去
 nnoremap <silent> dst "0yitdat"0P
@@ -417,6 +418,8 @@ inoremap っj <Esc>
 " CTRL-C,J は Esc
 inoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
+" CTRL-Space
+inoremap <C-Space> <Nop>
 " AltとLで ESC して 右
 inoremap <M-l> <Esc><Right>
 " ２行挿入
