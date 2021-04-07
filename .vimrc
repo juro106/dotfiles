@@ -439,10 +439,10 @@ inoremap <C-z> <Esc>:<C-u>call MySnippet()<CR>
 
 " 括弧を補完
 " inoremap {<CR> {<CR>}<Esc>ko
-inoremap （） （）<Esc>i
-inoremap 「」 「」<Esc>i
-inoremap 【】 【】<Esc>i
-inoremap 『』 『』<Esc>i
+inoremap ；（ （）<Esc>i
+inoremap ；「 「」<Esc>i
+inoremap ；『 『』<Esc>i
+inoremap ；【 【】<Esc>i
 
 " 直前の１単語削除
 inoremap <silent> <C-BS> <C-g>u<C-w>
