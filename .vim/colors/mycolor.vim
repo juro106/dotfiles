@@ -36,6 +36,7 @@ hi! SpecialKey   guifg=#87cefe guibg=#343434 gui=none
 hi! IncSearch    ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
 hi! Search       ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
 hi! hlsearch     ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
+hi! CursorIM guifg=NONE guibg=#d10000
 
 hi! DiffAdd ctermbg=29 ctermfg=158 guibg=#45493e guifg=#c0c5b9
 hi! DiffChange ctermbg=23 ctermfg=159 guibg=#384851 guifg=#b3c3cc

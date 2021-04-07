@@ -230,7 +230,7 @@ nnoremap <silent> [B :bfirst<CR>
 nnoremap <silent> ]B :blast<CR>
 
 " -----------------------------------------------------------
-" Vimgrep & zzQuickfix
+" Vimgrep & Quickfix
 " -----------------------------------------------------------
 nnoremap <silent> [q :<C-u>cprevious<CR>
 nnoremap <silent> [<C-q> :<C-u>cprevious<CR>
@@ -405,7 +405,7 @@ nnoremap <leader>c :<C-u>g//yank Q<Home><Right><Right>
 
 " 現在時刻の挿入 current time
 nnoremap ,ct a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
-
+" Space key 関係
 nnoremap <Space>a A
 nnoremap ,a A
 
@@ -439,6 +439,10 @@ inoremap <C-z> <Esc>:<C-u>call MySnippet()<CR>
 
 " 括弧を補完
 " inoremap {<CR> {<CR>}<Esc>ko
+inoremap （） （）<Esc>i
+inoremap 「」 「」<Esc>i
+inoremap 【】 【】<Esc>i
+inoremap 『』 『』<Esc>i
 
 " 直前の１単語削除
 inoremap <silent> <C-BS> <C-g>u<C-w>
@@ -455,12 +459,12 @@ inoremap <silent> <C-w> <C-r>=MyMoveWord_i('w')<CR>
 inoremap <silent> <C-b> <S-Left>
 
 " 句読点へ進む
-" inoremap <silent> <C-e> <C-r>=MyJumptoEol('。、．，／！？,.')<CR>
-inoremap <silent> <C-e> <C-o>)
+inoremap <silent> <C-e> <C-r>=MyJumptoEol('。、．，／！？,.')<CR>
+" inoremap <silent> <C-e> <C-o>)
 vnoremap <silent> <C-e> )
 " 句読点へ戻る
-" inoremap <silent> <C-a> <C-r>=MyJumptoBol('。、．，／！？,.')<CR>
-inoremap <silent> <C-a> <C-o>(
+inoremap <silent> <C-a> <C-r>=MyJumptoBol('。、．，／！？,.')<CR>
+" inoremap <silent> <C-a> <C-o>(
 vnoremap <silent> <C-a> (
 
 " ダイグラフ
@@ -770,15 +774,15 @@ vmap ib <Plug>(textobj-multiblock-i)
 " ----------------------------------------------------------------------------------
 " vim-operator-surround
 " ----------------------------------------------------------------------------------
-nmap <silent> ,s <Plug>(operator-surround-append)
-nmap <silent> ,d <Plug>(operator-surround-delete)
-nmap <silent> ,c <Plug>(operator-surround-replace)
-vmap <silent> S  <Plug>(operator-surround-append)
-vmap <silent> ,d <Plug>(operator-surround-delete)
-vmap <silent> ,c <Plug>(operator-surround-replace)
+nmap <silent> <Space>s <Plug>(operator-surround-append)
+nmap <silent> <Space>d <Plug>(operator-surround-delete)
+nmap <silent> <Space>c <Plug>(operator-surround-replace)
+vmap <silent> <Space>s <Plug>(operator-surround-append)
+vmap <silent> <Space>d <Plug>(operator-surround-delete)
+vmap <silent> <Space>c <Plug>(operator-surround-replace)
 
-nmap <silent> ,dd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
-nmap <silent> ,cc <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
+nmap <silent> <Space>dd <Plug>(operator-surround-delete)<Plug>(textobj-multiblock-a)
+nmap <silent> <Space>cc <Plug>(operator-surround-replace)<Plug>(textobj-multiblock-a)
 
 let g:operator#surround#blocks = {
     \ '-' : [
@@ -863,6 +867,10 @@ nmap <silent> <F10> <Plug>(mkz-toggle)
 " -------------------------------------------------------------------------------------------------------------------
 " ftjpn 
 " -------------------------------------------------------------------------------------------------------------------
+
+nmap <silent> <Space>f F
+nmap <silent> <Space>t T
+
 let g:multi_f_key_list = [
     \ ['.', '。', '．'],
     \ [',', '、', '，'],

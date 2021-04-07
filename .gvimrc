@@ -67,3 +67,4 @@ augroup END
 if filereadable(g:save_window_file)
     execute 'source' g:save_window_file
 endif
+
