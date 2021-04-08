@@ -366,12 +366,6 @@ k7	七
 k8	八
 k9	九
 k0	十
-sn	千
-mn	万
-sm	様
-nx	年
-gt	月
-nt	日
 ck	っく
 ;k	；「
 ;d	；『
