@@ -65,7 +65,7 @@ syn keyword htmlTagName contained slot source template time track video wbr
 
 " legal arg names
 syn keyword htmlArg contained action
-syn keyword htmlArg contained align alink alt archive background bgcolor
+syn keyword htmlArg contained align alink alt archive background bgcolor decoding
 syn keyword htmlArg contained border bordercolor cellpadding
 syn keyword htmlArg contained cellspacing checked class clear code codebase color
 syn keyword htmlArg contained cols colspan content coords enctype face
