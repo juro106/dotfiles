@@ -263,7 +263,7 @@ cnoremap <expr> <C-x> getcmdtype() == ':' ? expand('%:p') : '%%'
 colorscheme mycolor
 
 " ----------------------------------------------------------
-" #normalmode ノーマルモードのキーマップ
+" #normalMode ノーマルモードのキーマップ
 " ----------------------------------------------------------
 
 " file open ファイルの呼び出しなど
@@ -405,9 +405,13 @@ nnoremap <leader>c :<C-u>g//yank Q<Home><Right><Right>
 
 " 現在時刻の挿入 current time
 nnoremap ,ct a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
+
 " Space key 関係
+" ----------------------------------------------------------
 nnoremap <Space>a A
 nnoremap ,a A
+nnoremap <Space><Space> V
+vnoremap <Space><Space> V
 
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
@@ -569,15 +573,15 @@ function! MyMoveWord_i(cmd)
 endfunction
 
 " ----------------------------------------------------------
-" #visual ビジュアルモードのkeymap
+" #visualMode ビジュアルモードのkeymap
 " ----------------------------------------------------------
 " ; :
 vnoremap ; :
 vnoremap : ;
 
 " インデント
-vnoremap < <gv
-vnoremap > >gv
+" vnoremap < <gv
+" vnoremap > >gv
 
 " vで範囲を拡大。<C-v>で範囲を縮小
 vmap v <Plug>(expand_region_expand)
