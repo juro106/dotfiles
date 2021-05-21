@@ -412,6 +412,7 @@ nnoremap <Space>a A
 nnoremap ,a A
 nnoremap <Space><Space> V
 vnoremap <Space><Space> V
+nnoremap <Space>w :w<CR>
 
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
