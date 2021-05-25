@@ -118,3 +118,12 @@ fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
+# プロンプトの表示関係
+if [ -f /etc/bash_completion ]; then
+       . /etc/bash_completion
+fi
+if [ -f /etc/bash_completion.d/git-prompt ]; then
+       export PS1='\[\033[01;32m\][\u@\h]\[\e[0m\] \[\033[01;33m\]\w\[\e[36m\]$(__git_ps1)\[\e[0m\]\n\\$ '
+   else
+       export PS1='\[\033[01;32m\][\u@\h]\[\e[0m\] \[\033[01;33m\]\w \[\e[0m\]\n\\$ '
+fi

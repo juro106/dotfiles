@@ -209,15 +209,22 @@ augroup filetypeSetting
     autocmd BufNewFile,BufRead *.rb setfiletype ruby
     autocmd BufNewFile,BufRead *.ts setfiletype typescript
     autocmd BufNewFile,BufRead *.js setfiletype javascript
-    autocmd BufNewFile,BufRead *.py nnoremap ,e :<C-u>!python %<CR>
+    autocmd BufNewFile,BufRead *.py nnoremap ,e :<C-u>!python3 %<CR>
+    autocmd BufNewFile,BufRead *.py nnoremap <F12> :<C-u>call <SID>RUN('!python3')<CR>
     autocmd BufNewFile,BufRead *.rb nnoremap ,e :<C-u>!ruby %<CR>
+    autocmd BufNewFile,BufRead *.rb nnoremap <F12> :<C-u>call <SID>RUN('!ruby')<CR>
     autocmd BufNewFile,BufRead *.ts nnoremap ,e :<C-u>!tsc %<CR>
+    autocmd BufNewFile,BufRead *.ts nnoremap <F12> :<C-u>call <SID>RUN('!tsc')<CR>
     " マークダウンのファイル名 .mdも含める
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
     " markdown 目次表示
     autocmd BufNewFile,BufRead *.md nnoremap <Leader>toc :<C-u>call Toc()<CR>
 augroup  END
 
+function! s:RUN(lang) abort
+    :tcd %:h
+    :exec a:lang shellescape(@%, 1)
+endfunction
 
 " -----------------------------------------------------------
 " buffer バッファ操作
@@ -413,6 +420,9 @@ nnoremap ,a A
 nnoremap <Space><Space> V
 vnoremap <Space><Space> V
 nnoremap <Space>w :w<CR>
+" シェルコマンド
+nnoremap <Space><CR> V:!sh<CR>
+vnoremap <Space><CR> :!sh<CR>
 
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
