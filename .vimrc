@@ -65,6 +65,7 @@ Plug 'jason0x43/vim-js-indent', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 Plug 'juro106/mkz'
 Plug 'jlanzarotta/bufexplorer'
+Plug 'tyru/open-browser.vim'
 " Plug '~/.fzf'
 " Plug 'junegunn/fzf.vim'
 " Plug 'juro106/ftjpn'
@@ -1011,3 +1012,30 @@ nnoremap <silent> m3 ^c$<h3><C-r><C-o>"</h3><Esc>
 nnoremap <silent> m4 ^c$<h4><C-r><C-o>"</h4><Esc>
 nnoremap <silent> m5 ^c$<h5><C-r><C-o>"</h5><Esc>
 nnoremap <silent> mp ^c$<p><C-r><C-o>"</p><Esc>
+
+" scrapbox
+function! s:sbnew(prj)
+    let prj = a:prj
+
+    let input = input('This is @'.prj.': Other Project? [n]: ')
+    if input != ""
+      let prj = input
+    endif
+
+    let ans = input('Create? @'.prj.' (y/n) [n]: ')
+    if ans != 'y'
+      redraw
+      echo 'Canceled!'
+      return
+    endif
+
+    let datetime = strftime('%Y-%m-%d').'_'.strftime('%H:%M:%S')
+    let url = 'https://scrapbox.io/'.prj.'/'.datetime
+    " call append(0, url)
+
+    execute ':OpenBrowser '.url
+    execute ':%y'
+endfunction
+
+nnoremap <silent><Leader><Leader>sp :<C-u>call <SID>sbnew('samemo')<CR>
+
