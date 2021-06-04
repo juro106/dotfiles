@@ -37,6 +37,5 @@ if [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     export MSYS=winsymlinks:nativestrict
 fi
 
-
 export PATH="$HOME/.poetry/bin:$PATH"
 

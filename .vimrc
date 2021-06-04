@@ -217,7 +217,7 @@ augroup filetypeSetting
     autocmd BufNewFile,BufRead *.ts nnoremap ,e :<C-u>!tsc %<CR>
     autocmd BufNewFile,BufRead *.ts nnoremap <F12> :<C-u>call <SID>RUN('!tsc')<CR>
     " マークダウンのファイル名 .mdも含める
-    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} set filetype=markdown
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,md.draft,txt} set filetype=markdown
     " markdown 目次表示
     autocmd BufNewFile,BufRead *.md nnoremap <Leader>toc :<C-u>call Toc()<CR>
 augroup  END

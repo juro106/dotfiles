@@ -8,18 +8,20 @@ if has('win32') || has('win64')
 else
     let $DOT_VIM = expand("$HOME/.vim")
 endif
+
 " ----------------------------------------------------------
 " Snippet
 " ----------------------------------------------------------
 if filereadable(expand("$DOT_VIM/autoload/mysnippets.vim"))
     source $DOT_VIM/autoload/mysnippets.vim
 endif
+
 " ----------------------------------------------------------
 " autodate.vim
 " ----------------------------------------------------------
-let autodate_keyword_pre="dateModified: '"
-let autodate_keyword_post="'"
-let autodate_format="%Y-%m-%dT%H:%M:%S+09:00"
+let b:autodate_keyword_pre="dateModified: '"
+let b:autodate_keyword_post="'"
+let b:autodate_format="%Y-%m-%dT%H:%M:%S+09:00"
 
 " ----------------------------------------------------------
 " 見出し一覧を抽出
@@ -51,3 +53,4 @@ function! Toc() abort
     call append(line('.')-1, l:headingList)
 
 endfunction
+
