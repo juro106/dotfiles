@@ -131,6 +131,7 @@ set nobackup                    " バックアップを作成しない
 set vb t_vb=                    " エラーを画面点滅をさせない
 set noerrorbells                " エラーの音を鳴らさない
 set shortmess+=I                " 最初の画面を非表示
+set shortmess-=S                " 検索結果のマッチした数を表示する
 set ttyfast                     " ターミナル接続の高速化
 set whichwrap+=h,l,<,>,[,],b,s  " 行間をでシームレスに移動する
 set backspace =indent,eol,start " バックスペースで何でも消去する
