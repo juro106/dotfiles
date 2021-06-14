@@ -143,3 +143,4 @@ if main_syntax ==# 'markdown'
 endif
 
 " vim:set sw=2:
+

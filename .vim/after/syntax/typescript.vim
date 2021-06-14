@@ -337,3 +337,4 @@ if main_syntax == 'typescript'
 endif
 
 " vim: ts=4
+

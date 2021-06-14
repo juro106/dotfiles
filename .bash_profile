@@ -17,6 +17,20 @@ if ! ssh-add -l > /dev/null 2>&1; then
     source $SSH_AGENT_FILE
     ssh-add $HOME/.ssh/id_rsa_github
 fi
+CURRENT_DIR=$(pwd)
+if [ "`echo $CURRENT_DIR | grep '/hugo/shingeki'`" ]; then
+    sshList=`ssh-add -L`
+    pub1=`cat $HOME/.ssh/id_rsa_lil.pub`
+    if ! [ "`echo "${pub1}" | grep "${sshList}"`" ]; then
+        ssh-add $HOME/.ssh/id_rsa_lil
+    fi
+# elif [ "`echo $CURRENT_DIR | grep '/hugo/sasasa'`" ]; then
+#     sshList=`ssh-add -L`
+#     pub2=`cat $HOME/.ssh/id_rsa_koke.pub`
+#     if ! [ "`echo "${pub2}" | grep "${sshList}"`" ]; then
+#         ssh-add $HOME/.ssh/id_rsa_koke
+#     fi
+fi
 # windows (git-bash) 
 if [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     CURRENT_DIR=$(pwd)
@@ -37,6 +51,6 @@ if [ "$(expr substr $(uname -s) 1 10)" == 'MINGW64_NT' ]; then
     export MSYS=winsymlinks:nativestrict
 fi
 
-export GOPATH=$HOME/go
-export PATH="$HOME/.poetry/bin:$GOPATH:$PATH"
+# export GOPATH=$HOME/go
+# export PATH="$HOME/.poetry/bin:$GOPATH:$PATH"
 
