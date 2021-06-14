@@ -333,9 +333,9 @@ nnoremap <silent> ,, ,
 nnoremap <silent> ,p ,
 
 " 日本語固定モード
-let IM_CtrlMode = 4
+let IM_CtrlMode = 6
 inoremap <silent> <F2> <C-^><C-r>=IMState('FixMode')<CR>
-" set statusline+=%{IMStatus('[日本語固定モード]')}
+set statusline+=%{IMStatus('[日本語固定モード]')}
 
 " :helpを引く
 nnoremap <C-h> :<C-u>tab help<Space>
