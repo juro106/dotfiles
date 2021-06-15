@@ -21,8 +21,9 @@ set mousehide                   " 入力時にマウスポインタを隠す (no
 " フォントの設定
 " set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
 if has('unix')
-    " set guifont=HackGenNerd\ Console\ 12 guifontwide=HackGenNerd\ 12
-    set guifont=Monaco\ 11 guifontwide=HackGen\ 12
+    " set guifont=HackGen\ 12
+    set guifont=migu1m\ 11
+    " guifontwide=Migu\ 1M\ 11
     
 elseif has('win32') || has('win64')
     " set guifont=Ricty_Diminished_for_Powerline\ h14\ w6\ cANSI:qDRAFT\ guifontwide=Migu_1M\ h13\ w6\ cSHIFTJIS\ qDRAFT

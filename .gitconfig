@@ -4,6 +4,14 @@
 
 [alias]
     alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+    g = git
+    st = status
+    df = diff
+    co = checkout
+    b = brach
+    newbr = checkout -b
+    cm = commit -m
+    conflicts = !git ls-files -u | cut -f 2 | sort -u
     acp = "!f(){ \
         echo [!]git add all && git add --al &&\
         echo [!]git commit && git commit -m $1 &&\
