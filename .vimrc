@@ -298,7 +298,7 @@ if has('unix')
     " syntax/python.vimの呼び出し
     nnoremap <silent> <F9>pv :<C-u>tabnew ~/.vim/after/syntax/python.vim<CR>
     " keymap ergodox keymap.c
-    nnoremap <silent> <F9>ergo :<C-u>e ~/qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
+    nnoremap <silent> <F9>ergo :<C-u>e ~/.dotfileo/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
 elseif has('win32') || has('win64')
     " colorscheme の呼び出し
     nnoremap <silent> <F9>cl :<C-u>tabnew ~/vimfiles/colors/mycolor.vim<CR>
