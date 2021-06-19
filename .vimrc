@@ -5,6 +5,7 @@ set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 "set shellslash
 set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
 set guioptions+=k               " タブなどの追加時にウインドウサイズ等を維持
+set guioptions-=e               " Gvim でもテキストベースのタブを使う
 set langmenu=none
 
 syntax enable
@@ -59,7 +60,7 @@ Plug 'deton/jasegment.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cocopon/vaffle.vim', {'on': [] }
 Plug 'tomtom/tcomment_vim', {'on': [] }
-"Plug 'fuenor/im_control.vim', {'on': [] }
+Plug 'fuenor/im_control.vim', {'on': [] }
 Plug 'itchyny/vim-parenmatch', {'on': [] }
 Plug 'jason0x43/vim-js-indent', { 'for': 'typescript' }
 Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
@@ -77,17 +78,13 @@ Plug 'tyru/open-browser.vim'
 " Plug 'deton/jasentence.vim'
 call plug#end()
 
-" this is test comment 
-" Hey from Windows!!
-" Hello! This is Ubuntu!! How are you?
-
-" load Event
-" augroup load_us_insert
-"     autocmd!
-"     autocmd InsertEnter * call plug#load(
-"         \ 'im_control.vim',
-"         \ ) | autocmd! load_us_insert
-" augroup END
+"load Event
+augroup load_us_insert
+    autocmd!
+    autocmd InsertEnter * call plug#load(
+        \ 'im_control.vim',
+        \ ) | autocmd! load_us_insert
+augroup END
 
 augroup load_us_hold
     autocmd!
@@ -149,7 +146,7 @@ set synmaxcol=320               " syntaxhighlightの制限
 set helplang=ja                 " ヘルプの日本語化
 set notimeout                   " キーマップでタイムアウトしない
 set ttimeout ttimeoutlen=10     " キーコードのタイムアウトの設定
-
+set mouse=a
 
 " 改行コード
 " ---------------------------------------------------------------------
@@ -271,6 +268,11 @@ cnoremap <expr> <C-x> getcmdtype() == ':' ? expand('%:p') : '%%'
 " colorscheme
 colorscheme mycolor
 
+" カーソルの形や色
+let &t_SI = "\e[6 q" "SI = INSERT mode
+let &t_EI = "\e[2 q" "EI = NORMAL mode
+let &t_SR = "\e[4 q" "SR = REPLACE mode
+
 " ----------------------------------------------------------
 " #normalMode ノーマルモードのキーマップ
 " ----------------------------------------------------------
@@ -310,6 +312,9 @@ elseif has('win32') || has('win64')
     nnoremap <silent> <F9>ergo :<C-u>e //wsl$/Ubuntu-20.04/home/kenichiro/qmk_firmware/keyboards/ergodox_ez/keymaps/custom/keymap.c<CR>
 endif
 
+" i3
+nnoremap <Space><Space>i3 :<C-u>e ~/.config/i3/config<CR>
+
 " syntax check の呼び出し
 nnoremap <silent> ,ch :<C-u>SyntaxInfo<CR>
 
@@ -333,9 +338,9 @@ nnoremap <silent> ,, ,
 nnoremap <silent> ,p ,
 
 " 日本語固定モード
-"let IM_CtrlMode = 6
-"inoremap <silent> <F2> <C-^><C-r>=IMState('FixMode')<CR>
-"set statusline+=%{IMStatus('[日本語固定モード]')}
+let IM_CtrlMode = 6
+inoremap <silent> <F2> <C-^><C-r>=IMState('FixMode')<CR>
+set statusline+=%{IMStatus('[日本語固定モード]')}
 
 " :helpを引く
 nnoremap <C-h> :<C-u>tab help<Space>
@@ -343,11 +348,7 @@ nnoremap <C-h> :<C-u>tab help<Space>
 set keywordprg=:help " Open Vim internal help by K command
 
 " 置換 chikan change substitute
-" nnoremap ,s :<C-u>%s///g<Left><Left>
-" vnoremap ,s :s///g<Left><Left>
-nnoremap ch :<C-u>%s///g<Left><Left>
 nnoremap ,s :<C-u>%s///g<Left><Left>
-vnoremap ch :s///g<Left><Left>
 vnoremap ,s :s///g<Left><Left>
 
 " tab pageを使いやすくする
@@ -377,8 +378,12 @@ nnoremap g<C-a> ggVG
 " 全コピー
 nnoremap gay :<C-u>%y<CR>
 
+" normal で IME もオフにする
+nnoremap <silent> <Esc><Esc> :<C-u>OffIME<CR>
+command! OffIME :call OffIME()
+
 " ハイライトを消す
-nnoremap <silent> <Esc><Esc> :<C-u>noh<CR>
+"nnoremap <silent> <Esc><Esc> :<C-u>noh<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 " ２行挿入
 nnoremap mo o<Esc>o
@@ -435,13 +440,12 @@ inoremap っj <Esc>
 " CTRL-C,J は Esc
 inoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
-inoremap <Esc> <Esc>
 " CTRL-Space
 inoremap <C-Space> <Nop>
 " AltとLで ESC して 右
 inoremap <M-l> <Esc><Right>
-" ２行挿入
-inoremap <silent> <C-o><C-o> <C-g>u<Esc>o<CR>
+"" ２行挿入
+"inoremap <silent> <C-o><C-o> <C-g>u<Esc>o<CR>
 
 " 上下に空行を挿入
 imap <S-CR> <End><CR>
@@ -922,34 +926,34 @@ let g:multi_f_key_list = [
 " 自作関数など
 " -------------------------------------------------------------------------------------------------------------------
 
-" --------------------------------------------------------------------------------
-" terminal で GitBash
-" --------------------------------------------------------------------------------
-function! GitBash()
-    " 日本語Windowsの場合`ja`が設定されるので、入力ロケールに合わせたUTF-8に設定しなおす
-    let l:env = {
-                \ 'LANG': systemlist('"C:/Program Files/Git/usr/bin/locale.exe" -iU')[0],
-                \ }
-
-    " remote連携のための設定
-    if has('clientserver')
-        call extend(l:env, {
-                    \ 'GVIM': $VIMRUNTIME,
-                    \ 'VIM_SERVERNAME': v:servername,
-                    \ })
-    endif
-
-    " term_startでgit for windowsのbashを実行する
-    call term_start(['C:/Program Files/Git/bin/bash.exe', '-l'], {
-                \ 'term_name': 'GitBash',
-                \ 'term_finish': 'close',
-                \ 'term_cols': v:true,
-                \ 'env': l:env,
-                \ })
-
-endfunction
-
-nnoremap ,g :<C-u>call GitBash()<CR>
+"" --------------------------------------------------------------------------------
+"" terminal で GitBash
+"" --------------------------------------------------------------------------------
+"function! GitBash()
+"    " 日本語Windowsの場合`ja`が設定されるので、入力ロケールに合わせたUTF-8に設定しなおす
+"    let l:env = {
+"                \ 'LANG': systemlist('"C:/Program Files/Git/usr/bin/locale.exe" -iU')[0],
+"                \ }
+"
+"    " remote連携のための設定
+"    if has('clientserver')
+"        call extend(l:env, {
+"                    \ 'GVIM': $VIMRUNTIME,
+"                    \ 'VIM_SERVERNAME': v:servername,
+"                    \ })
+"    endif
+"
+"    " term_startでgit for windowsのbashを実行する
+"    call term_start(['C:/Program Files/Git/bin/bash.exe', '-l'], {
+"                \ 'term_name': 'GitBash',
+"                \ 'term_finish': 'close',
+"                \ 'term_cols': v:true,
+"                \ 'env': l:env,
+"                \ })
+"
+"endfunction
+"
+"nnoremap ,g :<C-u>call GitBash()<CR>
 
 " --------------------------------------------------------------------------------
 " syntaxhighlightを調べる関数
@@ -1039,7 +1043,7 @@ function! s:sbnew(prj)
     execute ':%y'
 endfunction
 
-nnoremap <silent><Leader><Leader>sp :<C-u>call <SID>sbnew('samemo')<CR>
+nnoremap <silent> <Leader><Leader>sp :<C-u>call <SID>sbnew('samemo')<CR>
 
 " linux用 日本語固定モード
 let g:current_ime = 0
@@ -1054,7 +1058,7 @@ function! s:ImeModeChange(arg)
     echo 'Japanese Fixed Mode: ' . g:current_ime
 endfunction
 
-nnoremap <silent> <F7> :<C-u>call <SID>ImeModeChange(lastime)<CR>
+nnoremap <silent> <F7> :<C-u>call <SID>ImeModeChange(current_ime)<CR>
 
 function! ImeControl(active)
   if a:active == 1
@@ -1064,6 +1068,7 @@ function! ImeControl(active)
    endif
 endfunction
 
+" IME をオフ
 function! OffIME() abort
    call system('fcitx-remote -s fcitx-keyboard-us')
 endfunction
@@ -1073,4 +1078,5 @@ augroup Ime
    autocmd InsertEnter * call ImeControl(current_ime)
    autocmd InsertLeave * call OffIME()
 augroup END
+
 

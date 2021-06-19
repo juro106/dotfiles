@@ -1,0 +1,7 @@
+# im-config signature: 6d2a4e7eca122f8935fecfe3eccfab03
+run_im fcitx
+
+# keymap
+if [ -f ~/.xmodmap ];then
+  xmodmap ~/.xmodmap
+fi

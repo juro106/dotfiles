@@ -129,7 +129,8 @@ alias today='date +%Y-%m-%d'
 alias touchtoday='e `date +%Y-%m-%d`.md'
 
 alias gvim="vim -g"
-alias e="vim -g"
+alias e="vim"
+alias v="vim"
 
 alias addlil="ssh-add ~/.ssh/id_rsa_lil"
 alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
@@ -286,3 +287,7 @@ fi
 #    else
 #        export PS1='\[\033[01;32m\][\u@\h]\[\e[0m\] \[\033[01;33m\]\w \[\e[0m\]\n\\$ '
 # fi
+
+
+# gtk? 関係
+export NO_AT_BRIDGE=1

@@ -22,9 +22,9 @@ set mousehide                   " 入力時にマウスポインタを隠す (no
 " set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
 if has('unix')
     " set guifont=HackGen\ 12
-    set guifont=migu1m\ 11
+    set guifont=migu1m\ 12
     " guifontwide=Migu\ 1M\ 11
-    
+ 
 elseif has('win32') || has('win64')
     " set guifont=Ricty_Diminished_for_Powerline\ h14\ w6\ cANSI:qDRAFT\ guifontwide=Migu_1M\ h13\ w6\ cSHIFTJIS\ qDRAFT
     " set guifont=Ricty_Diminished_with-icons:h14:w6:cSHIFTJIS:qDRAFT "guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
@@ -70,4 +70,3 @@ augroup END
 if filereadable(g:save_window_file)
     execute 'source' g:save_window_file
 endif
-

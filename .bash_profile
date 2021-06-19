@@ -10,7 +10,7 @@ fi
 
 # Common
 # ssh-agent
-ssh-add $HOME/.ssh/id_rsa_github
+# ssh-add $HOME/.ssh/id_rsa_github
 
 SSH_AGENT_FILE=$HOME/.ssh-agent
 test -f $SSH_AGENT_FILE && source $SSH_AGENT_FILE

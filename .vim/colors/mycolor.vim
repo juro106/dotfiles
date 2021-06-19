@@ -21,11 +21,11 @@ hi! Cursor       ctermfg=13 guifg=#f6f3e8 guibg=#ff99ff gui=none
 hi! Normal       guifg=#f6f3e8 guibg=#242424 gui=none
 hi! NonText      ctermbg=234 ctermfg=236 guifg=#808080 guibg=#303030 gui=none
 hi! LineNr       guifg=#857b6f guibg=#222222 gui=none
-hi! StatusLine   guifg=#333333 guibg=#f9f9f9 gui=none
-hi! StatusLineNC guifg=#857b6f guibg=#444444 gui=none
-hi! Terminal     guifg=lightgrey guibg=grey20
-hi! StatusLineTerm guifg=#857b6f guibg=#000000 gui=none
-hi! StatusLineTermNC guifg=#857b6f guibg=#444444 gui=none
+hi! StatusLine   ctermfg=15 guifg=#333333 guibg=#f9f9f9 gui=none
+hi! StatusLineNC ctermfg=0 guifg=#857b6f guibg=#444444 gui=none
+hi! Terminal     ctermfg=15 ctermbg=0 guifg=lightgrey guibg=grey20
+hi! StatusLineTerm ctermfg=7 ctermbg=15 guifg=#857b6f guibg=#000000 gui=none
+hi! StatusLineTermNC ctermfg=0 ctermbg=0 guifg=#857b6f guibg=#444444 gui=none
 hi! CursorLineNr ctermfg=245 term=bold cterm=NONE ctermbg=NONE guifg=#f2f230
 hi! VertSplit    guifg=#555555 guibg=#555555 gui=none
 hi! Folded       guibg=#384048 guifg=#a0a8b0 gui=none
@@ -54,9 +54,13 @@ hi! Pmenu        ctermfg=8 ctermbg=0
 hi! PmenuSel     ctermfg=15 ctermbg=4
 hi! PmenuSbar    ctermbg=0
 hi! PmenuThumb   ctermbg=8
+" Tabline
+hi! TabLine cterm=NONE ctermbg=233 ctermfg=238 gui=NONE guibg=#0f1117 guifg=#3e445e
+hi! TabLineFill cterm=reverse ctermbg=238 ctermfg=233 gui=reverse guibg=#3e445e guifg=#0f1117
+"hi! TabLineSel cterm=NONE ctermbg=234 ctermfg=252 gui=NONE guibg=#161821 guifg=#9a9ca5
 
 " Syntax highlighting
-hi! Comment      ctermfg=8 guifg=#99968b gui=none
+hi! Comment      ctermfg=244 guifg=#99968b gui=none
 hi! Todo         ctermfg=214 guifg=#8f8f8f gui=italic
 hi! Constant     ctermfg=111 guifg=#e5786d gui=none
 " hi String       guifg=#ff69b4 gui=none
