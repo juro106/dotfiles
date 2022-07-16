@@ -70,14 +70,14 @@ hi! String       ctermfg=230 guifg=#f5deb3 gui=none
 hi! Identifier   ctermfg=111 guifg=#87cefa gui=none
 hi! Function     ctermfg=117 guifg=#7cfc00 gui=none
 hi! Type         ctermfg=112 guifg=#adff2f gui=none
-hi! Statement    ctermfg=226 guifg=#ffff00 gui=none
+hi! Statement    ctermfg=227 guifg=#ffff00 gui=none
 hi! Keyword      ctermfg=111 guifg=#8ac6f2 gui=none
 hi! PreProc      ctermfg=170 guifg=#ff69b4 gui=none
 hi! Number       ctermfg=123 guifg=#00ffff gui=none
 hi! Special      ctermfg=169 guifg=#ff69b4 gui=none
 
 " mySyntax
-hi myType        ctermfg=220 guifg=#ff69b4 gui=none
+hi myType        ctermfg=112 guifg=#ff69b4 gui=none
 
 " elm
 hi link elmType myType

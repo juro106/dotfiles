@@ -28,3 +28,6 @@
 [user]
     email = juro106@users.noreply.github.com
 	name = juro106
+
+[grep]
+	lineNumber = true
