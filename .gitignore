@@ -1,0 +1,5 @@
+/tmp
+/vimefiles/plugged/*
+/.vim/plugged/*
+/.vscode/extensions/*
+/.vscode/argv.json

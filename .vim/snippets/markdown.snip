@@ -1,0 +1,57 @@
+snippet toc
+abbr Table of Contents
+    {{<toc>}}
+    <p id='toc-title'>目次</p>
+    ${1}
+    {{</toc>}}
+
+snippet tochtml
+abbr Table of Contents
+    <div id="toc">
+    <p id='toc-title'>目次</p>
+    <ul id='tocList'>
+    <li class='tocList-item'>
+    <a class="tocList-link" href="#1">
+    </a>
+    <ul class="tocChildList">
+    <li class="tocChildList-item"><a class="toc-link" href="#1"></a></li>
+    </ul>
+    </li>
+    </ul>
+    </div>
+
+snippet img
+abbr Image
+    {{<img src="/img/${1}" alt="" decoding="async">}}
+
+snippet front
+abbr Front Matter
+    ---
+    title: '${1}'
+    h1: ''
+    description: ''
+    datePublished: ''
+    dateModified: ''
+    ---
+
+snippet fm
+abbr Front Matter 2
+    ---
+    title: '${1}'
+    tags: [""]
+    description: ''
+    datePublished: ''
+    dateModified: ''
+    ---
+
+snippet ads
+abbr Google Adsense
+    {{<ads>}}
+
+snippet bio
+abbr Biography
+    {{<bio name="${1}">}}
+
+snippet titans
+abbr Titans
+    {{<titans name="${1}">}}

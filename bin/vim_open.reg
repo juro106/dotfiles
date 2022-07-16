@@ -1,0 +1,22 @@
+Windows Registry Editor Version 5.00
+
+[HKEY_CLASSES_ROOT\*\shell\gvim]
+@="Open with GVim"
+"Icon"="C:\\vim\\gvim.exe"
+
+[HKEY_CLASSES_ROOT\*\shell\gvim\command]
+@="C:\\vim\\gvim.exe \"%1\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\gvim]
+@="Open with GVim"
+"Icon"="\"C:\\vim\\gvim.exe\""
+
+[HKEY_CLASSES_ROOT\Directory\Background\shell\gvim\command]
+@="\"C:\\vim\\gvim.exe\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\gvim]
+@="Open with GVim"
+"Icon"="\"C:\\vim\\gvim.exe\""
+
+[HKEY_CLASSES_ROOT\Directory\shell\gvim\command]
+@="\"C:\\vim\\gvim.exe\" \"%1\""

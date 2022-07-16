@@ -1,0 +1,29 @@
+[core]
+    # sshCommand = C:/Windows/System32/OpenSSH/ssh.exe
+    autoCRLF = input
+	symlinks = true
+    # editor = \"/c/vim/gvim.exe\" -c \"set fenc=utf-8\"
+    # preloadindex = true
+    # fscache = true
+
+[difftool "sourcetree"]
+	cmd = '' \"$LOCAL\" \"$REMOTE\"
+
+[mergetool "sourcetree"]
+	cmd = "'' "
+	trustExitCode = true
+
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[credential "helperselector"]
+	selected = <no helper>
+
+[http]
+	proxy = http://
+
+[https]
+	proxy = http://

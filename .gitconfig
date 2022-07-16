@@ -1,0 +1,30 @@
+[alias]
+    alias = !git config --get-regexp '^alias\\.' | sed 's/alias\\.\\([^ ]*\\) \\(.*\\)/\\1\\\t => \\2/' | sort
+    st = status
+    df = diff
+    co = checkout
+    b = branch
+    newbr = checkout -b
+    cm = commit -m
+    conflicts = !git ls-files -u | cut -f 2 | sort -u
+    acp = "!f(){ \
+        echo [!]git add all && git add --al &&\
+        echo [!]git commit && git commit -m $1 &&\
+        echo [!]git push && git push;\
+        };f"
+    s  = "status"
+    aa = "add -A"
+    cm = "!f(){ echo [!]git commit && git commit -m $1;};f"
+
+
+[init]
+	defaultBranchf = main
+	defaultBranch = main
+	defaltBranch = main
+
+[pull]
+	rebase = false
+
+[user]
+    email = juro106@users.noreply.github.com
+	name = juro106
