@@ -22,8 +22,10 @@ set mousehide                   " 入力時にマウスポインタを隠す (no
 " set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
 if has('unix')
     " set guifont=HackGen\ 12
-    set guifont=migu1m\ 12
-    " guifontwide=Migu\ 1M\ 11
+    " set guifont=migu1m\ 12
+    " set guifont=Monaco\ 12 guifontwide=Migu1M\ 12
+        " \ guifontwide=Migu\ 1M\ h13
+    set guifont=Migu1MClone\ 13
  
 elseif has('win32') || has('win64')
     " set guifont=Ricty_Diminished_for_Powerline\ h14\ w6\ cANSI:qDRAFT\ guifontwide=Migu_1M\ h13\ w6\ cSHIFTJIS\ qDRAFT
@@ -31,7 +33,7 @@ elseif has('win32') || has('win64')
     " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
     " set guifont=Menlo:h12:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:cSHIFTJIS:qDRAFT
     " set guifont=DejaVuSansMono\ 11
-    set guifont=Monaco:h11:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
+    set guifont=Monaco:h14:w6:cANSI:qDRAFT guifontwide=Migu_1M:h13:w6:cSHIFTJIS:qDRAFT
     " set guifont=Meslo_LG_S:h13:w6:cANSI:qDRAFT guifontwide=Migu_1M:h12:w6:cSHIFTJIS:qDRAFT
 endif
 

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+# hugo 内で .git が置かれているルートディレクトリに移動
+# . または source でこのスクリプトを読み込むとカレントディレクトリを移動させることができる
+
+pwd=$(pwd)
+target=$(pwd | sed -r 's@^.*hugo/(.*).*$@\1@')
+
+if [ "$(echo $target | grep '/')" ]; then
+    cd "$HOME/hugo/${target%%/*}"
+else
+    cd "$HOME/hugo/$target"
+fi
+

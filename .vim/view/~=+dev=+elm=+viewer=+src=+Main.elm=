@@ -11,7 +11,7 @@ nmap <buffer> \b <Plug>(elm-make-main)
 nmap <buffer> \m <Plug>(elm-make)
 nmap <buffer> gd <Plug>(lsp-definition)
 nmap <buffer> gf :call elm#util#GoToModule(expand('<cfile>'))
-nmap <buffer> <F2> <Plug>(lsp-rename)
+nmap <buffer> <F7> <Plug>(lsp-rename)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -28,6 +28,7 @@ setlocal buftype=
 setlocal nocindent
 setlocal cinkeys=0{,0},0),0],:,0#,!^F,o,O,e
 setlocal cinoptions=
+setlocal cinscopedecls=public,protected,private
 setlocal cinwords=if,else,while,do,for,switch
 setlocal colorcolumn=
 setlocal comments=s1fl:{-,mb:\ ,ex:-},:--
@@ -51,6 +52,7 @@ setlocal expandtab
 if &filetype != 'elm'
 setlocal filetype=elm
 endif
+setlocal fillchars=
 setlocal fixendofline
 setlocal foldcolumn=0
 setlocal foldenable
@@ -128,10 +130,12 @@ setlocal termwinscroll=10000
 setlocal termwinsize=
 setlocal textwidth=0
 setlocal thesaurus=
+setlocal thesaurusfunc=
 setlocal noundofile
 setlocal undolevels=-123456
 setlocal varsofttabstop=
 setlocal vartabstop=
+setlocal virtualedit=
 setlocal wincolor=
 setlocal nowinfixheight
 setlocal nowinfixwidth
@@ -141,14 +145,24 @@ setlocal wrapmargin=0
 normal! zo
 214
 normal! zo
-242
+455
 normal! zo
-let s:l = 1056 - ((32 * winheight(0) + 29) / 59)
+816
+normal! zo
+818
+normal! zo
+847
+normal! zo
+937
+normal! zo
+999
+normal! zo
+let s:l = 965 - ((29 * winheight(0) + 29) / 59)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1056
-normal! 013|
+keepjumps 965
+normal! 044|
 let &g:so = s:so_save | let &g:siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

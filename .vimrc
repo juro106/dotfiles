@@ -71,17 +71,16 @@ Plug 'jlanzarotta/bufexplorer'
 Plug 'tyru/open-browser.vim'
 
 " lsp >>>
-" Plug 'prabirshrestha/asyncomplete.vim'
-" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'prabirshrestha/vim-lsp'
 Plug 'mattn/vim-lsp-settings'
 Plug 'mattn/vim-lsp-icons'
-
+" Plug 'prabirshrestha/asyncomplete.vim'
+" Plug 'prabirshrestha/async.vim'
+" Plug 'prabirshrestha/asyncomplete-lsp.vim'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'mattn/vim-goimports'
 Plug 'elmcast/elm-vim'
-" <<< lsp
 " Plug '~/.fzf'
 " Plug 'junegunn/fzf.vim'
 Plug 'juro106/ftjpn'
@@ -122,11 +121,21 @@ endif
 " ---------------------------------------------------------------------
 " lsp
 " ---------------------------------------------------------------------
+let g:lsp_diagnostics_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+let g:lsp_verbose = 1
+" let g:asyncomplete_auto_popup = 0
+" let g:asyncomplete_auto_completeopt = 1
+" let g:asyncomplete_popup_delay = 100
+let g:lsp_text_edit_enabled = 1
+let g:goimports = 1
+
 function! s:on_lsp_buffer_enabled() abort
   " setlocal omnifunc=lsp#complete
-  setlocal signcolumn=yes " left margin
+  setlocal signcolumn=no " left margin
   nmap <buffer> gd <plug>(lsp-definition)
-  nmap <buffer> <F7> <plug>(lsp-rename)
+  nmap <buffer> gr <plug>(lsp-references)
+  nmap <buffer> K <plug>(lsp-hover)
   " inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
 endfunction
 
@@ -135,33 +144,16 @@ augroup lsp_install
   autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
 
-command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/lsp.log')
+command! LspDebug let lsp_log_verbose=1 | let lsp_log_file = expand('~/vim-lsp.log')
 
-let g:lsp_settings = {
-    \  'clangd': {'cmd': ['clangd-6.0']},
-    \  'efm-langserver': {
-        \    'blocklist': ['hs', 'twitvim'],
-        \    'disabled': v:false},
-        \}
+if executable('clangd')
+    au User lsp_setup call lsp#register_server({
+        \ 'name': 'clangd',
+        \ 'cmd': {server_info->['clangd']},
+        \ 'whitelist': ['c', 'cpp'],
+        \ })
+endif
 
-" augroup LspEFM
-"   au!
-"   autocmd User lsp_setup call lsp#register_server({
-"       \ 'name': 'efm-langserver',
-"       \ 'cmd': {server_info->['efm-langserver', '-c=~/.config/efm-langserver/config.yaml']},
-"       \ 'allowlist': ['vim', 'eruby', 'markdown', 'yaml'],
-"       \ })
-" augroup END
-
-let g:lsp_diagnostics_enabled = 1
-let g:lsp_diagnostics_echo_cursor = 1
-let g:asyncomplete_auto_popup = 1
-let g:asyncomplete_auto_completeopt = 0
-let g:asyncomplete_popup_delay = 200
-let g:lsp_text_edit_enabled = 1
-let g:goimports = 1
-
-" haskell
 if executable('haskell-language-server-wrapper')
     au User lsp_setup call lsp#register_server({
         \ 'name': 'haskell-language-server-wrapper',
@@ -174,13 +166,11 @@ if executable('haskell-language-server-wrapper')
         \ 'whitelist': ['haskell', 'lhaskell'],
         \ })
 endif
-
 let g:elm_format_autosave = 1
 
 nnoremap <Space>== :<C-u>LspDocumentFormat<CR>
 
 " shfmt
-
 function! _Doshfmt()
     exe ":silent !shfmt -w -i 2 -ci -bn -s %"
     exe ":e!"
@@ -197,6 +187,7 @@ augroup End
 " ---------------------------------------------------------------------
 " 基本的な設定 config setting
 " ---------------------------------------------------------------------
+language C                      " mode などの表記を英語にする
 set noruler                     " 番号を表示しない
 set notitle                     " タイトルを表示しない
 set guicursor=a:blinkon0        " カーソルを点滅させない
@@ -227,7 +218,6 @@ set hlsearch                    " ハイライトサーチ
 set incsearch                   " 検索しながらハイライト
 set ignorecase                  " 検索時に大文字小文字を無視
 set smartcase                   " 検索時に大文字を含む場合は区別する
-language C                      " mode などの表記を英語にする
 set hidden                      " 保存なしで別のバッファへ
 set synmaxcol=320               " syntaxhighlightの制限
 set helplang=ja                 " ヘルプの日本語化
@@ -235,9 +225,7 @@ set notimeout                   " キーマップでタイムアウトしない
 set ttimeout ttimeoutlen=10     " キーコードのタイムアウトの設定
 set mouse=a
 set imstyle=1                   " imstyle over-the-spotは1  効かない？
-
-
-
+" set showcmd
 
 " 改行コード
 " ---------------------------------------------------------------------
@@ -278,8 +266,10 @@ let g:vim_indent_cont = shiftwidth() * 1
 
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.yml  setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-    autocmd BufNewFile,BufRead *.yaml setlocal tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+    autocmd BufNewFile,BufRead *.c   setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.cpp  setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.yml  setlocal  sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.yaml setlocal  sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.md   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.js   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.ts   setlocal sw=2 sts=2 ts=2 et
@@ -289,7 +279,6 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.hs   setlocal sw=8 sts=8 ts=8 et
     autocmd FileType sh setlocal sw=2 sts=2 ts=2 et
 augroup End
-
 
 " ---------------------------------------------------------------------
 " filetype 
@@ -372,13 +361,16 @@ colorscheme mycolor
 " colorscheme iceberg
 
 " カーソルの形や色
-let &t_SI = "\e[6 q" "SI = INSERT mode
+" let &t_SI = "\e[6 q" "SI = INSERT mode
+let &t_SI = "\e[2 q" "SI = INSERT mode
 let &t_EI = "\e[2 q" "EI = NORMAL mode
 let &t_SR = "\e[4 q" "SR = REPLACE mode
 
 " ----------------------------------------------------------
 " #normalMode ノーマルモードのキーマップ
 " ----------------------------------------------------------
+nnoremap <C-\> <Esc>
+nnoremap <Space>\ <C-\>
 " file open ファイルの呼び出しなど
 nnoremap [config] <Nop>
 nmap <Space>j [config]
@@ -470,15 +462,13 @@ nnoremap <Leader>l :<C-u>tags<CR>
 nnoremap g<C-a> ggVG 
 " 全コピー
 nnoremap gay :<C-u>%y<CR>
-
 " normal で IME もオフにする
 nnoremap <silent> <Esc><Esc> :<C-u>OffIME<CR>
+nnoremap <silent> <C-\><C-\> :<C-u>OffIME<CR>
 command! OffIME :call <SID>OffIME()
-
 " ハイライトを消す
 "nnoremap <silent> <Esc><Esc> :<C-u>noh<CR>
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
-
 " ２行挿入
 nnoremap <Space>o o<Esc>o
 
@@ -544,6 +534,8 @@ inoremap っj <Esc>
 " CTRL-C,J は Esc
 inoremap <C-j> <Esc>
 inoremap <C-c> <Esc>
+inoremap <C-\> <Esc>
+
 " CTRL-Space
 imap <Nul> <C-Space>
 inoremap <C-Space> <Nop>
@@ -567,10 +559,10 @@ inoremap <C-z> <Esc>:<C-u>call MySnippet()<CR>
 
 " 全角の括弧を補完
 " inoremap {<CR> {<CR>}<Esc>ko
-inoremap ;（ （）<Esc>i
-inoremap ;「 「」<Esc>i
-inoremap ;『 『』<Esc>i
-inoremap ;【 【】<Esc>i
+inoremap ¨（ （）<Esc>i
+inoremap ¨「 「」<Esc>i
+inoremap ¨『 『』<Esc>i
+inoremap ¨【 【】<Esc>i
 
 " 直前の１単語削除
 inoremap <silent> <C-BS> <C-g>u<C-w>
@@ -581,141 +573,25 @@ inoremap <silent> 。 。<C-g>u
 " 「、」でアンドゥ設定（一旦区切りになる）
 inoremap <silent> 、 、<C-g>u
 " 単語単位の移動
-" inoremap <silent> <C-w> <C-r>=MyMoveWord_i('w')<CR>
-" inoremap <silent> <C-w> <Esc><Right>ea
-"inoremap <silent> <C-b> <C-r>=MyMoveWord_i('b')<CR>
 inoremap <silent> <C-b> <S-Left>
-
-" 句読点へ進む
-inoremap <silent> <C-e> <C-r>=MyJumptoEol('。、．，／！？,.')<CR>
-" inoremap <silent> <C-e> <C-o>)
-vnoremap <silent> <C-e> )
-" 句読点へ戻る
-inoremap <silent> <C-a> <C-r>=MyJumptoBol('。、．，／！？,.')<CR>
-" inoremap <silent> <C-a> <C-o>(
-vnoremap <silent> <C-a> (
-
 " ダイグラフ
 inoremap <silent> <M-v> <C-K>
-
-" ------------------------------------------------------------------------------
-" 行頭へ(<C-a>に関する関数)
-" sepが空でなければ、sepをセパレータとしてジャンプ。
-" 見つからなければ見かけの行頭へ。カーソル位置が見かけの行頭の場合は真の行頭へ。
-" ------------------------------------------------------------------------------
-function! MyJumptoBol(sep)
-    if col('.') == 1
-        call cursor(line('.')-1, col('$'))
-        call cursor(line('.'), col('$'))
-        return ''
-    endif
-    if matchend(strpart(getline('.'), 0, col('.')), '[[:blank:]]\+') >= col('.')-1
-        silent exec 'normal! 0'
-        return ''
-    endif
-    if a:sep != ''
-        call search('[^'.a:sep.']\+', 'bW', line("."))
-        if col('.') == 1
-            silent exec 'normal! ^'
-        endif
-        return ''
-    endif
-    exec 'normal! ^'
-    return ''
-endfunction
-
-" ----------------------------------------------------------
-" sepが空でなければ、sepをセパレータとしてジャンプ。
-" 見つからなければ行末へ。
-" ----------------------------------------------------------
-function! MyJumptoEol(sep)
-    if col('.') == col('$')
-        silent exec 'normal! w'
-        return ''
-    endif
-    if a:sep != ''
-        let prevcol = col('.')
-        call search('['.a:sep.']\+[^'.a:sep.']', 'eW', line("."))
-        if col('.') != prevcol
-            return ''
-        endif
-    endif
-    call cursor(line('.'), col('$'))
-    return ''
-endfunction
-
-" ------------------------------------------------------------------------------
-" IMEの状態とカーソル位置保存のため<C-r>を使用してコマンドを実行。
-" ------------------------------------------------------------------------------
-function! MyExecExCommand(cmd, ...)
-    let saved_ve = &virtualedit
-    let index = 1
-    while index <= a:0
-        if a:{index} == 'onemore'
-            silent setlocal virtualedit+=onemore
-        endif
-        let index = index + 1
-    endwhile
-
-    silent exec a:cmd
-    if a:0 > 0
-        silent exec 'setlocal virtualedit='.saved_ve
-    endif
-    return ''
-endfunction
-
-" ------------------------------------------------------------------------------
-" 行末でも停止する単語単位移動コマンド https://
-" ------------------------------------------------------------------------------
-function! MyMoveWord_i(cmd)
-    let isEol = 0
-    if col('$') == col('.')
-        let isEol = 1
-    endif
-    let prevline = line('.')
-    silent exec 'normal! '.a:cmd
-    if line('.') == prevline
-        return ''
-    endif
-    if a:cmd == 'w'
-        if isEol == 0
-            call cursor(prevline, 0)
-            call cursor(line('.'), col('$'))
-        endif
-        if line('.') - prevline > 1
-            call cursor(prevline+1, 0)
-            call cursor(line('.'), col('$'))
-        endif
-    elseif a:cmd == 'b'
-        call cursor(line('.'), col('$'))
-        if prevline - line('.') > 1
-            call cursor(prevline-1, 0)
-            call cursor(line('.'), col('$'))
-        endif
-    endif
-    return ''
-endfunction
-
 " ----------------------------------------------------------
 " #visualMode ビジュアルモードのkeymap
 " ----------------------------------------------------------
-" ; :
 vnoremap <C-j> <Esc>
+vnoremap <C-\> <Esc>
 vnoremap ; :
 vnoremap : ;
-
-" インデント
-" vnoremap < <gv
-" vnoremap > >gv
 
 " vで範囲を拡大。<C-v>で範囲を縮小
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
 " ヤンクやペーストの後は行の末尾へ移動
-vnoremap <silent> y y`]
-vnoremap <silent> p p`]
-nnoremap <silent> p p`]
+vnoremap <silent> <Space>y y`]
+vnoremap <silent> <Space>p p`]
+nnoremap <silent> <Space>p p`]
 
 " vモードの置換連続ペースト用
 " `>　選択した範囲の最後の文字列へ移動
@@ -755,18 +631,14 @@ endif
 " ----------------------------------------------------------
 " Leaderの活用（ \ がleader ）
 " ----------------------------------------------------------
-
 " サクッと保存
 nnoremap <silent> ,w :<C-u>w<CR>
-
 " サクッと終了
 nnoremap <silent> ,q :<C-u>q<CR>
-
 " カーソル下の単語をハイライトする
 nnoremap <silent> <F3> "zyiw:let @/ = '\<' . @z . '\>'<CR>:set hlsearch<CR>
 " カーソル下の単語を置換する
 nmap <F8> <F3>;%s/<C-r>///gc<left><Left><Left>
-
 " 現在の選択範囲を検索する
 xnoremap * :<C-u>call <SID>VSetSearch()<CR>/<C-R>=@/<CR><CR>
 xnoremap # :<C-u>call <SID>VSetSearch()<CR>?<C-R>=@/<CR><CR>
@@ -780,7 +652,6 @@ endfunction
 " -----------------------------------------------------------------------------------------
 " plugins setting プラグイン関係
 " -----------------------------------------------------------------------------------------
-
 " ----------------------------------------------------------
 " Ctrlp
 " ----------------------------------------------------------
@@ -916,8 +787,9 @@ nmap <silent> <Space>cc <Plug>(operator-surround-replace)<Plug>(textobj-multiblo
 
 let g:operator#surround#blocks = {
     \ '-' : [
-    \   { 'block' : ['"', '"'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['"'] },
+    \   { 'block' : [' ', ' '], 'motionwise' : ['char', 'line', 'block'], 'keys' : [' '] },
     \   { 'block' : ["'", "'"], 'motionwise' : ['char', 'line', 'block'], 'keys' : ["'"] },
+    \   { 'block' : ['"', '"'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['"'] },
     \   { 'block' : ['`', '`'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['`'] },
     \   { 'block' : ['(', ')'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['('] },
     \   { 'block' : ['( ', ' )'], 'motionwise' : ['char', 'line', 'block'], 'keys' : [')'] },
@@ -1157,3 +1029,5 @@ augroup Ime
    autocmd InsertEnter * call <SID>ImeControl(current_ime)
    autocmd InsertLeave * call <SID>OffIME()
 augroup END
+
+command! Terminal call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)/2, minheight: &lines/2 })
