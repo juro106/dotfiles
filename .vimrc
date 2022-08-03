@@ -101,6 +101,7 @@ call plug#end()
 "         \ ) | autocmd! load_us_insert
 " augroup END
 
+
 augroup load_us_hold
     autocmd!
     autocmd CursorHold * call plug#load(
