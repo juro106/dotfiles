@@ -305,6 +305,7 @@ augroup filetypeSetting
     " markdown 目次表示
     autocmd BufNewFile,BufRead *.md nnoremap <Leader>toc :Toc<CR>
     autocmd BufNewFile,BufRead *.md set scl=no " 左側の余白
+    autocmd BufNewFile,BufRead *.CASL2 set fenc=cp932 ff=dos " casl2用
 augroup  END
 
 function! s:RUN(lang) abort
@@ -439,7 +440,7 @@ vnoremap ,s :s///g<Left><Left>
 
 " tab pageを使いやすくする
 " ------------------------
-nnoremap ,t :<C-u>tabnew<CR>
+" nnoremap ,t :<C-u>tabnew<CR>
 " nnoremap <C-TAB> gt
 " nnoremap <C-S-TAB> gT
 nnoremap g<TAB> gT
@@ -518,8 +519,8 @@ nnoremap <Space>y  y$
 nnoremap <Space><CR> V:!sh<CR>
 vnoremap <Space><CR> :!sh<CR>
 " 行を丸ごと上下移動
-nnoremap <C-k> "zdd<Up>"zP
-nnoremap <C-j> "zdd"zp
+" nnoremap <C-k> "zdd<Up>"zP
+" nnoremap <C-j> "zdd"zp
 nnoremap <C-Up> "zdd<Up>"zP
 nnoremap <C-Down> "zdd"zp
 " 複数行を丸ごと移動

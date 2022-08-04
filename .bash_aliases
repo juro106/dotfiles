@@ -32,7 +32,6 @@ alias mozc-tool="env LANGUAGE=ja:en /usr/lib/mozc/mozc_tool --mode=config_dialog
 alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
 alias mozc-word="/usr/lib/mozc/mozc_tool --mode=word_register_dialog"
 
-
 # hugo用
 alias hugo3='hugo -D -p 1313 server'
 alias hugo2='hugo -D -p 1312 server'
