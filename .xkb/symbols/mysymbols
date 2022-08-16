@@ -1,0 +1,21 @@
+xkb_symbols "muhenkankeys" {
+    key.type = "MUHENKAN";
+
+    replace key <CAPS> { [ Control_L, Control_L, Control_L ] };
+    replace key <LCTL> { [ Muhenkan ] };
+
+    key <AE05> { [	  5,    percent,      EuroSign ] };
+    key <AC06> { [	  h,	H,  Left    ] };
+    key <AC07> { [	  j,	J,  Down    ] };
+    key <AC08> { [	  k,	K,  Up      ] };
+    key <AC09> { [	  l,	L,  Right   ] };
+    key <AC01> { [	  a,	A,  Home    ] };
+    key <AC04> { [	  f,	F,  Right   ] };
+    key <AC05> { [	  g,	G,  Home    ] };
+    key <AD03> { [	  e,	E,  End     ] };
+    key <AB05> { [	  b,	B,  Left    ] };
+    key <AB06> { [	  n,	n,  Down    ] };
+    key <AB07> { [	  m,	M,  Return  ] };
+    key <AD10> { [	  p,	P,  Up      ] };
+    key <AD11> { [ bracketleft,	braceleft, Escape	] };
+};

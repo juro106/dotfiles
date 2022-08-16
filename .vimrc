@@ -138,7 +138,12 @@ function! s:on_lsp_buffer_enabled() abort
   nmap <buffer> gr <plug>(lsp-references)
   nmap <buffer> K <plug>(lsp-hover)
   " inoremap <expr> <cr> pumvisible() ? "\<c-y>\<cr>" : "\<cr>"
+  au!
+  autocmd BufWritePre <buffer> :silent LspDocumentDiagnostics
 endfunction
+
+" augroup diagnostics
+" augroup End
 
 augroup lsp_install
   au!
@@ -371,8 +376,6 @@ let &t_SR = "\e[4 q" "SR = REPLACE mode
 " ----------------------------------------------------------
 " #normalMode ノーマルモードのキーマップ
 " ----------------------------------------------------------
-nnoremap <C-\> <Esc>
-nnoremap <Space>\ <C-\>
 " file open ファイルの呼び出しなど
 nnoremap [config] <Nop>
 nmap <Space>j [config]
@@ -406,8 +409,8 @@ if has('unix')
 endif
 
 " : ; の入れ替え
-nnoremap : ;
-nnoremap ; :
+" nnoremap : ;
+" nnoremap ; :
 " nnoremap ; :
 " nnoremap : ;
 " vnoremap ; :
@@ -508,7 +511,6 @@ nnoremap ,ct a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
 " Space key 関係
 " ----------------------------------------------------------
 nnoremap <Space>a A
-nnoremap ,a A
 nnoremap <Space>i I
 nnoremap <Space>v _v$h
 vnoremap <Space>v <Esc>_v$h
@@ -535,8 +537,6 @@ inoremap っj <Esc>
 
 " CTRL-C,J は Esc
 inoremap <C-j> <Esc>
-inoremap <C-c> <Esc>
-inoremap <C-\> <Esc>
 
 " CTRL-Space
 imap <Nul> <C-Space>
@@ -544,14 +544,6 @@ inoremap <C-Space> <Nop>
 
 " CtrlとLで ESC して 右
 inoremap <C-l> <Esc><Right>
-"" ２行挿入
-"inoremap <silent> <C-o><C-o> <C-g>u<Esc>o<CR>
-
-" 上下に空行を挿入
-imap <S-CR> <End><CR>
-imap <C-S-CR> <Up><End><CR>
-nnoremap <S-CR> mzo<Esc>`z
-nnoremap <C-S-CR> mzO<Esc>`z
 
 " オムニ補完
 " inoremap <F7> <C-x><C-o>
@@ -733,7 +725,7 @@ let g:vaffle_open_selected_vsplit_position = 'rightbelow'
 let g:vaffle_open_selected_split_position = 'rightbelow'
 let g:vaffle_show_hidden_files = 1
 
-nnoremap <silent> ,f :Vaffle<CR>
+nnoremap <silent> <Space>f :Vaffle<CR>
 
 function! s:customize_vaffle_mappings() abort
     nmap <buffer> C <Plug>(vaffle-chdir-here)
@@ -872,8 +864,8 @@ nnoremap <silent> <F11> :TagbarToggle<CR>
 " ftjpn 
 " -------------------------------------------------------------------------------------------------------------------
 
-nmap <silent> <Space>f F
-nmap <silent> <Space>t T
+" nmap <silent> <Space>f F
+" nmap <silent> <Space>t T
 
 let g:multi_f_key_list = [
     \ ['.', '。', '．'],
