@@ -3,9 +3,10 @@ xkb_symbols "muhenkankeys" {
 
     replace key <CAPS> { [ Control_L, Control_L, Control_L ] };
     replace key <LCTL> { [ Muhenkan ] };
+    // <LWIN>
 
     key <AE05> { [	  5,    percent,      EuroSign ] };
-    key <AC06> { [	  h,	H,  Left    ] };
+    key <AC06> { [	  h,	H,  BackSpace    ] };
     key <AC07> { [	  j,	J,  Down    ] };
     key <AC08> { [	  k,	K,  Up      ] };
     key <AC09> { [	  l,	L,  Right   ] };
@@ -14,8 +15,9 @@ xkb_symbols "muhenkankeys" {
     key <AC05> { [	  g,	G,  Home    ] };
     key <AD03> { [	  e,	E,  End     ] };
     key <AB05> { [	  b,	B,  Left    ] };
-    key <AB06> { [	  n,	n,  Down    ] };
+    key <AB06> { [	  n,	N,  Down    ] };
     key <AB07> { [	  m,	M,  Return  ] };
     key <AD10> { [	  p,	P,  Up      ] };
+    key <AB02> { [	  x,	X,  Delete		]	};
     key <AD11> { [ bracketleft,	braceleft, Escape	] };
 };
