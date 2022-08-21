@@ -2,6 +2,7 @@ let s:so_save = &g:so | let s:siso_save = &g:siso | setg so=0 siso=0 | setl so=-
 argglobal
 let s:cpo_save=&cpo
 set cpo&vim
+nmap <buffer> K <Plug>(lsp-hover)
 nmap <buffer> \w <Plug>(elm-browse-docs)
 nmap <buffer> \d <Plug>(elm-show-docs)
 nmap <buffer> \e <Plug>(elm-error-detail)
@@ -9,9 +10,9 @@ nmap <buffer> \r <Plug>(elm-repl)
 nmap <buffer> \t <Plug>(elm-test)
 nmap <buffer> \b <Plug>(elm-make-main)
 nmap <buffer> \m <Plug>(elm-make)
+nmap <buffer> gr <Plug>(lsp-references)
 nmap <buffer> gd <Plug>(lsp-definition)
 nmap <buffer> gf :call elm#util#GoToModule(expand('<cfile>'))
-nmap <buffer> <F7> <Plug>(lsp-rename)
 let &cpo=s:cpo_save
 unlet s:cpo_save
 setlocal keymap=
@@ -106,7 +107,7 @@ setlocal shiftwidth=4
 setlocal noshortname
 setlocal showbreak=
 setlocal sidescrolloff=-1
-setlocal signcolumn=yes
+setlocal signcolumn=no
 setlocal nosmartindent
 setlocal softtabstop=4
 setlocal nospell
@@ -141,28 +142,12 @@ setlocal nowinfixheight
 setlocal nowinfixwidth
 setlocal wrap
 setlocal wrapmargin=0
-212
-normal! zo
-214
-normal! zo
-455
-normal! zo
-816
-normal! zo
-818
-normal! zo
-847
-normal! zo
-937
-normal! zo
-999
-normal! zo
-let s:l = 965 - ((29 * winheight(0) + 29) / 59)
+let s:l = 468 - ((31 * winheight(0) + 28) / 56)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 965
-normal! 044|
+keepjumps 468
+normal! 075|
 let &g:so = s:so_save | let &g:siso = s:siso_save
 doautoall SessionLoadPost
 " vim: set ft=vim :

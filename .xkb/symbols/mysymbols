@@ -1,23 +1,26 @@
-xkb_symbols "muhenkankeys" {
-    key.type = "MUHENKAN";
-
+xkb_symbols "custom" {
     replace key <CAPS> { [ Control_L, Control_L, Control_L ] };
-    replace key <LCTL> { [ Muhenkan ] };
-    // <LWIN>
+    replace key <LCTL> { [ Hyper_L ] };
 
-    key <AE05> { [	  5,    percent,      EuroSign ] };
-    key <AC06> { [	  h,	H,  BackSpace    ] };
-    key <AC07> { [	  j,	J,  Down    ] };
-    key <AC08> { [	  k,	K,  Up      ] };
-    key <AC09> { [	  l,	L,  Right   ] };
-    key <AC01> { [	  a,	A,  Home    ] };
-    key <AC04> { [	  f,	F,  Right   ] };
-    key <AC05> { [	  g,	G,  Home    ] };
-    key <AD03> { [	  e,	E,  End     ] };
-    key <AB05> { [	  b,	B,  Left    ] };
-    key <AB06> { [	  n,	N,  Down    ] };
-    key <AB07> { [	  m,	M,  Return  ] };
-    key <AD10> { [	  p,	P,  Up      ] };
-    key <AB02> { [	  x,	X,  Delete		]	};
-    key <AD11> { [ bracketleft,	braceleft, Escape	] };
+    // key <AE05> { [	  5,    percent,      EuroSign ] };
+
+    key <AC06> { [	  h,	H ], overlay1 = <BKSP> };
+    key <AC07> { [	  j,	J ], overlay1 = <DOWN> };
+    key <AC08> { [	  k,	K ], overlay1 = <FK14> };
+    key <AC09> { [	  l,	L ], overlay1 = <RGHT> };
+    key <AC01> { [	  a,	A ], overlay1 = <HOME> };
+    key <AC04> { [	  f,	F ], overlay1 = <RGHT> };
+    key <AC05> { [	  g,	G ], overlay1 = <HOME> };
+    key <AD03> { [	  e,	E ], overlay1 = <END>  };
+    key <AB05> { [	  b,	B ], overlay1 = <LEFT> };
+    key <AB06> { [	  n,	N ], overlay1 = <DOWN> };
+    key <AB07> { [	  m,	M ], overlay1 = <RTRN> };
+    key <AD10> { [	  p,	P ], overlay1 = <UP>   };
+    key <AC03> { [	  d,	D ], overlay1 = <DELE> };
+    key <AD07> { [	  u,	U ], overlay1 = <FK15> };
+    key <AD08> { [	  i,	I ], overlay1 = <TAB> };
+    key <AD09> { [	  o,	O ], overlay1 = <FK16> };
+    key <AB08> { [ comma,	less ], overlay1 = <PGUP> };
+    key <AB09> { [ period,	greater	], overlay1 = <PGDN> };
+    key <AD11> { [ bracketleft,	braceleft ], overlay1 = <ESC> };
 };

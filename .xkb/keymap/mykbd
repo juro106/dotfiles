@@ -1,7 +1,7 @@
 xkb_keymap {
 	xkb_keycodes  { include "evdev+aliases(qwerty)"	};
-	xkb_types     { include "complete+mytypes(muhenkan)"	};
-	xkb_compat    { include "complete+mycompat(muhenkan)"	};
-	xkb_symbols   { include "pc+us+inet(evdev)+mysymbols(muhenkankeys)"	};
+	xkb_types     { include "complete" };
+	xkb_compat    { include "complete+mycompat(custom)"	};
+	xkb_symbols   { include "pc+us+inet(evdev)+mysymbols(custom)"	};
 	xkb_geometry  { include "pc(pc105)"	};
 };
