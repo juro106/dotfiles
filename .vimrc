@@ -433,7 +433,7 @@ nnoremap <silent> ,p ,
 " set statusline+=%{IMStatus('[日本語固定モード]')}
 
 " :helpを引く
-nnoremap <C-h> :<C-u>tab help<Space>
+nnoremap <Leader>h :<C-u>help<Space>
 " 「 K(shift k) 」でカーソル下の単語のhelpを引く
 set keywordprg=:help " Open Vim internal help by K command
 
