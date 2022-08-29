@@ -434,6 +434,7 @@ nnoremap <silent> ,p ,
 
 " :helpを引く
 nnoremap <Leader>h :<C-u>help<Space>
+nnoremap <F1> :<C-u>help<Space>
 " 「 K(shift k) 」でカーソル下の単語のhelpを引く
 set keywordprg=:help " Open Vim internal help by K command
 
@@ -532,7 +533,7 @@ vnoremap <C-Down> "zx"zp`[V`]
 " #insertMode インサートモード（挿入モード）のキーマップ
 " ----------------------------------------------------------
 " jj で Esc
-inoremap jj <Esc>
+" inoremap jj <Esc>
 inoremap っj <Esc>
 
 " CTRL-C,J は Esc
@@ -558,6 +559,7 @@ inoremap ¨「 「」<Esc>i
 inoremap ¨『 『』<Esc>i
 inoremap ¨【 【】<Esc>i
 
+
 " 直前の１単語削除
 inoremap <silent> <C-BS> <C-g>u<C-w>
 " 行頭まで削除
@@ -573,10 +575,6 @@ inoremap <silent> <M-v> <C-K>
 " ----------------------------------------------------------
 " #visualMode ビジュアルモードのkeymap
 " ----------------------------------------------------------
-vnoremap <C-j> <Esc>
-vnoremap <C-\> <Esc>
-vnoremap ; :
-vnoremap : ;
 
 " vで範囲を拡大。<C-v>で範囲を縮小
 vmap v <Plug>(expand_region_expand)
