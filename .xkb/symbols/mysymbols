@@ -4,9 +4,9 @@ xkb_symbols "custom" {
 
     // key <AE05> { [	  5,    percent,      EuroSign ] };
 
-    key <AC06> { [	  h,	H ], overlay1 = <BKSP> };
+    key <AC06> { [	  h,	H ], overlay1 = <LEFT> };
     key <AC07> { [	  j,	J ], overlay1 = <DOWN> };
-    key <AC08> { [	  k,	K ], overlay1 = <FK14> };
+    key <AC08> { [	  k,	K ], overlay1 = <UP>   };
     key <AC09> { [	  l,	L ], overlay1 = <RGHT> };
     key <AC01> { [	  a,	A ], overlay1 = <HOME> };
     key <AC04> { [	  f,	F ], overlay1 = <RGHT> };
@@ -17,6 +17,7 @@ xkb_symbols "custom" {
     key <AB07> { [	  m,	M ], overlay1 = <RTRN> };
     key <AD10> { [	  p,	P ], overlay1 = <UP>   };
     key <AC03> { [	  d,	D ], overlay1 = <DELE> };
+    key <AD06> { [	  y,	Y ], overlay1 = <BKSP> };
     key <AD07> { [	  u,	U ], overlay1 = <FK15> };
     key <AD08> { [	  i,	I ], overlay1 = <TAB> };
     key <AD09> { [	  o,	O ], overlay1 = <FK16> };

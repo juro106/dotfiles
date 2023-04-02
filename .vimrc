@@ -77,8 +77,8 @@ Plug 'mattn/vim-lsp-icons'
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
+" Plug 'hrsh7th/vim-vsnip'
+" Plug 'hrsh7th/vim-vsnip-integ'
 Plug 'mattn/vim-goimports'
 Plug 'elmcast/elm-vim'
 " Plug '~/.fzf'
@@ -549,7 +549,7 @@ inoremap <C-l> <Esc><Right>
 " オムニ補完
 " inoremap <F7> <C-x><C-o>
 
-" snippet挿入
+" snippet挿入 ※文字を入力してから C-z で snippet が挿入される
 inoremap <C-z> <Esc>:<C-u>call MySnippet()<CR>
 
 " 全角の括弧を補完
@@ -558,7 +558,6 @@ inoremap ¨（ （）<Esc>i
 inoremap ¨「 「」<Esc>i
 inoremap ¨『 『』<Esc>i
 inoremap ¨【 【】<Esc>i
-
 
 " 直前の１単語削除
 inoremap <silent> <C-BS> <C-g>u<C-w>
@@ -582,6 +581,7 @@ vmap <C-v> <Plug>(expand_region_shrink)
 
 " ヤンクやペーストの後は行の末尾へ移動
 vnoremap <silent> <Space>y y`]
+nnoremap <silent> <Space>y y`]
 vnoremap <silent> <Space>p p`]
 nnoremap <silent> <Space>p p`]
 
@@ -788,9 +788,9 @@ let g:operator#surround#blocks = {
     \   { 'block' : ['（', '）'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['c'] },
     \   { 'block' : ['「', '」'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['k'] },
     \   { 'block' : ['『', '』'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['K'] },
-    \   { 'block' : ['<', '>'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['v', '<'] },
     \   { 'block' : ['< ', ' >'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['>'] },
-    \   { 'block' : ['＜', '＞'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['V'] },
+    \   { 'block' : ['＜', '＞'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['v'] },
+    \   { 'block' : ['〈', '〉'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['y'] },
     \   { 'block' : ['[', ']'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['['] },
     \   { 'block' : ['[ ', ' ]'], 'motionwise' : ['char', 'line', 'block'], 'keys' : [']'] },
     \   { 'block' : ['{', '}'], 'motionwise' : ['char', 'line', 'block'], 'keys' : ['{'] },
@@ -865,15 +865,16 @@ nnoremap <silent> <F11> :TagbarToggle<CR>
 " nmap <silent> <Space>f F
 " nmap <silent> <Space>t T
 
-let g:multi_f_key_list = [
+" let g:multi_f_key_list = [
+let g:ftjpn_key_list = [
     \ ['.', '。', '．'],
     \ [',', '、', '，'],
+    \ ['g', 'が'],
     \ ['t', 'て'],
     \ ['i', 'に'],
     \ ['w', 'を'],
     \ ['h', 'は'],
     \ ['n', 'の'],
-    \ ['g', 'が'],
     \ ['d', 'で'],
     \ ['u', 'く'],
     \ ['k', 'か'],
