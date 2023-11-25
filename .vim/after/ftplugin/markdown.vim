@@ -45,7 +45,7 @@ function! s:Toc(...) abort
         " # で始まる行だけを抽出して置換して見出しリストへ追加
         " if len(matchstr(line, '^#')) > 0 よりも match(line, '^#') !=# -1 のほうが確実らしい
         if arg == 2
-            if match(line, '^## ') !=# -1
+            if match(line, '^##\(.*\){#') !=# -1
                 let line = substitute(line, '#\+\s\+\zs\(.*\)\ze\s\+{', '\[\1\]', '')
                 let line = substitute(line, '\s\+{\(.*\)}', '(\1)', '')
                 let line = substitute(line, '^## ', '- ## ', '')
@@ -53,7 +53,7 @@ function! s:Toc(...) abort
             endif
         endif
         if arg == 3
-            if match(line, '^## ') !=# -1 || match(line, '^### ') !=# -1
+            if match(line, '^##\(.*\){#') !=# -1 || match(line, '^### ') !=# -1
                 let line = substitute(line, '#\+\s\+\zs\(.*\)\ze\s\+{', '\[\1\]', '')
                 let line = substitute(line, '\s\+{\(.*\)}', '(\1)', '')
                 let line = substitute(line, '^## ', '- ## ', '')
@@ -62,7 +62,7 @@ function! s:Toc(...) abort
             endif
         endif
         if arg == 4
-            if match(line, '^##') !=# -1
+            if match(line, '^##\(.*\){#') !=# -1
                 let line = substitute(line, '#\+\s\+\zs\(.*\)\ze\s\+{', '\[\1\]', '')
                 let line = substitute(line, '\s\+{\(.*\)}', '(\1)', '')
                 let line = substitute(line, '^## ', '- ## ', '')
