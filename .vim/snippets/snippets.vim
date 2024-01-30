@@ -1,20 +1,17 @@
 let b:snippets = {
     \ 'front': "---\n"
     \    ."title: '${1}'\n"
-    \    ."h1: ''\n"
     \    ."description: ''\n"
     \    ."datePublished: '".strftime("%Y-%m-%dT%H:%M:%S+09:00")."'\n"
     \    ."dateModified: ''\n"
+    \    ."draft: true\n"
     \    ."---",
     \ 'fm': "---\n"
-    \    ."datePublished: '".strftime("%Y-%m-%dT%H:%M:%S+09:00")."'\n"
-    \    ."dateModified: ''\n"
     \    ."title: '${1}'\n"
     \    ."description: ''\n"
-    \    ."tags:\n"
-    \    ."  - \n"
-    \    ."summary: |-\n"
-    \    ."\n"
+    \    ."datePublished: '".strftime("%Y-%m-%dT%H:%M:%S+09:00")."'\n"
+    \    ."dateModified: ''\n"
+    \    ."draft: true\n"
     \    ."---",
     \ 'ads': "{{<ads>}}${1}",
     \ 'block': "<blockquote>${1}</blockquote>",

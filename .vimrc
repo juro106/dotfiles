@@ -272,10 +272,11 @@ let g:vim_indent_cont = shiftwidth() * 1
 
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.c   setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.c    setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.cpp  setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.yml  setlocal  sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.yaml setlocal  sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.css  setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.yml  setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.yaml setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.md   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.js   setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.ts   setlocal sw=2 sts=2 ts=2 et
