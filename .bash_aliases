@@ -1,5 +1,8 @@
 # git
 alias g='git'
+alias ga='~/bin/bash/gitadd.sh'
+alias gc='~/bin/bash/gitcommit.sh'
+alias gpu='~/bin/bash/gitpush.sh'
 
 # some more ls aliases
 alias ll='ls -alF'
@@ -33,9 +36,12 @@ alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
 alias mozc-word="/usr/lib/mozc/mozc_tool --mode=word_register_dialog"
 
 # hugo用
+alias hugo4='hugo -D -p 1314 server'
 alias hugo3='hugo -D -p 1313 server'
 alias hugo2='hugo -D -p 1312 server'
-alias hugob='hugo --minify --cleanDestinationDir'
+alias hugoc='hugo --cleanDestinationDir'
+alias hugomc='hugo --minify --cleanDestinationDir'
 
 # goolge search script
 alias ggl='google_search'
+

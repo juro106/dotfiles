@@ -31,3 +31,7 @@
 
 [grep]
 	lineNumber = true
+[safe]
+	directory = /home/kenichiro/src/vim
+	directory = /mn/storage/develop/horse_racing/mykeiba/mykeiba.git
+	directory = /mnt/storage/develop/horse_racing/mykeiba/mykeiba.git

@@ -1,7 +1,7 @@
 ﻿set encoding=utf-8
 scriptencoding utf-8
 set fileencoding=utf-8
-set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
+" set fileencodings=utf-8,iso-2022-jp,cp932,euc-jp
 "set shellslash
 set guioptions+=M               " $VIMRUTIME/menu.vimを読み込まない
 set guioptions+=k               " タブなどの追加時にウインドウサイズ等を維持
@@ -11,6 +11,7 @@ set langmenu=none
 set background=dark             " darkmode
 syntax enable
 filetype plugin indent on
+syntax off
 
 let g:no_gvimrc_example         = 1
 let g:no_vimrc_example          = 1
@@ -61,29 +62,29 @@ Plug 'deton/jasegment.vim'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'cocopon/vaffle.vim'
 Plug 'tomtom/tcomment_vim' ", {'on': [] }
-" Plug 'fuenor/im_control.vim', {'on': [] }
+" Plug 'fuenor/im_control.vim' ", {'on': [] }
 Plug 'itchyny/vim-parenmatch' ", {'on': [] }
 Plug 'itchyny/vim-haskell-indent', {'on': [] }
 Plug 'jason0x43/vim-js-indent', { 'for': 'typescript' }
 " Plug 'Quramy/tsuquyomi', { 'for': 'typescript' }
 " Plug 'juro106/mkz'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'tyru/open-browser.vim'
+Plug 'tyru/open-browser.vim' ", {'on': []}
 
 " lsp >>>
-Plug 'prabirshrestha/vim-lsp'
-Plug 'mattn/vim-lsp-settings'
+Plug 'prabirshrestha/vim-lsp' ", { 'on': [] }
+Plug 'mattn/vim-lsp-settings' ", {'on': []}
 Plug 'mattn/vim-lsp-icons'
 " Plug 'prabirshrestha/asyncomplete.vim'
 " Plug 'prabirshrestha/async.vim'
 " Plug 'prabirshrestha/asyncomplete-lsp.vim'
 " Plug 'hrsh7th/vim-vsnip'
 " Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'mattn/vim-goimports'
-Plug 'elmcast/elm-vim'
+Plug 'mattn/vim-goimports' ", {'on': []}
+Plug 'elmcast/elm-vim' ", {'on': []}
 " Plug '~/.fzf'
 " Plug 'junegunn/fzf.vim'
-Plug 'juro106/ftjpn'
+Plug 'juro106/ftjpn' ", {'on': []}
 " Plug 'machakann/vim-sandwich'
 " Plug 'rhysd/clever-f.vim'
 " Plug 'mattn/wiseman-f-vim'
@@ -92,6 +93,15 @@ Plug 'juro106/ftjpn'
 " Plug 'deton/jasentence.vim'
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
 call plug#end()
+
+function! s:load_plug(timer)
+	call plug#load(
+		\ 'vim-lsp',
+		\ 'vim-lsp-settings',
+		\ )
+endfunction
+call timer_start(500, function("s:load_plug"))
+
 
 "load Event
 " augroup load_us_insert
@@ -298,6 +308,7 @@ augroup filetypeSetting
     autocmd BufNewFile,BufRead *.rb setfiletype ruby
     autocmd BufNewFile,BufRead *.ts setfiletype typescript
     autocmd BufNewFile,BufRead *.js setfiletype javascript
+    autocmd BufNewFile,BufRead *.go nnoremap <F5> :<C-u>! go run %:p<CR>
     autocmd BufNewFile,BufRead *.py nnoremap ,e :<C-u>!python3 %<CR>
     autocmd BufNewFile,BufRead *.py nnoremap <F12> :<C-u>call <SID>RUN('!python3')<CR>
     autocmd BufNewFile,BufRead *.rb nnoremap ,e :<C-u>!ruby %<CR>
@@ -306,6 +317,7 @@ augroup filetypeSetting
     autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
     autocmd BufNewFile,BufRead *.ts nnoremap ,e :<C-u>!tsc %<CR>
     autocmd BufNewFile,BufRead *.ts nnoremap <F12> :<C-u>call <SID>RUN('!tsc')<CR>
+
     " マークダウンのファイル名 .mdも含める
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,md.draft,txt} set filetype=markdown
     " markdown 目次表示
@@ -1022,6 +1034,11 @@ augroup Ime
    autocmd!
    autocmd InsertEnter * call <SID>ImeControl(current_ime)
    autocmd InsertLeave * call <SID>OffIME()
+   autocmd CmdlineEnter * call <SID>OffIME()
+   autocmd CmdlineLeave * call <SID>OffIME()
+   autocmd CmdwinEnter * call <SID>OffIME()
+   autocmd CmdwinLeave * call <SID>OffIME()
 augroup END
 
 command! Terminal call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)/2, minheight: &lines/2 })
+
