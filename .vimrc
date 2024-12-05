@@ -275,7 +275,7 @@ set smarttab                    " スペースの数がtabstopの値に達した
 set softtabstop=4               " vimが挿入するインデントの幅（見た目上の空白）
 set shiftwidth=4                " 自動インデントでずれる幅
 set autoindent                  " 普通の自動インデント（前の行を引き継ぐ）
-" set smartindent               " ちょっと賢い自動インデント
+set smartindent                 " ちょっと賢い自動インデント
 " set cindent                     " 賢い自動インデント    
 " vim script の 行連結に使う \(バックスラッシュ) のインデント
 let g:vim_indent_cont = shiftwidth() * 1
@@ -294,6 +294,7 @@ augroup fileTypeIndent
     autocmd BufNewFile,BufRead *.tsx  setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.json setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.hs   setlocal sw=8 sts=8 ts=8 et
+    autocmd BufNewFile,BufRead *.tf   setlocal sw=2 sts=2 ts=2 et
     autocmd FileType sh setlocal sw=2 sts=2 ts=2 et
 augroup End
 
@@ -878,7 +879,6 @@ nnoremap <silent> <F11> :TagbarToggle<CR>
 " nmap <silent> <Space>f F
 " nmap <silent> <Space>t T
 
-" let g:multi_f_key_list = [
 let g:ftjpn_key_list = [
     \ ['.', '。', '．'],
     \ [',', '、', '，'],
@@ -904,7 +904,6 @@ let g:ftjpn_key_list = [
     \ ['!', '！'],
     \ ['?', '？'],
     \ ]
-    " \ [';', '!', '?', '^', '$', '#', ':', '&', '%', '~', '*', '！', '？'],
 " 記号を複数指定した場合、同じ文字を検索しない限り繰り返しは不可
 " ※行を跨ぐ検索のほうが便利そうだと思ったけど、それだと複数候補のどれが引っ掛るか不明瞭なのでやはり行限定で良しとすることにした。
 

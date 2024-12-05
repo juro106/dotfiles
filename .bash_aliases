@@ -19,9 +19,10 @@ alias q='exit'
 alias today='date +%Y-%m-%d'
 alias touchtoday='e `date +%Y-%m-%d`.md'
 
+alias vi="vi -u NONE"
 alias vimg="vim -g"
-alias e="vim"
 alias v="vim"
+alias e="nvim"
 
 alias addlil="ssh-add ~/.ssh/id_rsa_lil"
 alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
@@ -45,3 +46,20 @@ alias hugomc='hugo --minify --cleanDestinationDir'
 # goolge search script
 alias ggl='google_search'
 
+# incremental search
+alias incr='fzf --preview="cat {1} | head -n 500" \
+    --bind "change:reload(rg -i --no-heading --line-number {q} . || true)" \
+    --bind "enter:execute(vim $(echo {1} | cut -d':' -f1))" \
+    --delimiter ":" \
+    --with-nth=1,3 \
+    --preview-window=up:60%'
+
+# terraform
+alias tf="terraform"
+alias tfp="terraform plan"
+alias tfv="terraform validate"
+alias tff="terraform fmt -recursive"
+alias tfa="terraform apply -auto-approve"
+alias tfd="terraform destroy -auto-approve"
+
+alias kubectl="minikube kubectl --"

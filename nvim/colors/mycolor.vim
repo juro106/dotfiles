@@ -1,0 +1,1 @@
+/home/kenichiro/.vim/colors/mycolor.vim
