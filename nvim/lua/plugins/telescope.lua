@@ -1,7 +1,7 @@
 -- ~/.config/nvim/lua/plugins/telescope.lua
 return {
-    { 'nvim-lua/plenary.nvim', lazy = true },
-    { 'delphinus/telescope-memo.nvim', lazy = true },
+    { 'nvim-lua/plenary.nvim' },
+    { 'delphinus/telescope-memo.nvim' },
     {
         'nvim-telescope/telescope.nvim',
         cmd = { 'Telescope' },

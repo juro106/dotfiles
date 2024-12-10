@@ -4,255 +4,260 @@ vim.cmd.highlight('clear')
 vim.o.background = 'dark'
 vim.g.colors_name = 'mynvim'
 
-local hi = function(name, val)
-  -- Force links
-  val.force = true
-  -- Make sure that `cterm` attribute is not populated from `gui`
-  val.cterm = val.cterm or {}
-  -- Define global highlight
-  vim.api.nvim_set_hl(0, name, val)
-end
+-- local hi = function(name, val)
+--     -- Force links
+--     -- val.force = true
+--     -- Make sure that `cterm` attribute is not populated from `gui`
+--     -- val.cterm = val.cterm or {}
+--     -- Define global highlight
+--     vim.api.nvim_set_hl(0, name, val)
+-- end
 
 -- colors
 local cl = {
-    black        = '#000000',
-    black_2      = '#222222',
-    deep_grey    = '#444444',
-    grey         = '#808080',
-    dark_grey    = '#a9a9a9',
-    light_grey   = '#d3d3d3',
-    white_smoke  = '#efefef',
-    white        = '#ffffff',
-    gold         = '#ffd700',
-    purple       = '#dcbdfb',
-    red          = '#f47067',
-    blue         = '#362299',
-    skyblue      = '#2e5299',
-    dark_blue    = '#0b0b33',
-    green        = '#4d804d',
-    dark_green   = '#1e3333',
-    cyan         = '#00ffff',
+    black       = '#000000',
+    black_2     = '#222222',
+    deep_grey   = '#444444',
+    grey        = '#808080',
+    dark_grey   = '#a9a9a9',
+    light_grey  = '#d3d3d3',
+    white_smoke = '#efefef',
+    white       = '#ffffff',
+    gold        = '#ffd700',
+    purple      = '#dcbdfb',
+    red         = '#f47067',
+    blue        = '#0000cd',
+    skyblue     = '#2e5299',
+    dark_blue   = '#0b0b33',
+    blue_grey   = '#a3c4cc',
+    green       = '#4d804d',
+    dark_green  = '#1e3333',
+    cyan        = '#00ffff',
 }
 
--- General
-hi('Normal', {})
+local highlights = {
+    -- General
+    Normal       = {},
+    Comment      = { fg = cl.dark_grey },
+    Conceal      = { fg = cl.light_grey, bg = cl.grey },
+    Constant     = {},
+    Identifier   = {},
+    Visual       = { fg = cl.white, bg = cl.dark_grey },
+    Special      = {},
+    -- 'Search   = { fg = cl.black, bg = cl.gold },
+    Search       = { link = 'Visual' },
+    IncSearch    = { link = 'Search' },
+    ColorColumn  = {},
+    Cursor       = {},
+    CursorColumn = {},
+    CursorLine   = {},
+    CursorLineNr = {},
+    DiffAdd      = { fg = cl.blue },
+    DiffChange   = { fg = cl.green },
+    DiffDelete   = { fg = cl.red },
+    DiffText     = { fg = cl.purple },
+    Directory    = {},
+    ErrorMsg     = {},
+    FoldColumn   = {},
+    Folded       = {},
+    Ignore       = {},
+    LineNr       = {},
+    MatchParen   = { bg = cl.cyan },
+    ParenMatch   = { link = 'MatchParen' },
+    ModeMsg      = { bold = true },
+    MoreMsg      = {},
 
-hi('Comment',      { fg = cl.dark_grey })
-hi('Conceal',      { fg = cl.light_grey, bg = cl.grey })
-hi('Constant',     { ctermfg = 220 })
-hi('Identifier',   {})
-hi('Visual',       { fg = cl.white, bg = cl.dark_grey })
-hi('Special',      {})
--- hi('Search',       { fg = cl.black, bg = cl.gold })
-hi('Search',       { link = 'Visual' })
-hi('IncSearch',    { link = 'Search' })
-hi('ColorColumn',  {})
-hi('Cursor',       {})
-hi('CursorColumn', {})
-hi('CursorLine',   {})
-hi('CursorLineNr', {})
-hi('DiffAdd',      { fg = cl.blue })
-hi('DiffChange',   { fg = cl.green })
-hi('DiffDelete',   { fg = cl.red })
-hi('DiffText',     { fg = cl.purple })
-hi('Directory',    {})
-hi('ErrorMsg',     {})
-hi('FoldColumn',   {})
-hi('Folded',       {})
-hi('Ignore',       {})
-hi('LineNr',       {})
-hi('MatchParen',   { bg = cl.cyan })
-hi('ParenMatch',   { link = 'MatchParen' })
-hi('ModeMsg',      { bold = true })
-hi('MoreMsg',      {})
-hi('NonText',      { fg = 'NONE' })
--- hi('Pmenu',        { bg = cl.dark_blue })
-hi('Pmenu',        { bg = cl.deep_grey })
-hi('PmenuSbar',    { link = 'Pmenu' })
-hi('PmenuSel',     { fg = cl.black_2, bg = cl.light_grey })
-hi('PmenuThumb',   { bg = cl.grey })
-hi('PreProc',      {})
-hi('Question',     {})
-hi('SignColumn',   {})
-hi('SpecialKey',   {})
-hi('SpellBad',     {})
-hi('SpellCap',     {})
-hi('SpellLocal',   {})
-hi('SpellRare',    {})
-hi('Statement',    {})
-hi('StatusLine',   { fg = cl.black, bg = cl.white })
-hi('StatusLineNC', { fg = cl.grey, bg = cl.black })
-hi('TabLine',      {})
-hi('TabLineFill',  {})
-hi('TabLineSel',   {})
-hi('TermCursor',   { bg = cl.purple })
-hi('Title',        {})
-hi('Type',         {})
-hi('Underlined',   {})
-hi('WarningMsg',   {})
-hi('WildMenu',     {})
-hi('WinBar',       {})
-hi('lCursor',      {})
-hi('EndOfBuffer',  { fg = cl.blue })
+    -- 'Pmenu    = { bg = cl.dark_blue },
+    Pmenu        = { bg = cl.deep_grey },
+    PmenuSbar    = { link = 'Pmenu' },
+    PmenuSel     = { fg = cl.black_2, bg = cl.light_grey },
+    PmenuThumb   = { bg = cl.grey },
+    PreProc      = {},
+    Question     = {},
+    SignColumn   = {},
+    SpellBad     = {},
+    SpellCap     = {},
+    SpellLocal   = {},
+    SpellRare    = {},
+    Statement    = {},
+    StatusLine   = { fg = cl.black, bg = cl.white },
+    StatusLineNC = { fg = cl.grey, bg = cl.black },
+    TabLine      = {},
+    TabLineFill  = {},
+    TabLineSel   = {},
+    TermCursor   = { bg = cl.purple },
+    Title        = { bold = true },
+    Type         = {},
+    Underlined   = {},
+    WarningMsg   = {},
+    WildMenu     = {},
+    WinBar       = {},
+    lCursor      = {},
+    NonText      = { fg = 'NONE', bg = 'NONE' }, -- eol, extends, precedes
+    SpecialKey   = { fg = 'NONE', bg = 'NONE' }, -- nbsp, tab, trail
+    EndOfBuffer  = { fg = cl.blue },
 
-hi('VertSplit',      { link = 'Normal' })
-hi('WinSeparator',   { link = 'VertSplit' })
-hi('WinBarNC',       { link = 'WinBar' })
-hi('LineNrAbove',    { link = 'LineNr' })
-hi('LineNrBelow',    { link = 'LineNr' })
-hi('QuickFixLine',   { link = 'Search' })
-hi('CursorLineSign', { link = 'SignColumn' })
-hi('CursorLineFold', { link = 'FoldColumn' })
-hi('CurSearch',      { link = 'Search' })
-hi('PmenuKind',      { link = 'Pmenu' })
-hi('PmenuKindSel',   { link = 'PmenuSel' })
-hi('PmenuExtra',     { link = 'Pmenu' })
-hi('PmenuExtraSel',  { link = 'PmenuSel' })
-hi('Substitute',     { link = 'Search' })
-hi('Whitespace',     { link = 'NonText' })
-hi('MsgSeparator',   { link = 'StatusLine' })
-hi('NormalFloat',    { link = 'Pmenu' })
-hi('FloatBorder',    { link = 'WinSeparator' })
-hi('FloatTitle',     { link = 'Title' })
-hi('FloatFooter',    { link = 'Title' })
+    VertSplit      = { link = 'Normal' },
+    WinSeparator   = { link = 'VertSplit' },
+    WinBarNC       = { link = 'WinBar' },
+    LineNrAbove    = { link = 'LineNr' },
+    LineNrBelow    = { link = 'LineNr' },
+    QuickFixLine   = { link = 'Search' },
+    CursorLineSign = { link = 'SignColumn' },
+    CursorLineFold = { link = 'FoldColumn' },
+    CurSearch      = { link = 'Search' },
+    PmenuKind      = { link = 'Pmenu' },
+    PmenuKindSel   = { link = 'PmenuSel' },
+    PmenuExtra     = { link = 'Pmenu' },
+    PmenuExtraSel  = { link = 'PmenuSel' },
+    Substitute     = { link = 'Search' },
+    Whitespace     = { link = 'NonText' },
+    MsgSeparator   = { link = 'StatusLine' },
+    NormalFloat    = { link = 'Pmenu' },
+    FloatBorder    = { link = 'WinSeparator' },
+    FloatTitle     = { link = 'Title' },
+    FloatFooter    = { link = 'Title' },
 
-hi('FloatShadow',          { bg = 'Black', blend=80 })
-hi('FloatShadowThrough',   { bg = 'Black', blend=100 })
-hi('RedrawDebugNormal',    { reverse = true,             cterm = { reverse = true } })
-hi('RedrawDebugClear',     { bg = 'Yellow',              ctermbg = 'Yellow' })
-hi('RedrawDebugComposed',  { bg = 'Green',               ctermbg = 'Green' })
-hi('RedrawDebugRecompose', { bg = 'Red',                 ctermbg = 'Red' })
-hi('Error',                { fg = 'White', bg = 'Red',   ctermfg = 'White', ctermbg = 'Red' })
-hi('Todo',                 { fg = 'Blue', bg = 'Yellow', ctermfg = 'Black', ctermbg = 'Yellow' })
+    FloatShadow          = { bg = 'Black', blend = 80 },
+    FloatShadowThrough   = { bg = 'Black', blend = 100 },
+    RedrawDebugNormal    = { reverse = true, },
+    RedrawDebugClear     = { bg = 'Yellow' },
+    RedrawDebugComposed  = { bg = 'Green'  },
+    RedrawDebugRecompose = { bg = 'Red'  },
+    Error                = { fg = 'White', bg = 'Red' },
+    Todo                 = { fg = 'Blue', bg = 'Yellow' },
 
-hi('String',         { link = 'Constant' })
-hi('Character',      { link = 'Constant' })
-hi('Number',         { link = 'Constant' })
-hi('Boolean',        { link = 'Constant' })
-hi('Float',          { link = 'Number' })
-hi('Function',       { link = 'Identifier' })
-hi('Conditional',    { link = 'Statement' })
-hi('Repeat',         { link = 'Statement' })
-hi('Label',          { link = 'Statement' })
-hi('Operator',       { link = 'Statement' })
-hi('Keyword',        { link = 'Statement' })
-hi('Exception',      { link = 'Statement' })
-hi('Include',        { link = 'PreProc' })
-hi('Define',         { link = 'PreProc' })
-hi('Macro',          { link = 'PreProc' })
-hi('PreCondit',      { link = 'PreProc' })
-hi('StorageClass',   { link = 'Type' })
-hi('Structure',      { link = 'Type' })
-hi('Typedef',        { link = 'Type' })
-hi('Tag',            { link = 'Special' })
-hi('SpecialChar',    { link = 'Special' })
-hi('Delimiter',      { link = 'Special' })
-hi('SpecialComment', { link = 'Special' })
-hi('Debug',          { link = 'Special' })
+    String         = { link = 'Constant' },
+    Character      = { link = 'Constant' },
+    Number         = { link = 'Constant' },
+    Boolean        = { link = 'Constant' },
+    Float          = { link = 'Number' },
+    Function       = { link = 'Identifier' },
+    Conditional    = { link = 'Statement' },
+    Repeat         = { link = 'Statement' },
+    Label          = { link = 'Statement' },
+    Operator       = { link = 'Statement' },
+    Keyword        = { link = 'Statement' },
+    Exception      = { link = 'Statement' },
+    Include        = { link = 'PreProc' },
+    Define         = { link = 'PreProc' },
+    Macro          = { link = 'PreProc' },
+    PreCondit      = { link = 'PreProc' },
+    StorageClass   = { link = 'Type' },
+    Structure      = { link = 'Type' },
+    Typedef        = { link = 'Type' },
+    Tag            = { link = 'Special' },
+    SpecialChar    = { link = 'Special' },
+    Delimiter      = { link = 'Special' },
+    SpecialComment = { link = 'Special' },
+    Debug          = { link = 'Special' },
 
-hi('DiagnosticError',            { fg = 'Red',                          ctermfg = 1 })
-hi('DiagnosticWarn',             { fg = 'Orange',                       ctermfg = 3 })
-hi('DiagnosticInfo',             { fg = 'LightBlue',                    ctermfg = 4 })
-hi('DiagnosticHint',             { fg = 'LightGrey',                    ctermfg = 7 })
-hi('DiagnosticOk',               { fg = 'LightGreen',                   ctermfg = 10 })
-hi('DiagnosticUnderlineError',   { sp = 'Red', underline = true,        cterm = { underline = true } })
-hi('DiagnosticUnderlineWarn',    { sp = 'Orange', underline = true,     cterm = { underline = true } })
-hi('DiagnosticUnderlineInfo',    { sp = 'LightBlue', underline = true,  cterm = { underline = true } })
-hi('DiagnosticUnderlineHint',    { sp = 'LightGrey', underline = true,  cterm = { underline = true } })
-hi('DiagnosticUnderlineOk',      { sp = 'LightGreen', underline = true, cterm = { underline = true } })
-hi('DiagnosticVirtualTextError', { link = 'DiagnosticError' })
-hi('DiagnosticVirtualTextWarn',  { link = 'DiagnosticWarn' })
-hi('DiagnosticVirtualTextInfo',  { link = 'DiagnosticInfo' })
-hi('DiagnosticVirtualTextHint',  { link = 'DiagnosticHint' })
-hi('DiagnosticVirtualTextOk',    { link = 'DiagnosticOk' })
-hi('DiagnosticFloatingError',    { link = 'DiagnosticError' })
-hi('DiagnosticFloatingWarn',     { link = 'DiagnosticWarn' })
-hi('DiagnosticFloatingInfo',     { link = 'DiagnosticInfo' })
-hi('DiagnosticFloatingHint',     { link = 'DiagnosticHint' })
-hi('DiagnosticFloatingOk',       { link = 'DiagnosticOk' })
-hi('DiagnosticSignError',        { link = 'DiagnosticError' })
-hi('DiagnosticSignWarn',         { link = 'DiagnosticWarn' })
-hi('DiagnosticSignInfo',         { link = 'DiagnosticInfo' })
-hi('DiagnosticSignHint',         { link = 'DiagnosticHint' })
-hi('DiagnosticSignOk',           { link = 'DiagnosticOk' })
-hi('DiagnosticDeprecated',       { sp = 'Red', strikethrough = true,    cterm = { strikethrough = true } })
+    diagnosticError            = { fg = 'Red' },
+    DiagnosticWarn             = { fg = 'Orange' },
+    DiagnosticInfo             = { fg = 'LightBlue' },
+    DiagnosticHint             = { fg = 'LightGrey' },
+    DiagnosticOk               = { fg = 'LightGreen' },
+    DiagnosticUnderlineError   = { sp = 'Red', underline = true },
+    DiagnosticUnderlineWarn    = { sp = 'Orange', underline = true },
+    DiagnosticUnderlineInfo    = { sp = 'LightBlue', underline = true },
+    DiagnosticUnderlineHint    = { sp = 'LightGrey', underline = true },
+    DiagnosticUnderlineOk      = { sp = 'LightGreen', underline = true },
+    DiagnosticVirtualTextError = { link = 'DiagnosticError' },
+    DiagnosticVirtualTextWarn  = { link = 'DiagnosticWarn' },
+    DiagnosticVirtualTextInfo  = { link = 'DiagnosticInfo' },
+    DiagnosticVirtualTextHint  = { link = 'DiagnosticHint' },
+    DiagnosticVirtualTextOk    = { link = 'DiagnosticOk' },
+    DiagnosticFloatingError    = { link = 'DiagnosticError' },
+    DiagnosticFloatingWarn     = { link = 'DiagnosticWarn' },
+    DiagnosticFloatingInfo     = { link = 'DiagnosticInfo' },
+    DiagnosticFloatingHint     = { link = 'DiagnosticHint' },
+    DiagnosticFloatingOk       = { link = 'DiagnosticOk' },
+    DiagnosticSignError        = { link = 'DiagnosticError' },
+    DiagnosticSignWarn         = { link = 'DiagnosticWarn' },
+    DiagnosticSignInfo         = { link = 'DiagnosticInfo' },
+    DiagnosticSignHint         = { link = 'DiagnosticHint' },
+    DiagnosticSignOk           = { link = 'DiagnosticOk' },
+    DiagnosticDeprecated       = { sp = 'Red', strikethrough = true },
+    DiagnosticUnnecessary      = { link = 'Comment' },
+    LspInlayHint               = { link = 'NonText' },
+    SnippetTabstop             = { link = 'Visual' },
 
-hi('DiagnosticUnnecessary', { link = 'Comment' })
-hi('LspInlayHint',          { link = 'NonText' })
-hi('SnippetTabstop',        { link = 'Visual' })
+    -- Text
+    ["@markup.raw"]                 = {},
+    ["@markup.link"]                = { link = 'Identifier' },
+    ["@markup.heading"]             = { link = 'Title' },
+    ["@markup.link.url"]            = { link = 'Underlined' },
+    ["@markup.underline"]           = { link = 'Underlined' },
+    ["@comment.todo"]               = { link = 'Todo' },
 
--- Text
-hi('@markup.raw',       { link = 'Comment' })
-hi('@markup.link',      { link = 'Identifier' })
-hi('@markup.heading',   { link = 'Title' })
-hi('@markup.link.url',  { link = 'Underlined' })
-hi('@markup.underline', { link = 'Underlined' })
-hi('@comment.todo',     { link = 'Todo' })
+    -- Miscs
+    ["@comment"]                    = { link = 'Comment' },
+    ["@punctuation"]                = { link = 'Delimiter' },
 
--- Miscs
-hi('@comment',     { link = 'Comment' })
-hi('@punctuation', { link = 'Delimiter' })
+    -- Constants
+    ["@constant"]                   = { link = 'Constant' },
+    ["@constant.builtin"]           = { link = 'Special' },
+    ["@constant.macro"]             = { link = 'Define' },
+    ["@keyword.directive"]          = { link = 'Define' },
+    ["@string"]                     = { link = 'String' },
+    ["@string.escape"]              = { link = 'SpecialChar' },
+    ["@string.special"]             = { link = 'SpecialChar' },
+    ["@character"]                  = { link = 'Character' },
+    ["@character.special"]          = { link = 'SpecialChar' },
+    ["@number"]                     = { link = 'Number' },
+    ["@boolean"]                    = { link = 'Boolean' },
+    ["@number.float"]               = { link = 'Float' },
 
--- Constants
-hi('@constant',          { link = 'Constant' })
-hi('@constant.builtin',  { link = 'Special' })
-hi('@constant.macro',    { link = 'Define' })
-hi('@keyword.directive', { link = 'Define' })
-hi('@string',            { link = 'String' })
-hi('@string.escape',     { link = 'SpecialChar' })
-hi('@string.special',    { link = 'SpecialChar' })
-hi('@character',         { link = 'Character' })
-hi('@character.special', { link = 'SpecialChar' })
-hi('@number',            { link = 'Number' })
-hi('@boolean',           { link = 'Boolean' })
-hi('@number.float',      { link = 'Float' })
+    -- Functions
+    ["@function"]                   = { link = 'Function' },
+    ["@function.builtin"]           = { link = 'Special' },
+    ["@function.macro"]             = { link = 'Macro' },
+    ["@function.method"]            = { link = 'Function' },
+    ["@variable.parameter"]         = { link = 'Identifier' },
+    ["@variable.parameter.builtin"]  = { link = 'Special' },
+    ["@variable.member"]            = { link = 'Identifier' },
+    ["@property"]                   = { link = 'Identifier' },
+    ["@attribute"]                  = { link = 'Macro' },
+    ["@attribute.builtin"]          = { link = 'Special' },
+    ["@constructor"]                = { link = 'Special' },
 
--- Functions
-hi('@function',                   { link = 'Function' })
-hi('@function.builtin',           { link = 'Special' })
-hi('@function.macro',             { link = 'Macro' })
-hi('@function.method',            { link = 'Function' })
-hi('@variable.parameter',         { link = 'Identifier' })
-hi('@variable.parameter.builtin', { link = 'Special' })
-hi('@variable.member',            { link = 'Identifier' })
-hi('@property',                   { link = 'Identifier' })
-hi('@attribute',                  { link = 'Macro' })
-hi('@attribute.builtin',          { link = 'Special' })
-hi('@constructor',                { link = 'Special' })
+    -- Keywords
+    ["@keyword.conditional"]        = { link = 'Conditional' },
+    ["@keyword.repeat"]             = { link = 'Repeat' },
+    ["@keyword.type"]               = { link = 'Structure' },
+    ["@label"]                      = { link = 'Label' },
+    ["@operator"]                   = { link = 'Operator' },
+    ["@keyword"]                    = { link = 'Keyword' },
+    ["@keyword.exception"]          = { link = 'Exception' },
 
--- Keywords
-hi('@keyword.conditional', { link = 'Conditional' })
-hi('@keyword.repeat',      { link = 'Repeat' })
-hi('@keyword.type',        { link = 'Structure' })
-hi('@label',               { link = 'Label' })
-hi('@operator',            { link = 'Operator' })
-hi('@keyword',             { link = 'Keyword' })
-hi('@keyword.exception',   { link = 'Exception' })
+    ["@variable"]                   = { link = 'Identifier' },
+    ["@type"]                       = { link = 'Type' },
+    ["@type.definition"]            = { link = 'Typedef' },
+    ["@module"]                     = { link = 'Identifier' },
+    ["@keyword.import"]             = { link = 'Include' },
+    ["@keyword.debug"]              = { link = 'Debug' },
+    ["@tag"]                        = { link = 'Tag' },
+    ["@tag.builtin"]                = { link = 'Special' },
 
-hi('@variable',          { link = 'Identifier' })
-hi('@type',              { link = 'Type' })
-hi('@type.definition',   { link = 'Typedef' })
-hi('@module',            { link = 'Identifier' })
-hi('@keyword.import',    { link = 'Include' })
-hi('@keyword.directive', { link = 'PreProc' })
-hi('@keyword.debug',     { link = 'Debug' })
-hi('@tag',               { link = 'Tag' })
-hi('@tag.builtin',       { link = 'Special' })
+    -- LSP semantic tokens
+    ["@lsp.type.class"]             = { link = 'Structure' },
+    ["@lsp.type.comment"]           = { link = 'Comment' },
+    ["@lsp.type.decorator"]         = { link = 'Function' },
+    ["@lsp.type.enum"]              = { link = 'Structure' },
+    ["@lsp.type.enumMember"]        = { link = 'Constant' },
+    ["@lsp.type.function"]          = { link = 'Function' },
+    ["@lsp.type.interface"]         = { link = 'Structure' },
+    ["@lsp.type.macro"]             = { link = 'Macro' },
+    ["@lsp.type.method"]            = { link = 'Function' },
+    ["@lsp.type.namespace"]         = { link = 'Structure' },
+    ["@lsp.type.parameter"]         = { link = 'Identifier' },
+    ["@lsp.type.property"]          = { link = 'Identifier' },
+    ["@lsp.type.struct"]            = { link = 'Structure' },
+    ["@lsp.type.type"]              = { link = 'Type' },
+    ["@lsp.type.typeParameter"]     = { link = 'TypeDef' },
+    ["@lsp.type.variable"]          = { link = 'Identifier' },
+}
 
--- LSP semantic tokens
-hi('@lsp.type.class',         { link = 'Structure' })
-hi('@lsp.type.comment',       { link = 'Comment' })
-hi('@lsp.type.decorator',     { link = 'Function' })
-hi('@lsp.type.enum',          { link = 'Structure' })
-hi('@lsp.type.enumMember',    { link = 'Constant' })
-hi('@lsp.type.function',      { link = 'Function' })
-hi('@lsp.type.interface',     { link = 'Structure' })
-hi('@lsp.type.macro',         { link = 'Macro' })
-hi('@lsp.type.method',        { link = 'Function' })
-hi('@lsp.type.namespace',     { link = 'Structure' })
-hi('@lsp.type.parameter',     { link = 'Identifier' })
-hi('@lsp.type.property',      { link = 'Identifier' })
-hi('@lsp.type.struct',        { link = 'Structure' })
-hi('@lsp.type.type',          { link = 'Type' })
-hi('@lsp.type.typeParameter', { link = 'TypeDef' })
-hi('@lsp.type.variable',      { link = 'Identifier' })
+for name, val in pairs(highlights) do
+    vim.api.nvim_set_hl(0, name, val)
+end

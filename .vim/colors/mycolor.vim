@@ -22,7 +22,7 @@ hi! Normal       ctermfg=15 guifg=#f6f3e8 guibg=#242424 gui=none
 hi! NonText      ctermfg=NONE guifg=#808080 guibg=#303030 gui=none
 hi! StatusLine   ctermfg=15 guifg=#333333 guibg=#f9f9f9 gui=none
 hi! StatusLineNC ctermfg=0 guifg=#857b6f guibg=#444444 gui=none
-hi! Terminal     ctermfg=15 guifg=lightgrey guibg=grey20
+hi! Terminal     ctermfg=15 guifg=lightgrey guibg=grey
 hi! LineNr       ctermfg=249  guifg=#857b6f guibg=#222222 gui=none
 hi! StatusLineTerm ctermfg=7 ctermbg=15 guifg=#857b6f guibg=#000000 gui=none
 hi! StatusLineTermNC ctermfg=0 ctermbg=0 guifg=#857b6f guibg=#444444 gui=none

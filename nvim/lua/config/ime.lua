@@ -31,7 +31,7 @@ local function ime_control(active)
 end
 
 -- IMEをオフにする関数
-local function off_ime()
+Off_ime = function()
   os.execute("fcitx5-remote -c")
 end
 
@@ -46,17 +46,28 @@ vim.api.nvim_create_autocmd("InsertEnter", {
 vim.api.nvim_create_autocmd({ "InsertLeave", "CmdlineEnter", "CmdlineLeave", "CmdwinEnter", "CmdwinLeave" }, {
   group = "Ime",
   pattern = "*",
-  callback = off_ime,
+  callback = Off_ime,
 })
 
 -- keymaps
 local map = vim.keymap.set
+local opts = { noremap = true, silent = true }
 map("n", "<F2>", function()
     ime_mode_change()
-end, { silent = true })
+end, opts)
 
 map("i", "<F2>", function()
   vim.cmd("stopinsert")
   ime_mode_change()
   vim.cmd("startinsert")
-end, { silent = true })
+end, opts)
+
+-- map("n", "<Esc><Esc>", ":lua Off_ime()<CR><Esc>", opts)
+-- map("n", "<Esc>", "", {
+--     noremap = true,
+--     silent = true,
+--     callback = function()
+--         Off_ime()
+--         vim.api.nvim_input('<Esc>')
+--     end
+-- })

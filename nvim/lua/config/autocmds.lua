@@ -3,71 +3,30 @@ local augroup = vim.api.nvim_create_augroup("fileTypeIndent", { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
 -- ファイルタイプごとのインデント設定
-autocmd("BufNewFile", {
+-- 共通のインデント設定
+local function set_indent(n)
+    vim.opt_local.tabstop = n
+    vim.opt_local.shiftwidth = n
+    vim.opt_local.softtabstop = n
+    vim.opt_local.expandtab = true
+end
+
+-- 共通設定を適用するファイルタイプ
+autocmd({"BufNewFile", "BufRead"}, {
     group = augroup,
-    pattern = { "*.c", "*.cpp", "*.css", "*.yml", "*.yaml", "*.md", "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.tf" },
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.softtabstop = 2
-        vim.opt_local.expandtab = true
-    end,
+    pattern = { "*.c", "*.cpp", "*.css", "*.yml", "*.yaml", "*.md", "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.tf", "*.sh" },
+callback = function()
+    set_indent(2)
+end,
 })
 
-autocmd("BufRead", {
-    group = augroup,
-    pattern = { "*.c", "*.cpp", "*.css", "*.yml", "*.yaml", "*.md", "*.js", "*.ts", "*.jsx", "*.tsx", "*.json", "*.tf" },
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.softtabstop = 2
-        vim.opt_local.expandtab = true
-    end,
-})
-
--- terraformファイルタイプの設定
-autocmd("FileType", {
-    group = augroup,
-    pattern = "terraform",
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.softtabstop = 2
-        vim.opt_local.expandtab = true
-    end,
-})
-
-autocmd("BufNewFile", {
+-- Haskellファイルのインデント設定（異なる設定が必要）
+autocmd({"BufNewFile", "BufRead"}, {
     group = augroup,
     pattern = "*.hs",
-    callback = function()
-        vim.opt_local.tabstop = 8
-        vim.opt_local.shiftwidth = 8
-        vim.opt_local.softtabstop = 8
-        vim.opt_local.expandtab = true
-    end,
-})
-
-autocmd("BufRead", {
-    group = augroup,
-    pattern = "*.hs",
-    callback = function()
-        vim.opt_local.tabstop = 8
-        vim.opt_local.shiftwidth = 8
-        vim.opt_local.softtabstop = 8
-        vim.opt_local.expandtab = true
-    end,
-})
-
-autocmd("FileType", {
-    group = augroup,
-    pattern = "sh",
-    callback = function()
-        vim.opt_local.tabstop = 2
-        vim.opt_local.shiftwidth = 2
-        vim.opt_local.softtabstop = 2
-        vim.opt_local.expandtab = true
-    end,
+callback = function()
+    set_indent(8)
+end,
 })
 
 -- QuickFixCmdグループを作成し、grepに関連するコマンドでcwindowを表示

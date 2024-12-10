@@ -63,3 +63,6 @@ alias tfa="terraform apply -auto-approve"
 alias tfd="terraform destroy -auto-approve"
 
 alias kubectl="minikube kubectl --"
+
+# man japanese
+alias manj="man -L ja"

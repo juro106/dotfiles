@@ -15,3 +15,6 @@ require("config.netrw")
 
 -- lazy.nvim
 require("config.lazy")
+
+-- lsp 自作
+-- require('config.lsp')

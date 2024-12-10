@@ -1,4 +1,3 @@
 xkb_compatibility "custom" {
-  // interpret Muhenkan { action = SetMods(modifiers=Mod5); };
   interpret Hyper_L { action = SetControls(controls=Overlay1); };
 };

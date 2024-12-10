@@ -3,3 +3,4 @@
 /.vim/plugged/*
 /.vscode/extensions/*
 /.vscode/argv.json
+/nvim/lazy-lock.json

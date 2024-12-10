@@ -2,7 +2,8 @@
 return {
     {
         'nvim-treesitter/nvim-treesitter',
-        event = 'BufRead',
+        event = 'VeryLazy',
+        build = ':TSUpdate',
         config = function()
             require('nvim-treesitter.configs').setup {
                 ensure_installed = {
@@ -45,7 +46,6 @@ return {
     },
     {
         'nvim-treesitter/playground',
-        lazy = true,
         cmd = {
             'TSPlaygroundToggle',
             'TSHighlightCapturesUnderCursor',

@@ -84,7 +84,7 @@ Plug 'mattn/vim-goimports' ", {'on': []}
 Plug 'elmcast/elm-vim' ", {'on': []}
 " Plug '~/.fzf'
 " Plug 'junegunn/fzf.vim'
-Plug 'juro106/ftjpn' ", {'on': []}
+Plug 'juro106/ftjpn'
 " Plug 'machakann/vim-sandwich'
 " Plug 'rhysd/clever-f.vim'
 " Plug 'mattn/wiseman-f-vim'
@@ -623,9 +623,6 @@ cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
 cnoremap <C-n> <Down>
 cnoremap <C-p> <Up>
-" ergo
-cnoremap <C-\> <Esc>
-cnoremap <C-o> <C-\>
 " 日付
 cnoremap <expr> ,d strftime('%Y-%m-%d')
 
