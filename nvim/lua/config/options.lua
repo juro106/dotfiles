@@ -52,7 +52,7 @@ vim.opt.path:append('**')
 
 vim.cmd("set matchpairs+=（:）,「:」,『:』,【:】,<:>")
 
-vim.cmd('colorscheme mynvim')
+vim.cmd('colorscheme mycolor')
 
 -- parenmatchのデフォルトのhighlightを使わない
 vim.g.parenmatch_highlight = 0
