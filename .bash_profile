@@ -4,13 +4,19 @@
 # my settings
 ##################################################
 
-# ssh
-SSH_AGENT_FILE=~/.ssh-agent
-test -f "$SSH_AGENT_FILE" && . "$SSH_AGENT_FILE"
-if ! ssh-add -l > /dev/null 2>&1; then
-  ssh-agent > "$SSH_AGENT_FILE"
-  . "$SSH_AGENT_FILE"
-  ssh-add "$HOME"/.ssh/id_rsa_github
+# ssh-agentを既に起動しているか確認
+if [ -z "$SSH_AUTH_SOCK" ]; then
+  SSH_AGENT_FILE=~/.ssh-agent
+  # .ssh-agentファイルがあればそれを読み込む
+  if [ -f "$SSH_AGENT_FILE" ]; then
+    . "$SSH_AGENT_FILE"
+  fi
+  # ssh-agentが起動していなければ、起動してその情報を保存
+  if ! ssh-add -l > /dev/null 2>&1; then
+    ssh-agent > "$SSH_AGENT_FILE"
+    . "$SSH_AGENT_FILE"
+    ssh-add "$HOME/.ssh/id_rsa_hoge"  # 必要な鍵を追加
+  fi
 fi
 
 CURRENT_DIR=$(pwd)
