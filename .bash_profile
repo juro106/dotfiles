@@ -15,7 +15,7 @@ if [ -z "$SSH_AUTH_SOCK" ]; then
   if ! ssh-add -l > /dev/null 2>&1; then
     ssh-agent > "$SSH_AGENT_FILE"
     . "$SSH_AGENT_FILE"
-    ssh-add "$HOME/.ssh/id_rsa_hoge"  # 必要な鍵を追加
+    ssh-add "$HOME/.ssh/id_rsa_github"  # 必要な鍵を追加
   fi
 fi
 
