@@ -25,8 +25,8 @@ alias v="vim"
 alias v0="vim -u ~/vimrc0"
 alias e="nvim"
 
-alias addlil="ssh-add ~/.ssh/id_rsa_lil"
-alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
+alias sshaddlil="ssh-add ~/.ssh/id_rsa_lil"
+alias sshaddgithub="ssh-add ~/.ssh/id_rsa_github"
 
 alias ter="xfce4-terminal --command='bash --noprofile'"
 
