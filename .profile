@@ -17,43 +17,30 @@
 #     fi
 # fi
 
-# Locale settings
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-export LANGUAGE=C
-export MANLANG=ja
-export DISPLAY=:0.0
 # export DISPLAY=$(cat /etc/resolv.conf | grep nameserver | awk '{print $2}'):0
 
 # gui 関係の設定
 # export LIBGL_ALWAYS_INDIRECT=1
+
+# Locale settings
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=C
+export DISPLAY=:0.0
 
 # Environment for GUI and GTk
 # AT-SPI: Assistive Technology Service Provider Interface の略で、アクセシビリティ（視覚障害や身体障害を持つユーザーのための支援技術）を提供するためのインターフェイスです。
 # 例えば、スクリーンリーダー（画面読み上げソフト）が GUI アプリケーションの状態を取得するために使用します。
 export NO_AT_BRIDGE=1
 
-# User-specific PATH additions
-USER_BIN_PATHS=(
-    "$HOME/bin"
-    "$HOME/.local/bin"
-    "/usr/local/go/bin"           # Go language
-    "$HOME/go/bin"                # Go binaries
-    "/opt/nvim-linux64/bin"       # Neovim
-    "$HOME/.deno/bin"             # Deno
-    "$HOME/.tfenv/bin"            # Terraform
-)
-for path in "${USER_BIN_PATHS[@]}"; do
-    [[ -d "$path" && ":$PATH:" != *":$path:"* ]] && PATH="$path:$PATH"
-done
-
-# Export final PATH
-export PATH
-
 # Load Rust environment
 if [ -f "$HOME/.cargo/env" ]; then
     . "$HOME/.cargo/env"
 fi
+
+# GO (Golang) settings
+export GOPATH="$HOME/go"
+export GOBIN="$GOPATH/bin"
 
 # Load GHCup (Haskell) environment
 if [ -f "$HOME/.ghcup/env" ]; then
@@ -72,3 +59,22 @@ if [ -d "$HOME/.sdkman" ]; then
     export SDKMAN_DIR="$HOME/.sdkman"
     [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
+
+# User-specific PATH additions
+USER_BIN_PATHS=(
+    "$HOME/bin"                # User's personal bin directory
+    "$HOME/.local/bin"         # Local binaries
+    "$GOBIN"                   # Go binaries
+    "/opt/nvim-linux64/bin"    # Neovim
+    "/usr/local/go/bin"        # Go language
+    "$HOME/.deno/bin"          # Deno
+    "$HOME/.tfenv/bin"         # Terraform
+    "$HOME/bin/py"             # Custom Python scripts
+    "$HOME/bin/bash"           # Custom bash scripts
+)
+for path in "${USER_BIN_PATHS[@]}"; do
+    [[ -d "$path" && ":$PATH:" != *":$path:"* ]] && PATH="$path:$PATH"
+done
+
+# Export final PATH
+export PATH

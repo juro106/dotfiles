@@ -28,7 +28,7 @@ alias e="nvim"
 alias sshaddlil="ssh-add ~/.ssh/id_rsa_lil"
 alias sshaddgithub="ssh-add ~/.ssh/id_rsa_github"
 
-alias ter="xfce4-terminal --command='bash --noprofile'"
+alias ter="xfce4-terminal"
 
 alias pbcopy='xclip -selection c'
 alias pbpaste='xclip -selection c -o'
