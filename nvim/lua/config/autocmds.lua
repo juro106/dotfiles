@@ -23,7 +23,7 @@ end,
 -- Haskellファイルのインデント設定（異なる設定が必要）
 autocmd({"BufNewFile", "BufRead"}, {
     group = augroup,
-    pattern = "*.hs",
+    pattern = { "*.go", "*.hs" },
 callback = function()
     set_indent(8)
 end,

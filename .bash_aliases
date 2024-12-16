@@ -22,12 +22,13 @@ alias touchtoday='e `date +%Y-%m-%d`.md'
 alias vi="vi -u NONE"
 alias vimg="vim -g"
 alias v="vim"
+alias v0="vim -u ~/vimrc0"
 alias e="nvim"
 
 alias addlil="ssh-add ~/.ssh/id_rsa_lil"
 alias addkoke="ssh-add ~/.ssh/id_rsa_koke"
 
-alias ter="xfce4-terminal"
+alias ter="xfce4-terminal --command='bash --noprofile'"
 
 alias pbcopy='xclip -selection c'
 alias pbpaste='xclip -selection c -o'
@@ -37,6 +38,7 @@ alias mozc-dict="/usr/lib/mozc/mozc_tool --mode=dictionary_tool"
 alias mozc-word="/usr/lib/mozc/mozc_tool --mode=word_register_dialog"
 
 # hugo用
+alias hugog='bash hugo_build_deploy.sh'
 alias hugo4='hugo -D -p 1314 server'
 alias hugo3='hugo -D -p 1313 server'
 alias hugo2='hugo -D -p 1312 server'
@@ -47,12 +49,7 @@ alias hugomc='hugo --minify --cleanDestinationDir'
 alias ggl='google_search'
 
 # incremental search
-alias incr='fzf --preview="cat {1} | head -n 500" \
-    --bind "change:reload(rg -i --no-heading --line-number {q} . || true)" \
-    --bind "enter:execute(vim $(echo {1} | cut -d':' -f1))" \
-    --delimiter ":" \
-    --with-nth=1,3 \
-    --preview-window=up:60%'
+alias incr=search.sh
 
 # terraform
 alias tf="terraform"

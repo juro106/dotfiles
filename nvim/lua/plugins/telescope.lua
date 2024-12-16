@@ -1,7 +1,6 @@
 -- ~/.config/nvim/lua/plugins/telescope.lua
 return {
     { 'nvim-lua/plenary.nvim' },
-    { 'delphinus/telescope-memo.nvim' },
     {
         'nvim-telescope/telescope.nvim',
         cmd = { 'Telescope' },
@@ -13,8 +12,6 @@ return {
                     }
                 },
             })
-
-            require('telescope').load_extension('memo')
         end,
     }
 }

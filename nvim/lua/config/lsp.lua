@@ -84,9 +84,22 @@ local servers = {
         name = 'lua_ls',
         settings = {
             Lua = {
-                diagnostics = {
-                    globals = { 'vim' },
+                runtime = {
+                    version = 'LuaJIT',
+                    path = vim.split(package.path, ';'),
                 },
+                diagnostics = {
+                    globals = {
+                        'vim',
+                        'describe',
+                        'it',
+                        'assert',
+                        'before_each',
+                    },
+                },
+                workspace = {
+                    library = vim.api.nvim_get_runtime_file("", true),
+                }
             },
         },
     },

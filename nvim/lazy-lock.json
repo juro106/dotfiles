@@ -1,13 +1,12 @@
 {
-  "ftjpn": { "branch": "main", "commit": "51ec163056afbcb26f1e9a22f414e01216e1e07a" },
-  "lazy.nvim": { "branch": "main", "commit": "014d1d6d78df4e58f962158e6e00261d8632612c" },
+  "ftjpn": { "branch": "main", "commit": "8df5500681c7d67b8d6ee649a2b0670eae96f177" },
+  "lazy.nvim": { "branch": "main", "commit": "7c493713bc2cb392706866eeba53aaef6c8e9fc6" },
   "nvim-highlight-colors": { "branch": "main", "commit": "e967e2ba13fd4ca731b41d0e5cc1ac2edcd6e25e" },
-  "nvim-lspconfig": { "branch": "master", "commit": "b8b725659fa60d2c5f5bd7459bcfee1d8b34acd5" },
-  "nvim-treesitter": { "branch": "master", "commit": "0c26a5c4bc407fdbca545ab25cf6084fd069444b" },
+  "nvim-lspconfig": { "branch": "master", "commit": "ffe543e171792e4e7c42f1e73c4ab5c6fe71b861" },
+  "nvim-treesitter": { "branch": "master", "commit": "33d27173876499a0f037cb9edff90d583711b6ae" },
   "playground": { "branch": "master", "commit": "ba48c6a62a280eefb7c85725b0915e021a1a0749" },
   "plenary.nvim": { "branch": "master", "commit": "2d9b06177a975543726ce5c73fca176cedbffe9d" },
-  "telescope-memo.nvim": { "branch": "main", "commit": "48f720e7841cc2fcb38776d84476538869bd4caf" },
   "telescope.nvim": { "branch": "master", "commit": "2eca9ba22002184ac05eddbe47a7fe2d5a384dfc" },
   "vim-parenmatch": { "branch": "master", "commit": "3f3c18d0fcfaaeb093fababd4bce2edbb4f07b50" },
-  "vimdoc-ja": { "branch": "master", "commit": "78ffc79df9da7200820685f0ef1e21fb50c5ede4" }
+  "vimdoc-ja": { "branch": "master", "commit": "f81682b1484d9052930e526a59714eca19bdaf83" }
 }

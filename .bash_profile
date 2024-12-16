@@ -1,5 +1,10 @@
 # .bash_profile
 
+##################################################
+# my settings
+##################################################
+
+# ssh
 SSH_AGENT_FILE=~/.ssh-agent
 test -f "$SSH_AGENT_FILE" && . "$SSH_AGENT_FILE"
 if ! ssh-add -l > /dev/null 2>&1; then
@@ -16,6 +21,7 @@ if [ "$(echo "$CURRENT_DIR" | grep '/hugo/shingeki')" ]; then
    ssh-add "$HOME"/.ssh/id_rsa_lil
  fi
 fi
+
 # if [ "`echo $CURRENT_DIR | grep '/hugo/sasasa'`" ]; then
 #  sshList=$(ssh-add -L)
 #  pub2=$(cat "$HOME"/.ssh/id_rsa_koke.pub)

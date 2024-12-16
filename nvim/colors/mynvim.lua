@@ -37,7 +37,7 @@ local cl = {
 
 local highlights = {
     -- General
-    Normal       = {},
+    Normal       = { bg = 'none' },
     Comment      = { fg = cl.dark_grey },
     Conceal      = { fg = cl.light_grey, bg = cl.grey },
     Constant     = {},
@@ -52,7 +52,7 @@ local highlights = {
     CursorColumn = {},
     CursorLine   = {},
     CursorLineNr = {},
-    DiffAdd      = { fg = cl.blue },
+    DiffAdd      = { fg = cl.blue_grey },
     DiffChange   = { fg = cl.green },
     DiffDelete   = { fg = cl.red },
     DiffText     = { fg = cl.purple },

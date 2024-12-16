@@ -30,9 +30,12 @@ local options = {
     tabstop = 4,            -- 表示上のタブ幅を4に設定
     shiftwidth = 4,         -- 自動インデントの幅を4に設定
 
-    -- 補完候補の表示数
-    pumheight = 10,
-    completeopt = "menuone",
+    -- 補完
+    pumheight = 10, -- 候補の表示数
+    completeopt = "menuone,noselect",
+
+    -- ステータスライン付近
+    ruler = false,  -- 右下のline, column, All|Top|Bot(tom)
 
     -- help
     helplang = "ja,en",
@@ -42,6 +45,8 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
+-- errorformat
+-- vim.opt.errorformat = "%f|%l col %c| %m"
 -- Provides tab-copletion for all file-reloated tasks
 vim.opt.path:append('**')
 
@@ -51,6 +56,12 @@ vim.cmd('colorscheme mynvim')
 
 -- parenmatchのデフォルトのhighlightを使わない
 vim.g.parenmatch_highlight = 0
+
+-- vimdoc-ja
+-- local doc_path = vim.fn.stdpath("data") .. "/lazy/vimdoc-ja/doc"
+-- if vim.fn.isdirectory(doc_path) == 1 then
+--     vim.cmd("helptags " .. doc_path)
+-- end
 
 vim.g.ftjpn_key_list = {
 	{'.', '。', '．'},

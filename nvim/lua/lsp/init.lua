@@ -1,6 +1,6 @@
 -- ~/.config/nvim/lua/lsp/init.lua
 
--- mason を使っていたときの設定 ~2024-12-06
+-- mason を使う場合の設定 2024-12-06~ は使っていない
 
 -- LSP Handlersを読み込む。Handlers は LSP サーバーを動的に設定するもの
 require("lsp.handlers")
