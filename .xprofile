@@ -19,19 +19,18 @@ export QT_IM_MODULE=fcitx
 # エラーが出るので wayland は disable にしておく。警告はエラーのみ
 fcitx5 --disable=wayland -d  --verbose '*'=0
 # .config/fcitx5/conf/xcb.conf
+# xkbcomp を上書きされないようにする
 # Allow Overriding System XKB Settings=False 
-# ↑これをしないと xkbcomp する前に layout が上書きされてうまくいかないことがある
 
 # キーボード設定 (xkb) キーの入れ替えなど
 # xmodmap は不要らしい 2024-12-06
 # caps -> Ctrl_L, 
 # 左下Ctrl -> Hyper_L
 # Hyper_L は 方向キーや BackSpace, Esc など簡単に設定できるものを割り当てる
-xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY 2> /dev/null
+# xkbcomp -I$HOME/.xkb ~/.xkb/keymap/mykbd $DISPLAY 2> /dev/null
 
 # amixer ※ i3 じゃないと効かないかも
-amixer sset Headphone 100%,100% unmute
-
+# amixer sset Headphone 100%,100% unmute
 
 ##########################################
 # sway用

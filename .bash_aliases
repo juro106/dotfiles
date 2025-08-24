@@ -25,8 +25,9 @@ alias v="vim"
 alias v0="vim -u ~/vimrc0"
 alias e="nvim"
 
-alias sshaddlil="ssh-add ~/.ssh/id_rsa_lil"
+alias sshaddlil="ssh-add ~/.ssh/id_ed25519_lil"
 alias sshaddgithub="ssh-add ~/.ssh/id_rsa_github"
+alias sshaddgithubsub="ssh-add ~/.ssh/id_ed25519"
 
 alias ter="xfce4-terminal"
 
@@ -39,9 +40,10 @@ alias mozc-word="/usr/lib/mozc/mozc_tool --mode=word_register_dialog"
 
 # hugo用
 alias hugog='bash hugo_build_deploy.sh'
-alias hugo4='hugo -D -p 1314 server'
-alias hugo3='hugo -D -p 1313 server'
-alias hugo2='hugo -D -p 1312 server'
+alias hugo4='hugo server -D -p 1314'
+alias hugo3='hugo server -D -p 1313'
+alias hugo2='hugo server -D -p 1312 HUGO_BASEURL=http://localhost:1312/'
+# alias hugo2='hugo server -D -p 1312 --baseURL http://localhost:1312/'
 alias hugoc='hugo --cleanDestinationDir'
 alias hugomc='hugo --minify --cleanDestinationDir'
 
@@ -59,7 +61,8 @@ alias tff="terraform fmt -recursive"
 alias tfa="terraform apply -auto-approve"
 alias tfd="terraform destroy -auto-approve"
 
-alias kubectl="minikube kubectl --"
-
 # man japanese
 alias manj="man -L ja"
+
+# cd
+alias cdm='cd ~/dev/website/mykeiba'

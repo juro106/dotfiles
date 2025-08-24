@@ -33,10 +33,6 @@ export DISPLAY=:0.0
 # 例えば、スクリーンリーダー（画面読み上げソフト）が GUI アプリケーションの状態を取得するために使用します。
 export NO_AT_BRIDGE=1
 
-# Load Rust environment
-if [ -f "$HOME/.cargo/env" ]; then
-    . "$HOME/.cargo/env"
-fi
 
 # GO (Golang) settings
 export GOPATH="$HOME/go"
@@ -60,12 +56,13 @@ if [ -d "$HOME/.sdkman" ]; then
     [ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && . "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
+
 # User-specific PATH additions
 USER_BIN_PATHS=(
     "$HOME/bin"                # User's personal bin directory
     "$HOME/.local/bin"         # Local binaries
     "$GOBIN"                   # Go binaries
-    "/opt/nvim-linux64/bin"    # Neovim
+    "/opt/nvim-linux-x86_64/bin"    # Neovim
     "/usr/local/go/bin"        # Go language
     "$HOME/.deno/bin"          # Deno
     "$HOME/.tfenv/bin"         # Terraform

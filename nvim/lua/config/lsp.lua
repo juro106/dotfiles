@@ -31,16 +31,18 @@ vim.diagnostic.config({
 -- diagnostic 表示/非表示 のtoggle
 local diagnostics_active = true
 
-function _G.toggle_diagnostics()
+local function toggle_diagnostics()
     diagnostics_active = not diagnostics_active
     if diagnostics_active then
-        vim.diagnostic.enable()
-        print("Diagnostics enable")
+        vim.diagnostic.enable(true)  -- 現在バッファに有効化
+        vim.notify("Diagnostics enable")
     else
-        vim.diagnostic.disable()
-        print("Diagnostics disabled")
+        vim.diagnostic.enable(false)  -- 現在バッファに有効化
+        vim.notify("Diagnostics disabled")
     end
 end
+--- コマンド登録
+vim.api.nvim_create_user_command("ToggleDiagnostics", toggle_diagnostics, {})
 
 -------------------------------------------------------
 -- LSP キーマップ設定
@@ -56,7 +58,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, opts)      -- リネーム
         vim.keymap.set('n', '\\f', vim.lsp.buf.format, opts)             -- フォーマット
         vim.keymap.set('n', '\\\\', vim.lsp.buf.format, opts)            -- フォーマット
-        vim.keymap.set('n', '\\d', ':lua toggle_diagnostics()<CR>', opts)
+        vim.keymap.set('n', '\\d', toggle_diagnostics, opts)
     end,
 })
 
@@ -116,6 +118,7 @@ local servers = {
     },
     terraform = { name = 'terraformls', },
     typescript = { name = 'ts_ls' },
+    yaml = { name = 'yamlls' },
 }
 
 for lang, config in pairs(servers) do

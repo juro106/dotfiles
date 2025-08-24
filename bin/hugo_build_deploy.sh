@@ -7,7 +7,7 @@ git_add_commit_push() {
   MSG=`date "+%Y%m%d_%H-%M-%S"`
   git commit -m "${MSG}"
   CULLENT_BRANCH=`git rev-parse --abbrev-ref HEAD`;
-  git push origin ${CULLENT_BRANCH};
+  git push --force origin ${CULLENT_BRANCH};
   # コミット対象のファイルを確認
   # git status;
   # read -p "Commit with this conent. OK? (y/N): " yesno

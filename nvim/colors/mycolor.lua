@@ -61,7 +61,7 @@ local highlights = {
     FoldColumn   = {},
     Folded       = {},
     Ignore       = {},
-    LineNr       = {},
+    LineNr       = { fg = cl.grey },
     MatchParen   = { bg = cl.cyan },
     ParenMatch   = { link = 'MatchParen' },
     ModeMsg      = { bold = true },

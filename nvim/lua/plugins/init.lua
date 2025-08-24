@@ -2,11 +2,11 @@
 -- plugin のリスト
 return {
     -- LSP 関連
-    require('plugins.lsp'),
+    -- require('plugins.lsp'),
     -- require('plugins.cmp'),
 
     -- treesitter
-    require('plugins.treesitter'),
+    -- require('plugins.treesitter'),
 
     -- Telescope
     require('plugins.telescope'),
@@ -23,6 +23,25 @@ return {
         end,
     },
 
+    -- filer
+    -- {
+    --     "mattn/vim-molder",
+    --     lazy = false,
+    --     config = function()
+    --         vim.g.molder_show_hidden = 1
+    --         vim.g.loaded_netrwPlugin = 1
+    --
+    --         -- キーマップ: molder バッファ専用
+    --         vim.api.nvim_create_autocmd("FileType", {
+    --             pattern = "molder",
+    --             callback = function()
+    --                 local opts = { buffer = true, silent = true }
+    --                 vim.keymap.set("n", "l", "<Plug>(molder-open)", opts)
+    --                 vim.keymap.set("n", "h", "<Plug>(molder-up)", opts)
+    --             end,
+    --         })
+    --     end,
+    -- },
     -- 便利
     { 'itchyny/vim-parenmatch', event = 'BufReadPost' },
     {
