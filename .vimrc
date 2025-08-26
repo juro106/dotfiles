@@ -47,31 +47,21 @@ elseif has('win32') || has('win64')
     call plug#begin('~/vimfiles/plugged')
 endif
 
-Plug 'jlanzarotta/bufexplorer'
-Plug 'cocopon/vaffle.vim'
+" Plug 'jlanzarotta/bufexplorer'
+Plug 'mattn/vim-molder'
 Plug 'tpope/vim-commentary' ", {'on': [] }
 Plug 'itchyny/vim-parenmatch'
 Plug 'juro106/ftjpn'
-" Plug 'kana/vim-textobj-user'
-" Plug 'osyo-manga/vim-textobj-multiblock'
-" Plug 'kana/vim-operator-user'
 call plug#end()
 
-
-" shfmt
-" function! _Doshfmt()
-"     exe ":silent !shfmt -w -i 2 -ci -bn -s %"
-"     exe ":e!"
-" endfunction
-
-" command! Doshfmt call _Doshfmt()
-
-" augroup auto_shfmt
-"     autocmd!
-"     autocmd BufWritePost FileType sh :Doshfmt
-"     autocmd BufWritePost *.sh :Doshfmt
-" augroup End
-
+" Load Event
+augroup load_us_hold
+    autocmd!
+    autocmd CursorHold * call plug#load(
+                \ 'vim-parenmatch',
+                \ 'vim-commentary',
+                \ )| autocmd! load_us_hold
+augroup END
 " ---------------------------------------------------------------------
 " 基本的な設定 config setting
 " ---------------------------------------------------------------------
@@ -113,7 +103,9 @@ set notimeout                   " キーマップでタイムアウトしない
 set ttimeout ttimeoutlen=10     " キーコードのタイムアウトの設定
 set mouse=a
 set imstyle=1                   " imstyle over-the-spotは1  効かない？
-" set showcmd
+set showcmd                     " Visual mode の選択行の行数はこれで表示される
+set path+=**                    " find で検索する範囲をサブディレクトリまで広げる
+set wildmenu
 
 " 改行コード
 " ---------------------------------------------------------------------
@@ -147,59 +139,48 @@ let g:vim_indent_cont = shiftwidth() * 1
 
 augroup fileTypeIndent
     autocmd!
-    autocmd BufNewFile,BufRead *.c    setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.cpp  setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.css  setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.yml  setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.yaml setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.md   setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.js   setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.ts   setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.jsx  setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.tsx  setlocal sw=2 sts=2 ts=2 et
-    autocmd BufNewFile,BufRead *.json setlocal sw=2 sts=2 ts=2 et
+    autocmd BufNewFile,BufRead *.c,*.cpp,*.css,*.yml,*.yaml,*.md,*.js,*.ts,*.jsx,*.tsx,*.json,*.tf setlocal sw=2 sts=2 ts=2 et
     autocmd BufNewFile,BufRead *.hs   setlocal sw=8 sts=8 ts=8 et
-    autocmd BufNewFile,BufRead *.tf   setlocal sw=2 sts=2 ts=2 et
-    autocmd FileType sh setlocal sw=2 sts=2 ts=2 et
+    autocmd FileType sh               setlocal sw=2 sts=2 ts=2 et
 augroup End
 
 " ---------------------------------------------------------------------
 " filetype 
 " ---------------------------------------------------------------------
-
-" ,e でScript実行。 filetype ごとに
 augroup filetypeSetting
     autocmd!
-    autocmd BufNewFile,BufRead *.py setfiletype python
-    autocmd BufNewFile,BufRead *.rb setfiletype ruby
-    autocmd BufNewFile,BufRead *.ts setfiletype typescript
-    autocmd BufNewFile,BufRead *.js setfiletype javascript
     autocmd BufNewFile,BufRead *.go nnoremap <F12> :<C-u>! go run %:p<CR>
-    autocmd BufNewFile,BufRead *.py nnoremap <F12> :<C-u>!python3 %<CR>
-    autocmd BufNewFile,BufRead *.py nnoremap <F12> :<C-u>call <SID>RUN('!python3')<CR>
-    autocmd BufNewFile,BufRead *.rb nnoremap <F12> :<C-u>!ruby %<CR>
-    autocmd BufNewFile,BufRead *.rb nnoremap <F12> :<C-u>call <SID>RUN('!ruby')<CR>
     autocmd BufNewFile,BufRead *.tsx let b:tsx_ext_found = 1
     autocmd BufNewFile,BufRead *.tsx set filetype=typescript.tsx
-    autocmd BufNewFile,BufRead *.ts nnoremap <F12> :<C-u>!tsc %<CR>
     autocmd BufNewFile,BufRead *.ts nnoremap <F12> :<C-u>call <SID>RUN('!tsc')<CR>
 
     " マークダウンのファイル名 .mdも含める
     autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*,md.draft,txt} set filetype=markdown
-    " markdown 目次表示
-    autocmd BufNewFile,BufRead *.md nnoremap <Leader>toc :Toc<CR>
-    autocmd BufNewFile,BufRead *.md set scl=no " 左側の余白
     autocmd BufNewFile,BufRead *.CASL2 set fenc=cp932 ff=dos " casl2用
 augroup  END
 
 function! s:RUN(lang) abort
     :tcd %:h
-    :exec a:lang shellescape(@%, 1)
+    exec a:lang shellescape(@%, 1)
 endfunction
 
+" shfmt
+" function! _Doshfmt()
+"     exe ":silent !shfmt -w -i 2 -ci -bn -s %"
+"     exe ":e!"
+" endfunction
+
+" command! Doshfmt call _Doshfmt()
+
+" augroup auto_shfmt
+"     autocmd!
+"     autocmd BufWritePost FileType sh :Doshfmt
+"     autocmd BufWritePost *.sh :Doshfmt
+" augroup End
 " -----------------------------------------------------------
 " buffer バッファ操作
 " -----------------------------------------------------------
+nnoremap <Space>b :ls<CR>:<C-u>b 
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> [<C-b> :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
@@ -232,29 +213,15 @@ function! QuickfixFilenames()
     return join(map(values(buffer_numbers), 'fnameescape(v:val)'))
 endfunction
 
-" -----------------------------------------------------------
-" file ファイル操作
-" -----------------------------------------------------------
-cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
-cnoremap <expr> <C-x> getcmdtype() == ':' ? expand('%:p') : '%%'
-cnoremap <C-o>w !sudo tee > /dev/null %
-
 " ----------------------------------------------------------
-" 色 color
+" 色 color カーソル & Color Scheme
 " -----------------------------------------------------------
-
-" if exists('&termguicolors')
-"   setglobal termguicolors
-" endif
-
 " colorscheme
 colorscheme mycolor
 
 " syntax on
 syntax off
 set background=dark             " darkmode
-
-" colorscheme iceberg
 
 " カーソルの形や色
 " let &t_SI = "\e[6 q" "SI = INSERT mode
@@ -269,9 +236,11 @@ let &t_SR = "\e[4 q" "SR = REPLACE mode
 nnoremap [config] <Nop>
 nmap <Space>j [config]
 
+nnoremap <Space>f :find 
+
 " _vimrcの呼び出し&読み込み
-nnoremap <silent> <Space>. :<C-u>e $MYVIMRC<CR>
-nnoremap <silent> <Space>v :<C-u>so $MYVIMRC<CR>
+nnoremap <silent> <Space>re :<C-u>e $MYVIMRC<CR>
+"nnoremap <silent> <Space>v :<C-u>so $MYVIMRC<CR>
 " " _gvimrcの呼び出し&読み込み
 " nnoremap <silent> [config]g :<C-u>e $MYGVIMRC<CR>
 " nnoremap <silent> ,z :<C-u>so $MYGVIMRC<CR>
@@ -285,28 +254,15 @@ augroup END
 if has('unix')
     " colorscheme の呼び出し
     nnoremap <silent> [config]cl :<C-u>e ~/.vim/colors/mycolor.vim<CR>
-    " syntax/python.vimの呼び出し
-    nnoremap <silent> [config]pv :<C-u>e ~/.vim/after/syntax/python.vim<CR>
-    " i3 
-    nnoremap <silent> [config]i3 :<C-u>e ~/.config/i3/config<CR>
     " syntax check の呼び出し
     nnoremap <silent> [config]si :<C-u>SyntaxInfo<CR>
 endif
 
-" : ; の入れ替え
-" nnoremap ; :
-" nnoremap : ;
-" vnoremap ; :
-" vnoremap : ;
-
 " カーソル操作、コマンド関連
 noremap <silent> n nzz
 noremap <silent> N Nzz
-noremap <silent> * *zz
-noremap <silent> # #zz
 noremap <silent> g* g*zz
 noremap <silent> g# g#zz
-
 
 " 「 K(shift k) 」でカーソル下の単語のhelpを引く
 set keywordprg=:help " Open Vim internal help by K command
@@ -320,42 +276,47 @@ nnoremap <silent> Y y$
 
 " 全選択
 nnoremap g<C-a> ggVG 
-" normal で IME もオフにする
-nnoremap <silent> <Esc> :<C-u>OffIME<CR><ESC>
-command! OffIME :call <SID>OffIME()
 " ハイライトを消す
 nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
 
-" 現在時刻の挿入 current time
-nnoremap <Space>ct a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
-
-" Space key 関係
+" 便利関係
 " ----------------------------------------------------------
+" 現在時刻の挿入 current time
+nnoremap <Space>now a<C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR><Esc>
+inoremap <C-y><C-t> <C-R>=strftime("%Y-%m-%dT%H:%M:%S+09:00")<CR>
+
+" テンプレート挿入
+nnoremap <Space>t :<C-u>-1read ~/.vim/template/
+
 nnoremap <Space>w :w<CR>
 
 " シェルコマンド shell command
 nnoremap <Space><CR> V:!sh<CR>
 vnoremap <Space><CR> :!sh<CR>
 
+" toggle status line ステータスラインのトグル
+nnoremap <silent> <F10> :set laststatus=<C-R>=(&laststatus==2?0:2)<CR><CR>
+  
+vnoremap <silent> gp s（<C-r>"）<Esc><Right>
+vnoremap <silent> gk s「<C-r>"」<Esc><Right>
+vnoremap <silent> gw s『<C-r>"』<Esc><Right>
+vnoremap <silent> gs s【<C-r>"】<Esc><Right>
+
 " ----------------------------------------------------------
 " #insertMode インサートモード（挿入モード）のキーマップ
 " ----------------------------------------------------------
-" CTRL-Space
+" Ctrl-Space, Alt-Space
 imap <Nul> <C-Space>
 inoremap <C-Space> <Nop>
+inoremap <A-Space> <Nop>
 
-" snippet挿入 ※文字を入力してから C-z で snippet が挿入される
-inoremap <C-z> <Esc>:<C-u>call MySnippet()<CR>
+inoremap <silent> <C-l> <Esc>ciw<<C-r>"></<C-r>"><Esc>cit
 
 " ----------------------------------------------------------
 " #visualMode ビジュアルモードのkeymap
 " ----------------------------------------------------------
 
-" vで範囲を拡大。<C-v>で範囲を縮小
-" vmap v <Plug>(expand_region_expand)
-" vmap <C-v> <Plug>(expand_region_shrink)
-
-" ヤンクやペーストの後は行の末尾へ移動
+" ヤンクやペーストの後に行の末尾へ移動させるパターン
 vnoremap <silent> <Space>y y`]
 nnoremap <silent> <Space>y y`]
 vnoremap <silent> <Space>p p`]
@@ -367,23 +328,37 @@ nnoremap <silent> <Space>p p`]
 cnoremap <C-b> <Left>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
-" cnoremap <C-n> <Down>
-" cnoremap <C-p> <Up>
+" cnoremap <expr> %% getcmdtype() == ':' ? expand('%:h').'/' : '%%'
+" cnoremap <expr> <C-x> getcmdtype() == ':' ? expand('%:p') : '%%'
+" cnoremap <C-o>w !sudo tee > /dev/null %
 
-if has('win32') || has('win64')
-    " terminal で WSLを呼び出す 
-    cnoremap <C-t> <C-u>terminal ++close C:/WINDOWS/System32/bash.exe<CR>
-endif
+" ==========================================================
+" Plugins
+" ==========================================================
+" ----------------------------------------------------------
+" Molder
+" ----------------------------------------------------------
+let g:molder_show_hidden = 1
+nnoremap <silent> <Space>e :e .<CR>
+function! s:custom_molder_mappings() abort
+    nnoremap <buffer> l <Plug>(molder-open)
+    nnoremap <buffer> h <Plug>(molder-up)
+    nnoremap <buffer> q :<C-u>bw<CR>
+endfunction
 
+augroup vimrc_molder
+    autocmd!
+    autocmd FileType molder call s:custom_molder_mappings()
+augroup END
 " ----------------------------------------------------------
 " Bufexplorer
 " ----------------------------------------------------------
-nnoremap <Space>b :<C-u>BufExplorer<CR>
+" nnoremap <Space>b :<C-u>BufExplorer<CR>
 " デフォルトキーマップを使用しない
-let g:bufExplorerDisableDefaultKeyMapping=1  " Disable mapping.
-let g:bufExplorerShowRelativePath=1          " Show relative paths.
-let g:bufExplorerDefaultHelp = 0             " Do not show default help.
-let g:bufExplorerSplitBelow=1                " Split new window below current.
+" let g:bufExplorerDisableDefaultKeyMapping=1  " Disable mapping.
+" let g:bufExplorerShowRelativePath=1          " Show relative paths.
+" let g:bufExplorerDefaultHelp = 0             " Do not show default help.
+" let g:bufExplorerSplitBelow=1                " Split new window below current.
 
 " ----------------------------------------------------------
 " ParentMatch
@@ -394,54 +369,11 @@ let g:loaded_matchparen = 1
 " highlightはmatchparen仕様で
 let g:parenmatch_highlight = 0
 highlight link ParenMatch MatchParen
-" ----------------------------------------------------------
-" Vaffle
-" ----------------------------------------------------------
-let g:vaffle_open_selected_vsplit_position = 'rightbelow'
-let g:vaffle_open_selected_split_position = 'rightbelow'
-let g:vaffle_show_hidden_files = 1
-
-nnoremap <silent> <Space>f :Vaffle<CR>
-
-function! s:customize_vaffle_mappings() abort
-    nmap <buffer> C <Plug>(vaffle-chdir-here)
-    " nmap <buffer> ,root <Plug>(vaffle-open-root)
-    " delete-selected
-    nmap <buffer> d <Nop> 
-    nmap <buffer> D <Plug>(vaffle-delete-selected) 
-    " new-file
-    nmap <buffer> i <Nop> 
-    nmap <buffer> <Space>touch <Plug>(vaffle-new-file)
-    " mkdir
-    nmap <buffer> <Space>mkdir <Plug>(vaffle-mkdir)
-    " open-parent
-    nmap <buffer> - <Plug>(vaffle-open-parent)
-    " open
-    nmap <buffer> o <Plug>(vaffle-open-selected-split)
-    nmap <buffer> v <Plug>(vaffle-open-selected-vsplit)
-endfunction
-
-augroup vimrc_vaffle
-    autocmd!
-    autocmd FileType vaffle call s:customize_vaffle_mappings()
-augroup END
-
-" --------------------------------------------------------------------------------
-" Mkzの呼び出し
-" --------------------------------------------------------------------------------
-"
-"  windowの幅 (default 60)
-" let l:mkz_width=60
-" windowを開く位置( default -> 0(right), left -> 1 ) 
-" let l:mkz_open_left=0
-" windowを開いた後のカーソル( default -> 0(そのまま), new window -> 1 )
-" let l:mkz_focus=0
-
-"nmap <silent> <Leader>t <Plug>(mkz-toggle)
 
 " -------------------------------------------------------------------------------
 " ftjpn 
 " -------------------------------------------------------------------------------
+" 記号を複数指定した場合、同じ文字を連続して検索することにならない限り繰り返しは不可
 
 let g:ftjpn_key_list = [
     \ ['.', '。', '．'],
@@ -467,7 +399,6 @@ let g:ftjpn_key_list = [
     \ ['y', 'よ'],
     \ ]
 
-" 記号を複数指定した場合、同じ文字を検索しない限り繰り返しは不可
 
 " --------------------------------------------------------------------------------
 " 自作関数など
@@ -513,10 +444,14 @@ function! s:get_syn_info()
 endfunction
 command! SyntaxInfo call s:get_syn_info()
 
-
-nnoremap <silent> <Leader><Leader>sp :<C-u>call <SID>sbnew('samemo')<CR>
-
+" ---------------------------------------------------------------------------
 " linux用 日本語固定モード
+" ---------------------------------------------------------------------------
+nnoremap <silent> <F2> :<C-u>call <SID>ImeModeChange(current_ime)<CR>
+inoremap <silent> <F2> <C-o>:<C-u>call <SID>ImeModeChange(current_ime)<CR>
+" normal で IME もオフにする
+nnoremap <silent> <Esc> :<C-u>OffIME<CR><ESC>
+command! OffIME :call <SID>OffIME()
 let g:current_ime = 0
 function! s:ImeModeChange(arg)
     if g:current_ime == 0
@@ -524,34 +459,28 @@ function! s:ImeModeChange(arg)
     else
         let g:current_ime = 0  
     endif
-    echo 'Japanese Fixed Mode: ' . g:current_ime
+    echo 'Japanese Fixed Mode: ' . a:arg
 endfunction
 
-nnoremap <silent> <F2> :<C-u>call <SID>ImeModeChange(current_ime)<CR>
-inoremap <silent> <F2> <Esc>:<C-u>call <SID>ImeModeChange(current_ime)<CR>a
-
 function! s:ImeControl(active)
-  if a:active == 1
-       call system('fcitx5-remote -s mozc')
-   else
-       call system('fcitx5-remote -c')
-   endif
+    if a:active == 1
+        call system('fcitx5-remote -s mozc')
+    else
+        call system('fcitx5-remote -c mozc')
+    endif
 endfunction
 
 " IME をオフ
 function! s:OffIME() abort
-   call system('fcitx5-remote -c')
+    call system('fcitx5-remote -c')
 endfunction
 
 augroup Ime
-   autocmd!
-   autocmd InsertEnter * call <SID>ImeControl(current_ime)
-   autocmd InsertLeave * call <SID>OffIME()
-   autocmd CmdlineEnter * call <SID>OffIME()
-   autocmd CmdlineLeave * call <SID>OffIME()
-   autocmd CmdwinEnter * call <SID>OffIME()
-   autocmd CmdwinLeave * call <SID>OffIME()
+    autocmd!
+    autocmd InsertEnter * call <SID>ImeControl(current_ime)
+    autocmd InsertLeave,CmdlineEnter,CmdlineLeave,CmdwinEnter,CmdwinLeave * call <SID>OffIME()
 augroup END
 
+" terminal
 command! Terminal call popup_create(term_start([&shell], #{ hidden: 1, term_finish: 'close'}), #{ border: [], minwidth: winwidth(0)/2, minheight: &lines/2 })
 

@@ -9,24 +9,51 @@ else
 endif
 
 " ----------------------------------------------------------
-" Snippet
+" autodate
 " ----------------------------------------------------------
-if filereadable(expand("$DOT_VIM/autoload/mysnippets.vim"))
-    source $DOT_VIM/autoload/mysnippets.vim
-endif
+" 保存時に自動で dateModified を更新する
+augroup UpdateDateModified
+  autocmd!
+  autocmd BufWritePre *.md call <SID>UpdateDateModified()
+augroup END
 
-" ----------------------------------------------------------
-" autodate.vim
-" ----------------------------------------------------------
-let b:autodate_keyword_pre="dateModified: '"
-let b:autodate_keyword_post="'"
-let b:autodate_format="%Y-%m-%dT%H:%M:%S+09:00"
+let g:autodate = 1
+
+function! s:UpdateDateModified() abort
+    if !get(g:, 'autodate', 0)
+        return
+    endif
+
+    " 1行目が --- でない場合はリターン
+    if getline(1) !=# '---'
+        return
+    endif
+
+    " YAML フロントマターの範囲を取得
+    for lnum in range(2, line('$'))
+        let l:line = getline(lnum)
+        if l:line ==# '---'
+            retrun
+        endif
+        if l:line =~ "^dateModified:\s*'.*'$"
+            let l:new_date = strftime("%Y-%m-%dT%H:%M:%S+09:00")
+            call setline(lnum, "dateModified: '" . l:new_date. "'")
+            break
+        endif
+    endfor
+endfunction
+
+" オンにする
+command! AutodateOn  let g:autodate = 1 | echo "autodate: ON"
+" オフにする
+command! AutodateOff let g:autodate = 0 | echo "autodate: OFF"
 
 " ----------------------------------------------------------
 " 見出し一覧を抽出
 " ----------------------------------------------------------
 "
 command! -nargs=? Toc call <SID>Toc(<f-args>)
+nnoremap <Leader>toc :Toc<CR>
 
 function! s:Toc(...) abort
     " 全行コピー
@@ -77,10 +104,10 @@ function! s:Toc(...) abort
     call append(line('.')-1, l:headingList)
 endfunction
 
+
 " 目次
 
 command! -nargs=? Mkz call <SID>ToggleOutline(<f-args>)
-
 nnoremap <F9> :<C-u>Mkz<CR>
 
 function! s:ToggleOutline() abort

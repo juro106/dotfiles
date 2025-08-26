@@ -9,17 +9,23 @@ return {
     -- require('plugins.treesitter'),
 
     -- Telescope
-    require('plugins.telescope'),
+    -- require('plugins.telescope'),
 
     -- color
     {
-        'brenoprata10/nvim-highlight-colors',
-        event = 'BufReadPre',
-        ft = { 'lua' },
+        'norcalli/nvim-colorizer.lua',
+        event = 'VeryLazy',  -- 遅延ロード
         config = function()
-            require("nvim-highlight-colors").turnOn()
-            require("nvim-highlight-colors").turnOff()
-            require("nvim-highlight-colors").toggle()
+            require'colorizer'.setup({
+                '*'; -- 全ファイル
+            }, {
+                RGB      = true;
+                RRGGBB   = true;
+                names    = true;
+                RRGGBBAA = true;
+                css      = true;
+                css_fn   = true;
+            })
         end,
     },
 
@@ -52,7 +58,10 @@ return {
     },
 
     -- 自作
-    { 'juro106/ftjpn',          event = { 'BufReadPost', 'InsertEnter' }, },
+    {
+        'juro106/ftjpn',
+        event = { 'BufReadPost', 'InsertEnter' },
+    },
     {
         -- name = 'greet',
         dir = '~/.config/nvim/lua/local-plugin/greet',

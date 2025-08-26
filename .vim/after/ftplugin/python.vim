@@ -30,3 +30,5 @@ xmap <buffer> ic <Plug>(textobj-python-class-i)
 omap <buffer> ic <Plug>(textobj-python-class-i)
 
 setlocal omnifunc=jedi#completions
+
+nnoremap <F12> :<C-u>call <SID>RUN('!python3')<CR>

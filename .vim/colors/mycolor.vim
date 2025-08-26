@@ -32,9 +32,9 @@ hi! Folded       guibg=#384048 guifg=#a0a8b0 gui=none
 hi! Title        guifg=#f6f3e8 guibg=NONE    gui=bold
 hi! Visual       ctermfg=255 ctermbg=245 guifg=#ffffff guibg=#A09F9F gui=none
 hi! SpecialKey   guifg=#87cefe guibg=#343434 gui=none
-hi! IncSearch    ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
-hi! Search       ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
-hi! hlsearch     ctermbg=220 guifg=#254080 guibg=#ffd700 gui=none
+hi! IncSearch    ctermfg=220 ctermbg=000 guifg=#254080 guibg=#ffe866 gui=none
+hi! Search       ctermfg=255 ctermbg=245 guifg=#254080 guibg=#ffe866 gui=none
+hi! hlsearch     ctermfg=255 ctermbg=245 guifg=#254080 guibg=#ffe866 gui=none
 hi! CursorIM     ctermfg=15 guifg=NONE guibg=#d10000
 hi! EndOfBuffer  ctermfg=27 guifg=#888888
 

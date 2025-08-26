@@ -27,7 +27,8 @@
 	rebase = false
 
 [user]
-	email = hiyuman@gmail.com
+	; email = hiyuman@gmail.com
+    email = juro106@users.noreply.github.com
 	name = juro106
 
 [grep]
